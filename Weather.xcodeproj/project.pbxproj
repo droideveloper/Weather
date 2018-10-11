@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		050636BE216CBD6000E3195E /* Coordinate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 050636BD216CBD6000E3195E /* Coordinate.swift */; };
+		05296535216F5AAE001286CC /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05296534216F5AAE001286CC /* Extensions.swift */; };
+		05296537216F5D5A001286CC /* FileRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05296536216F5D5A001286CC /* FileRepository.swift */; };
+		05296539216F5DDB001286CC /* FileRepositoryImp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05296538216F5DDB001286CC /* FileRepositoryImp.swift */; };
 		05A7C225216CC02800724CBF /* Weather.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05A7C224216CC02800724CBF /* Weather.swift */; };
 		05A7C227216CCAF600724CBF /* Wind.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05A7C226216CCAF600724CBF /* Wind.swift */; };
 		05A7C229216CCB4300724CBF /* Cloud.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05A7C228216CCB4300724CBF /* Cloud.swift */; };
@@ -56,6 +59,9 @@
 /* Begin PBXFileReference section */
 		0431B506F4D21F986459833D /* Pods-WeatherUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeatherUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-WeatherUITests/Pods-WeatherUITests.release.xcconfig"; sourceTree = "<group>"; };
 		050636BD216CBD6000E3195E /* Coordinate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinate.swift; sourceTree = "<group>"; };
+		05296534216F5AAE001286CC /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		05296536216F5D5A001286CC /* FileRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileRepository.swift; sourceTree = "<group>"; };
+		05296538216F5DDB001286CC /* FileRepositoryImp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileRepositoryImp.swift; sourceTree = "<group>"; };
 		05A7C224216CC02800724CBF /* Weather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Weather.swift; sourceTree = "<group>"; };
 		05A7C226216CCAF600724CBF /* Wind.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Wind.swift; sourceTree = "<group>"; };
 		05A7C228216CCB4300724CBF /* Cloud.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cloud.swift; sourceTree = "<group>"; };
@@ -140,6 +146,14 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		05296533216F5A99001286CC /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				05296534216F5AAE001286CC /* Extensions.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		05A7C238216CE0F000724CBF /* Net */ = {
 			isa = PBXGroup;
 			children = (
@@ -157,6 +171,8 @@
 			children = (
 				05A7C240216CF37100724CBF /* UserDefaultsRepository.swift */,
 				05A7C242216CF3D100724CBF /* UserDefaultsRepositoryImp.swift */,
+				05296536216F5D5A001286CC /* FileRepository.swift */,
+				05296538216F5DDB001286CC /* FileRepositoryImp.swift */,
 			);
 			path = Repo;
 			sourceTree = "<group>";
@@ -186,6 +202,7 @@
 		05F3ADEF216C97F600BE61C2 /* Weather */ = {
 			isa = PBXGroup;
 			children = (
+				05296533216F5A99001286CC /* Extensions */,
 				05A7C23F216CF34F00724CBF /* Repo */,
 				05A7C238216CE0F000724CBF /* Net */,
 				050636BC216CBCF700E3195E /* Model */,
@@ -474,7 +491,9 @@
 			files = (
 				05A7C225216CC02800724CBF /* Weather.swift in Sources */,
 				05A7C22B216CCB7800724CBF /* Sys.swift in Sources */,
+				05296537216F5D5A001286CC /* FileRepository.swift in Sources */,
 				05A7C22F216CCD3B00724CBF /* TodayForecast.swift in Sources */,
+				05296539216F5DDB001286CC /* FileRepositoryImp.swift in Sources */,
 				05A7C23C216CE11600724CBF /* Requestable.swift in Sources */,
 				05A7C22D216CCC0300724CBF /* Main.swift in Sources */,
 				05AC274C216E0232000859F7 /* WeatherServiceImp.swift in Sources */,
@@ -487,6 +506,7 @@
 				05A7C235216CD00000724CBF /* DailyWeather.swift in Sources */,
 				05F3ADF3216C97F600BE61C2 /* ViewController.swift in Sources */,
 				05F3ADF1216C97F600BE61C2 /* AppDelegate.swift in Sources */,
+				05296535216F5AAE001286CC /* Extensions.swift in Sources */,
 				05A7C241216CF37100724CBF /* UserDefaultsRepository.swift in Sources */,
 				05A7C245216CF96A00724CBF /* WeatherService.swift in Sources */,
 				050636BE216CBD6000E3195E /* Coordinate.swift in Sources */,
