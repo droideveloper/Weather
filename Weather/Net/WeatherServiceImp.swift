@@ -30,7 +30,7 @@ class WeatherServiceImp: WeatherService {
                         emitter.onNext(todayForecat)
                         emitter.onCompleted()
                     } else {
-                        let error = NSError(domain: "we could not parse response I guess", code: 404, userInfo: nil)
+                        let error = NSError(domain: "invalid json object", code: 404, userInfo: nil)
                         emitter.onError(error)
                         emitter.onCompleted()
                     }
@@ -52,7 +52,7 @@ class WeatherServiceImp: WeatherService {
                         emitter.onNext(dailyWeather.data)
                         emitter.onCompleted()
                     } else {
-                        let error = NSError(domain: "we could not parse response I guess", code: 404, userInfo: nil)
+                        let error = NSError(domain: "invalid json object", code: 404, userInfo: nil)
                         emitter.onError(error)
                         emitter.onCompleted()
                     }
