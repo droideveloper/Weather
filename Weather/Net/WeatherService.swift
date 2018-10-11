@@ -10,7 +10,7 @@ import Foundation
 import RxSwift
 
 protocol WeatherService {
-    
-    func loadTodayForecast() -> Observable<TodayForecast>
-    func loadDailyForecast() -> Observable<[DailyForecast]>
+	
+	func loadTodayForecast() -> Observable<TodayForecast>
+	func loadDailyForecast() -> Observable<[DailyForecast]>
 }

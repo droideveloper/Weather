@@ -9,10 +9,10 @@
 import Foundation
 
 struct Sys: Codable {
-    var type: Int
-    var id: Int64
-    var message: Double
-    var country: String
-    var sunrise: Int64
-    var sunset: Int64
+	var type: Int
+	var id: Int64
+	var message: Double
+	var country: String
+	var sunrise: Int64
+	var sunset: Int64
 }

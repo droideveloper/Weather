@@ -10,7 +10,7 @@ import Foundation
 import Alamofire
 
 protocol Requestable {
-    
-    var baseUrl: String { get }
-    var request: (HTTPMethod, URLConvertible) { get }
+	
+	var baseUrl: String { get }
+	var request: (HTTPMethod, URLConvertible) { get }
 }

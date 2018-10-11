@@ -9,5 +9,5 @@
 import Foundation
 
 struct Cloud: Codable {
-    var all: Double
+	var all: Double
 }

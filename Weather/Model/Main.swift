@@ -9,18 +9,18 @@
 import Foundation
 
 struct Main: Codable {
-    var temperature: Double
-    var pressure: Double
-    var humidity: Double
-    var minTemperature: Double
-    var maxTemperature: Double
-    
-    enum CodingKeys: String, CodingKey {
-        case temperature = "temp"
-        case pressure
-        case humidity
-        case minTemperature = "temp_min"
-        case maxTemperature = "temp_max"
-    }
+	var temperature: Double
+	var pressure: Double
+	var humidity: Double
+	var minTemperature: Double
+	var maxTemperature: Double
+	
+	enum CodingKeys: String, CodingKey {
+		case temperature = "temp"
+		case pressure
+		case humidity
+		case minTemperature = "temp_min"
+		case maxTemperature = "temp_max"
+	}
 }
 

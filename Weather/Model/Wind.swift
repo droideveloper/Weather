@@ -9,11 +9,11 @@
 import Foundation
 
 struct Wind: Codable {
-    var speed: Double
-    var degree: Double
-    
-    enum CodingKeys: String, CodingKey {
-        case speed
-        case degree = "deg"
-    }
+	var speed: Double
+	var degree: Double
+	
+	enum CodingKeys: String, CodingKey {
+		case speed
+		case degree = "deg"
+	}
 }

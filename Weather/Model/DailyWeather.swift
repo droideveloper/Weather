@@ -9,9 +9,9 @@
 import Foundation
 
 struct DailyWeather: Codable {
-    var data: [DailyForecast]
-    
-    enum CodingKeys: String, CodingKey {
-        case data = "list"
-    }
+	var data: [DailyForecast]
+	
+	enum CodingKeys: String, CodingKey {
+		case data = "list"
+	}
 }

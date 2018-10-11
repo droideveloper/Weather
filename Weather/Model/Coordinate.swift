@@ -9,11 +9,11 @@
 import Foundation
 
 struct Coordinate: Codable {
-    var longittude: Double
-    var lattitude: Double
-    
-    enum CodingKeys: String, CodingKey {
-        case longittude = "lon"
-        case lattitude = "lat"
-    }
+	var longittude: Double
+	var lattitude: Double
+	
+	enum CodingKeys: String, CodingKey {
+		case longittude = "lon"
+		case lattitude = "lat"
+	}
 }

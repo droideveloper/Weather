@@ -9,15 +9,15 @@
 import Foundation
 
 struct Weather: Codable {
-    var id: Int64
-    var title: String
-    var description: String
-    var icon: String
-    
-    enum CodingKeys: String, CodingKey {
-        case id
-        case title = "main"
-        case description
-        case icon
-    }
+	var id: Int64
+	var title: String
+	var description: String
+	var icon: String
+	
+	enum CodingKeys: String, CodingKey {
+		case id
+		case title = "main"
+		case description
+		case icon
+	}
 }
