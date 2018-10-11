@@ -9,13 +9,13 @@
 import Foundation
 
 struct City: Codable {
-    var id: Int64
-    var name: String
-    var coordinate: Coordinate
-    
-    enum CodingKeys: String, CodingKey {
-        case id
-        case name
-        case coordinate = "coord"
-    }
+	var id: Int64
+	var name: String
+	var coordinate: Coordinate
+	
+	enum CodingKeys: String, CodingKey {
+		case id
+		case name
+		case coordinate = "coord"
+	}
 }

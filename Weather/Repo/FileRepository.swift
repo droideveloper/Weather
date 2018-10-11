@@ -10,13 +10,11 @@ import Foundation
 import RxSwift
 
 protocol FileRepository {
-    var cityUrl: URL? { get }
-    var todayForecastUrl: URL? { get }
-    var dailyForecastUrl: URL? { get }
-    
-    func clear(url: URL) -> Completable
-    func writeObject<T: Codable>(url: URL, object: T) -> Completable
-    func writeArray<T: Codable>(url: URL, array: [T]) -> Completable
-    func readObject<T: Codable>(url: URL) -> Single<T>
-    func readArray<T: Codable>(url: URL) -> Single<[T]>
+	var cityUrl: URL? { get }
+	var todayForecastUrl: URL? { get }
+	var dailyForecastUrl: URL? { get }
+	
+	func clear(url: URL) -> Completable
+	func write<T: Codable>(url: URL, object: T) -> Completable
+	func read<T: Codable>(url: URL, as type: T.Type) -> Single<T>
 }

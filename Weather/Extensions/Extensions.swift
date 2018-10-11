@@ -9,12 +9,12 @@
 import Foundation
 
 extension Double {
-    
-    public func kelvinToCelsius() -> Double {
-        return self - 273.15
-    }
-    
-    public func kelvinToFahrenheit() -> Double {
-        return kelvinToCelsius() * 1.8 + 32
-    }
+	
+	public func kelvinToCelsius() -> Double {
+		return self - 273.15
+	}
+	
+	public func kelvinToFahrenheit() -> Double {
+		return kelvinToCelsius() * 1.8 + 32
+	}
 }
