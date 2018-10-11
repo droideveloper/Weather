@@ -12,8 +12,8 @@ import RxSwift
 class FileRepositoryImp: FileRepository {
     
     private let fileManager: FileManager
-    private let decoder = JSONDecoder()
-    private let encoder = JSONEncoder()
+    private let decoder = NSKeyedUnarchiver.init()
+    private let encoder = NSKeyedArchiver.init()
     
     private let KEY_CITY_FILE = "cities.json"
     private let KEY_DAILY_FORECAST_FILE = "daily_forecast.json"
@@ -74,14 +74,15 @@ class FileRepositoryImp: FileRepository {
         }
     }
     
-    func readObject<T>(url: URL) -> Single<T> {
+    func readObject<T>(url: URL) -> Single<T> where T: Decodable, T: Encodable {
         return Single.create { [weak weakSelf = self] emitter in
-            // TODO read object
+            
+            
             return Disposables.create()
         }
     }
     
-    func readArray<T>(url: URL) -> Single<[T]> {
+    func readArray<T>(url: URL) -> Single<[T]> where T: Decodable, T: Encodable {
         return Single.create { [weak weakSelf = self] emitter in
             // TODO read array
             return Disposables.create()
