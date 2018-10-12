@@ -16,5 +16,5 @@ protocol FileRepository {
 	
 	func clear(url: URL) -> Completable
 	func write<T: Codable>(url: URL, object: T) -> Completable
-	func read<T: Codable>(url: URL, as type: T.Type) -> Single<T>
+	func read<T: Codable>(url: URL, as type: T.Type) -> Observable<T>
 }

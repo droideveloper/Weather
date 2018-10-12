@@ -26,7 +26,6 @@
 		05A7C243216CF3D100724CBF /* UserDefaultsRepositoryImp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05A7C242216CF3D100724CBF /* UserDefaultsRepositoryImp.swift */; };
 		05A7C245216CF96A00724CBF /* WeatherService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05A7C244216CF96A00724CBF /* WeatherService.swift */; };
 		05AC274C216E0232000859F7 /* WeatherServiceImp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05AC274B216E0232000859F7 /* WeatherServiceImp.swift */; };
-		05AC274E216E061A000859F7 /* Alamofire+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05AC274D216E061A000859F7 /* Alamofire+Extensions.swift */; };
 		05F3ADF1216C97F600BE61C2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05F3ADF0216C97F600BE61C2 /* AppDelegate.swift */; };
 		05F3ADF3216C97F600BE61C2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05F3ADF2216C97F600BE61C2 /* ViewController.swift */; };
 		05F3ADF6216C97F600BE61C2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 05F3ADF4216C97F600BE61C2 /* Main.storyboard */; };
@@ -95,7 +94,6 @@
 		05A7C242216CF3D100724CBF /* UserDefaultsRepositoryImp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsRepositoryImp.swift; sourceTree = "<group>"; };
 		05A7C244216CF96A00724CBF /* WeatherService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherService.swift; sourceTree = "<group>"; };
 		05AC274B216E0232000859F7 /* WeatherServiceImp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherServiceImp.swift; sourceTree = "<group>"; };
-		05AC274D216E061A000859F7 /* Alamofire+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Alamofire+Extensions.swift"; sourceTree = "<group>"; };
 		05F3ADED216C97F600BE61C2 /* Weather.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Weather.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		05F3ADF0216C97F600BE61C2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		05F3ADF2216C97F600BE61C2 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -192,7 +190,6 @@
 				05A7C23D216CE1F200724CBF /* WeatherRequestable.swift */,
 				05A7C244216CF96A00724CBF /* WeatherService.swift */,
 				05AC274B216E0232000859F7 /* WeatherServiceImp.swift */,
-				05AC274D216E061A000859F7 /* Alamofire+Extensions.swift */,
 			);
 			path = Net;
 			sourceTree = "<group>";
@@ -609,7 +606,6 @@
 				3DA775F92170BD39008FA53A /* Event.swift in Sources */,
 				3D754D78216FC79100730F1E /* CityRepository.swift in Sources */,
 				05A7C231216CCE8700724CBF /* DailyForecast.swift in Sources */,
-				05AC274E216E061A000859F7 /* Alamofire+Extensions.swift in Sources */,
 				3DA776012170C4D1008FA53A /* Model.swift in Sources */,
 				05A7C229216CCB4300724CBF /* Cloud.swift in Sources */,
 				05A7C243216CF3D100724CBF /* UserDefaultsRepositoryImp.swift in Sources */,

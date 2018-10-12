@@ -9,7 +9,8 @@
 import Foundation
 import RxSwift
 
-class DailyForecastViewController: UIViewController {
+class DailyForecastViewController: UIViewController, Viewable {
+	
 	
 	private let disposeBag = DisposeBag()
 	
@@ -20,5 +21,9 @@ class DailyForecastViewController: UIViewController {
 	
 	override func viewDidDisappear(_ animated: Bool) {
 		super.viewDidDisappear(animated)
+	}
+	
+	func viewEvents() -> Observable<Event> {
+		return Observable.never()
 	}
 }

@@ -17,9 +17,12 @@ class TodayForecastViewModel: ViewModelable {
 	private let intents = PublishRelay<LoadTodayForecastObservableIntent>()
 	private let disposeBag = DisposeBag()
 	
+	private let view: Viewable
+	
 	private let storage: Observable<TodayForecastModel>
 	
-	init() {
+	init(view: Viewable) {
+		self.view = view
 		self.storage = intents.asObservable()
 			.flatMap { intent in return intent.invoke() }
 			.scan(TodayForecastModel.initState, accumulator: { o, reducer in

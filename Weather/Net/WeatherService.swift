@@ -11,6 +11,6 @@ import RxSwift
 
 protocol WeatherService {
 	
-	func loadTodayForecast() -> Single<TodayForecast>
-	func loadDailyForecast() -> Single<[DailyForecast]>
+	func loadTodayForecast() -> Observable<TodayForecast>
+	func loadDailyForecast() -> Observable<[DailyForecast]>
 }
