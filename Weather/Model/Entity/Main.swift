@@ -9,6 +9,9 @@
 import Foundation
 
 struct Main: Codable {
+	
+	static let empty = Main(temperature: Double.nan, pressure: Double.nan, humidity: Double.nan, minTemperature: Double.nan, maxTemperature: Double.nan)
+	
 	var temperature: Double
 	var pressure: Double
 	var humidity: Double

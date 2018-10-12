@@ -74,21 +74,22 @@ class FileRepositoryImp: FileRepository {
 		}
 	}
 	
-	func read<T>(url: URL, as type: T.Type) -> Single<T> where T: Decodable, T: Encodable {
-		return Single.create { [weak weakSelf = self] emitter in
+	func read<T>(url: URL, as type: T.Type) -> Observable<T> where T: Decodable, T: Encodable {
+		return Observable.create { [weak weakSelf = self] emitter in
 			if let fileManager = weakSelf?.fileManager, let decoder = weakSelf?.decoder {
 				do {
 					if fileManager.fileExists(atPath: url.path) {
 						if let data = fileManager.contents(atPath: url.path) {
 							let result = try decoder.decode(type, from: data)
-							emitter(.success(result))
+							emitter.onNext(result)
+							emitter.onCompleted()
 						}
 					} else {
 						let error = NSError(domain: "no such file \(url.path)", code: 401, userInfo: nil)
-						emitter(.error(error))
+						emitter.onError(error)
 					}
 				} catch {
-					emitter(.error(error))
+					emitter.onError(error)
 				}
 			}
 			return Disposables.create()

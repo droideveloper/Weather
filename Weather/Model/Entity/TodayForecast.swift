@@ -8,7 +8,10 @@
 
 import Foundation
 
-class TodayForecast: Codable {
+struct TodayForecast: Codable, Equatable {
+	
+	static let empty = TodayForecast(coordinate: Coordinate.empty, weathers: [Weather](), main: Main.empty, visibility: Int.min, wind: Wind.empty, cloud: Cloud.empty, timestamp: Int64.min, sys: Sys.empty, id: Int64.min, name: String.empty)
+	
 	var coordinate: Coordinate
 	var weathers: [Weather]
 	var main: Main
@@ -31,5 +34,9 @@ class TodayForecast: Codable {
 		case sys
 		case id
 		case name
+	}
+	
+	static func == (lhs: TodayForecast, rhs: TodayForecast) -> Bool {
+		return lhs.id == rhs.id
 	}
 }
