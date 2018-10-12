@@ -9,5 +9,7 @@
 import Foundation
 
 struct Cloud: Codable {
+	static let empty = Cloud(all: Double.nan)
+	
 	var all: Double
 }

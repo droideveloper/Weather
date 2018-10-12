@@ -20,19 +20,17 @@ class WeatherServiceImp: WeatherService {
 		self.userDefaultsRepository = userDefaultsRepository
 	}
 	
-	func loadTodayForecast() -> Observable<TodayForecast> {
+	func loadTodayForecast() -> Single<TodayForecast> {
 		let endpoint = WeatherRequestable.dailyForecast(cityId: userDefaultsRepository.selectedCityId)
-		return Observable.create { emitter  in
+		return Single.create { emitter  in
 			let (httpMethod, url) = endpoint.request
 			let request = Alamofire.request(url, method: httpMethod)
 				.serialize { (response: DataResponse<TodayForecast>) in
 					if let todayForecat = response.value {
-						emitter.onNext(todayForecat)
-						emitter.onCompleted()
+						emitter(.success(todayForecat))
 					} else {
 						let error = NSError(domain: "invalid json object", code: 404, userInfo: nil)
-						emitter.onError(error)
-						emitter.onCompleted()
+						emitter(.error(error))
 					}
 			}
 			
@@ -42,19 +40,17 @@ class WeatherServiceImp: WeatherService {
 		}
 	}
 	
-	func loadDailyForecast() -> Observable<[DailyForecast]> {
+	func loadDailyForecast() -> Single<[DailyForecast]> {
 		let endpoint = WeatherRequestable.todayForecast(cityId: userDefaultsRepository.selectedCityId)
-		return Observable.create { emitter in
+		return Single.create { emitter in
 			let (httpMethod, url) = endpoint.request
 			let request = Alamofire.request(url, method: httpMethod)
 				.serialize { (response: DataResponse<DailyWeather>) in
 					if let dailyWeather = response.value {
-						emitter.onNext(dailyWeather.data)
-						emitter.onCompleted()
+						emitter(.success(dailyWeather.data))
 					} else {
 						let error = NSError(domain: "invalid json object", code: 404, userInfo: nil)
-						emitter.onError(error)
-						emitter.onCompleted()
+						emitter(.error(error))
 					}
 			}
 			
