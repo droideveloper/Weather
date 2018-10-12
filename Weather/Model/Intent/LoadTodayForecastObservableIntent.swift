@@ -10,7 +10,7 @@ import Foundation
 import RxSwift
 import RxCocoa
 
-struct LoadTodayForecastObservableIntent: ObservableIntent {
+class LoadTodayForecastObservableIntent: ObservableIntent {
 	typealias Model = TodayForecastModel
 	
 	fileprivate let todayForecastRepository: TodayForecastRepository

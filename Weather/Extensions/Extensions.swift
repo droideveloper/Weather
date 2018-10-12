@@ -36,7 +36,7 @@ extension Observable where Element: Event {
 
 extension Observable where Element: ReducerIntent {
 	
-	func toReducer<T>() -> Observable<Reducer<T>> where Element.Model == T {
+	func toReducer<T>() -> Observable<Reducer<T>> {
 		return self.map { intent in
 			return intent.invoke()
 		}
@@ -45,7 +45,7 @@ extension Observable where Element: ReducerIntent {
 
 extension Observable where Element: ObservableIntent {
 	
-	func toReducer<T>() -> Observable<Reducer<T>> where Element.Model == T {
+	func toReducer<T>() -> Observable<Reducer<T>> {
 		return self.flatMap { intent in
 			return intent.invoke()
 		}

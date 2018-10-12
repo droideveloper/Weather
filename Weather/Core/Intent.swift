@@ -10,17 +10,18 @@ import Foundation
 import RxSwift
 
 public protocol Intent {}
-
-public protocol ReducerIntent: Intent {
-	associatedtype Model
+open class ReducerIntent: Intent {
 	
-	func invoke() -> Reducer<Model>
+	func invoke<Model>() -> Reducer<Model> {
+		return { model in return model }
+	}
 }
 
-public protocol ObservableIntent: Intent {
-	associatedtype Model
+open class ObservableIntent: Intent {
 	
-	func invoke() -> Observable<Reducer<Model>>
+	func invoke<Model>() -> Observable<Reducer<Model>> {
+		return Observable.just({ model in return model })
+	}
 }
 
 public typealias Reducer<T> = (T) -> T

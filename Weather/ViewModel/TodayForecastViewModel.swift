@@ -14,15 +14,22 @@ class TodayForecastViewModel: ViewModelable {
 	
 	typealias M = TodayForecastModel
 	
-	fileprivate let intent = PublishRelay<Intent>()
+	private let intents = PublishRelay<LoadTodayForecastObservableIntent>()
+	private let disposeBag = DisposeBag()
 	
-	fileprivate func storage() -> Observable<Reducer<TodayForecastModel>> {
-		return intent.asObservable()
-			.toReducer()
+	private let storage: Observable<TodayForecastModel>
+	
+	init() {
+		self.storage = intents.asObservable()
+			.flatMap { intent in return intent.invoke() }
+			.scan(TodayForecastModel.initState, accumulator: { o, reducer in
+				return reducer(o)
+			})
+			.replay(1)
 	}
 	
 	func store() -> Observable<TodayForecastModel> {
-		
+		return storage.asObservable()
 	}
 	
 	func attah() {
@@ -30,10 +37,12 @@ class TodayForecastViewModel: ViewModelable {
 	}
 	
 	func detach() {
-		
+
 	}
 	
 	func accept(intent: Intent) {
-		
+		if let loadTodayForecastObservableIntent = intent as? LoadTodayForecastObservableIntent {
+			intents.accept(loadTodayForecastObservableIntent)
+		}
 	}
 }
