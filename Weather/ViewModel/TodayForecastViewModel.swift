@@ -32,7 +32,7 @@ class TodayForecastViewModel: ViewModelable {
 		return storage.asObservable()
 	}
 	
-	func attah() {
+	func attach() {
 		
 	}
 	

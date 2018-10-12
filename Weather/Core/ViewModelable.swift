@@ -12,7 +12,7 @@ import RxSwift
 public protocol ViewModelable {
 	associatedtype M
 	
-	func attah()
+	func attach()
 	func detach()
 	func store() -> Observable<M>
 	func accept(intent: Intent)
