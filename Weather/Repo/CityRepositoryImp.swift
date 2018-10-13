@@ -25,23 +25,20 @@ class CityRepositoryImp: CityRepository {
 	
 	func loadCities() -> Observable<[City]> {
 		if userDefaultsRepository.shouldReadFromLocalRepository {
-			return Observable.create { [weak weakSelf = self] emitter in
-				if let decoder = weakSelf?.decoder, let fileName = weakSelf?.FILE_NAME, let fileMime = weakSelf?.FILE_MIME {
-					if let path = Bundle.main.path(forResource: fileName, ofType: fileMime) {
-						do {
-							let data = try Data(contentsOf: URL(fileURLWithPath: path))
-							let result = try decoder.decode([City].self, from: data)
-							emitter.onNext(result)
-							emitter.onCompleted()
-						} catch {
-							emitter.onError(error)
+			return readSource()
+				.flatMap { [weak weakSelf = self] cities -> Observable<[City]> in
+					if let fileRepository = weakSelf?.fileRepository {
+						if let url = fileRepository.cityUrl {
+							return fileRepository.write(url: url, object: cities)
+								.andThen(Observable.just(cities))
 						}
 					}
-				}
-				return Disposables.create()
-			}.flatMap { [weak weakSelf = self] cities in
-				return weakSelf?.persistOrReturnAlready(cities: cities) ?? Observable.just(cities)
-			}
+					return Observable.just(cities)
+				}.do(onNext: { [weak weakSelf = self] _ -> Void in
+					if var userDefaultsRepository = weakSelf?.userDefaultsRepository {
+						userDefaultsRepository.shouldReadFromLocalRepository = false
+					}
+				})
 		} else {
 			if let cityStoredUrl = fileRepository.cityUrl {
 				return fileRepository.read(url: cityStoredUrl, as: [City].self)
@@ -50,21 +47,22 @@ class CityRepositoryImp: CityRepository {
 		}
 	}
 	
-	fileprivate func persistOrReturnAlready(cities: [City]) -> Observable<[City]> {
-		return Observable.just(cities)
-			.flatMap { [weak weakSelf = self] cities -> Observable<[City]> in
-				if let fileRepository = weakSelf?.fileRepository {
-					if let url = fileRepository.cityUrl {
-						return fileRepository.write(url: url, object: cities)
-							.andThen(Observable.just(cities))
+	fileprivate func readSource() -> Observable<[City]> {
+		return Observable.create { [weak weakSelf = self] emitter in
+			if let decoder = weakSelf?.decoder, let fileName = weakSelf?.FILE_NAME, let fileMime = weakSelf?.FILE_MIME {
+				if let path = Bundle.main.path(forResource: fileName, ofType: fileMime) {
+					do {
+						let data = try Data(contentsOf: URL(fileURLWithPath: path))
+						let result = try decoder.decode([City].self, from: data)
+						emitter.onNext(result)
+						emitter.onCompleted()
+					} catch {
+						emitter.onError(error)
 					}
 				}
-				return Observable.just(cities)
 			}
-			.do(onNext: { [weak weakSelf = self] _ -> Void in
-				if var userDefaultsRepository = weakSelf?.userDefaultsRepository {
-					userDefaultsRepository.shouldReadFromLocalRepository = false
-				}
-			})
+			return Disposables.create()
+		}
 	}
+
 }

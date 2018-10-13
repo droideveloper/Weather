@@ -15,7 +15,7 @@ public struct IdleState: SyncState {}
 public struct ProcessState: SyncState {
 	public let type: ProcessType
 	
-	init(type: ProcessType) {
+	init(_ type: ProcessType) {
 		self.type = type
 	}
 	
