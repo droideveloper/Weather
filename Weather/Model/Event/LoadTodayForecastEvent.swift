@@ -8,6 +8,4 @@
 
 import Foundation
 
-struct LoadTodayForecastEvent: Event {
-	
-}
+struct LoadTodayForecastEvent: Event {}

@@ -28,28 +28,17 @@ extension DisposeBag {
 	}
 }
 
-extension Observable where Element: Event {
-
+extension Observable where Element == Event {
+	
 	func toIntent(_ block: @escaping (Element) -> Intent) -> Observable<Intent> {
 		return self.map(block)
 	}
 }
 
-extension Observable where Element: ReducerIntent {
+extension Observable where Element == Intent {
 	
-	func toReducer<T>() -> Observable<Reducer<T>> {
-		return self.map { intent in
-			return intent.invoke()
-		}
-	}
-}
-
-extension Observable where Element: ObservableIntent {
-	
-	func toReducer<T>() -> Observable<Reducer<T>> {
-		return self.flatMap { intent in
-			return intent.invoke()
-		}
+	func toReducer<T>(_ block: @escaping (Element) -> Reducer<T>) -> Observable<Reducer<T>> {
+		return self.map(block)
 	}
 }
 

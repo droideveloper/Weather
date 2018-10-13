@@ -1,16 +1,17 @@
 //
-//  Viewable.swift
+//  View.swift
 //  Weather
 //
-//  Created by Fatih Şen on 12.10.2018.
+//  Created by Fatih Şen on 13.10.2018.
 //  Copyright © 2018 VNGRS. All rights reserved.
 //
 
 import Foundation
 import RxSwift
 
-protocol Viewable {
+public protocol View {
+	associatedtype Model
 	
-	var isViewLoaded: Bool { get }
+	func render(model: Model)
 	func viewEvents() -> Observable<Event>
 }

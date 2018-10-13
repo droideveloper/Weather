@@ -25,7 +25,7 @@ class FileRepositoryImp: FileRepository {
 		get {
 			if let directory = directory {
 				if let uri = URL(string: directory) {
-					return checkIfExistsAndCreate(url: uri.appendingPathComponent(KEY_CITY_FILE))
+					return uri.appendingPathComponent(KEY_CITY_FILE)
 				}
 			}
 			return nil
@@ -36,7 +36,7 @@ class FileRepositoryImp: FileRepository {
 		get {
 			if let directory = directory {
 				if let uri = URL(string: directory) {
-					return checkIfExistsAndCreate(url: uri.appendingPathComponent(KEY_DAILY_FORECAST_FILE))
+					return uri.appendingPathComponent(KEY_DAILY_FORECAST_FILE)
 				}
 			}
 			return nil
@@ -47,7 +47,7 @@ class FileRepositoryImp: FileRepository {
 		get {
 			if let directory = directory {
 				if let uri = URL(string: directory) {
-					return checkIfExistsAndCreate(url: uri.appendingPathComponent(KEY_TODAY_FORECAST_FILE))
+					return uri.appendingPathComponent(KEY_TODAY_FORECAST_FILE)
 				}
 			}
 			return nil
@@ -56,22 +56,6 @@ class FileRepositoryImp: FileRepository {
 	
 	init(fileManager: FileManager) {
 		self.fileManager = fileManager
-	}
-	
-	func clear(url: URL) -> Completable {
-		return Completable.create { [weak weakSelf = self] emitter in
-			if let fileManager = weakSelf?.fileManager {
-				if fileManager.isDeletableFile(atPath: url.path) {
-					do {
-						try fileManager.removeItem(atPath: url.path)
-						emitter(.completed)
-					} catch  {
-						emitter(.error(error))
-					}
-				}
-			}
-			return Disposables.create()
-		}
 	}
 	
 	func read<T>(url: URL, as type: T.Type) -> Observable<T> where T: Decodable, T: Encodable {
@@ -111,15 +95,6 @@ class FileRepositoryImp: FileRepository {
 				}
 			}
 			return Disposables.create()
-		}
-	}
-	
-	private func checkIfExistsAndCreate(url: URL) -> URL {
-		if fileManager.fileExists(atPath: url.path) {
-			return url
-		} else {
-			fileManager.createFile(atPath: url.path, contents: nil, attributes: nil)
-			return url
 		}
 	}
 }
