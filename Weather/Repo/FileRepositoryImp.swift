@@ -25,7 +25,7 @@ class FileRepositoryImp: FileRepository {
 		get {
 			if let directory = directory {
 				if let uri = URL(string: directory) {
-					return checkIfExistsAndCreate(url: uri.appendingPathComponent(KEY_CITY_FILE))
+					return uri.appendingPathComponent(KEY_CITY_FILE)
 				}
 			}
 			return nil
@@ -36,7 +36,7 @@ class FileRepositoryImp: FileRepository {
 		get {
 			if let directory = directory {
 				if let uri = URL(string: directory) {
-					return checkIfExistsAndCreate(url: uri.appendingPathComponent(KEY_DAILY_FORECAST_FILE))
+					return uri.appendingPathComponent(KEY_DAILY_FORECAST_FILE)
 				}
 			}
 			return nil
@@ -47,7 +47,7 @@ class FileRepositoryImp: FileRepository {
 		get {
 			if let directory = directory {
 				if let uri = URL(string: directory) {
-					return checkIfExistsAndCreate(url: uri.appendingPathComponent(KEY_TODAY_FORECAST_FILE))
+					return uri.appendingPathComponent(KEY_TODAY_FORECAST_FILE)
 				}
 			}
 			return nil
@@ -58,37 +58,22 @@ class FileRepositoryImp: FileRepository {
 		self.fileManager = fileManager
 	}
 	
-	func clear(url: URL) -> Completable {
-		return Completable.create { [weak weakSelf = self] emitter in
-			if let fileManager = weakSelf?.fileManager {
-				if fileManager.isDeletableFile(atPath: url.path) {
-					do {
-						try fileManager.removeItem(atPath: url.path)
-						emitter(.completed)
-					} catch  {
-						emitter(.error(error))
-					}
-				}
-			}
-			return Disposables.create()
-		}
-	}
-	
-	func read<T>(url: URL, as type: T.Type) -> Single<T> where T: Decodable, T: Encodable {
-		return Single.create { [weak weakSelf = self] emitter in
+	func read<T>(url: URL, as type: T.Type) -> Observable<T> where T: Decodable, T: Encodable {
+		return Observable.create { [weak weakSelf = self] emitter in
 			if let fileManager = weakSelf?.fileManager, let decoder = weakSelf?.decoder {
 				do {
 					if fileManager.fileExists(atPath: url.path) {
 						if let data = fileManager.contents(atPath: url.path) {
 							let result = try decoder.decode(type, from: data)
-							emitter(.success(result))
+							emitter.onNext(result)
+							emitter.onCompleted()
 						}
 					} else {
 						let error = NSError(domain: "no such file \(url.path)", code: 401, userInfo: nil)
-						emitter(.error(error))
+						emitter.onError(error)
 					}
 				} catch {
-					emitter(.error(error))
+					emitter.onError(error)
 				}
 			}
 			return Disposables.create()
@@ -110,15 +95,6 @@ class FileRepositoryImp: FileRepository {
 				}
 			}
 			return Disposables.create()
-		}
-	}
-	
-	private func checkIfExistsAndCreate(url: URL) -> URL {
-		if fileManager.fileExists(atPath: url.path) {
-			return url
-		} else {
-			fileManager.createFile(atPath: url.path, contents: nil, attributes: nil)
-			return url
 		}
 	}
 }

@@ -9,6 +9,9 @@
 import Foundation
 
 struct Wind: Codable {
+	
+	static let empty = Wind(speed: Double.nan, degree: Double.nan)
+	
 	var speed: Double
 	var degree: Double
 	

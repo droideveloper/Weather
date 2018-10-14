@@ -9,6 +9,9 @@
 import Foundation
 
 struct Weather: Codable {
+	
+	static let empty = Weather(id: Int64.min, title: String.empty, description: String.empty, icon: String.empty)
+	
 	var id: Int64
 	var title: String
 	var description: String

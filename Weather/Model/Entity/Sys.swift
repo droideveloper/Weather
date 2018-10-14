@@ -9,6 +9,8 @@
 import Foundation
 
 struct Sys: Codable {
+	static let empty = Sys(type: Int.min, id: Int64.min, message: Double.nan, country: String.empty, sunrise: Int64.min, sunset: Int64.min)
+	
 	var type: Int
 	var id: Int64
 	var message: Double

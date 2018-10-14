@@ -32,7 +32,6 @@ class WeatherServiceImp: WeatherService {
 					} else {
 						let error = NSError(domain: "invalid json object", code: 404, userInfo: nil)
 						emitter.onError(error)
-						emitter.onCompleted()
 					}
 			}
 			
@@ -54,7 +53,6 @@ class WeatherServiceImp: WeatherService {
 					} else {
 						let error = NSError(domain: "invalid json object", code: 404, userInfo: nil)
 						emitter.onError(error)
-						emitter.onCompleted()
 					}
 			}
 			

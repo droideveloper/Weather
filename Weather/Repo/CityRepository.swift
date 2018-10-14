@@ -10,5 +10,5 @@ import Foundation
 import RxSwift
 
 protocol CityRepository {
-	func loadCities() -> Single<[City]>
+	func loadCities() -> Observable<[City]>
 }

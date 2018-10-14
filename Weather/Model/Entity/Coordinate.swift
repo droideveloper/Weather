@@ -9,6 +9,9 @@
 import Foundation
 
 struct Coordinate: Codable {
+	
+	static let empty = Coordinate(longittude: Double.nan, lattitude: Double.nan)
+	
 	var longittude: Double
 	var lattitude: Double
 	
