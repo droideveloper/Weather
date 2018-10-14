@@ -17,11 +17,14 @@ class TodayForecastController: UIViewController, View {
 	private let disposeBag = DisposeBag()
 	private let events = PublishRelay<Event>()
 	
+	@IBOutlet weak var viewImageBackground: UIImageView!
+	
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		viewModel.view = self
 		viewModel.attach()
 		
+		viewImageBackground.image = UIImage(named: "icon")
 	}
 	
 	override func viewDidDisappear(_ animated: Bool) {
@@ -30,7 +33,13 @@ class TodayForecastController: UIViewController, View {
 	}
 	
 	func render(model: TodayForecastModel) {
-		// do rendering in here
+		if model.syncState is IdleState {
+			
+		} else if model.syncState is ProcessState {
+			
+		} else if model.syncState is ErrorState {
+			
+		}
 	}
 	
 	func viewEvents() -> Observable<Event> {
