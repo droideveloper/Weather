@@ -24,7 +24,7 @@ class TodayForecastController: UIViewController, View {
 		viewModel.view = self
 		viewModel.attach()
 		
-		viewImageBackground.image = UIImage(named: "icon")
+		// viewImageBackground.image = UIImage(named: "berlin")
 	}
 	
 	override func viewDidDisappear(_ animated: Bool) {

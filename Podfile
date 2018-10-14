@@ -9,6 +9,7 @@ target 'Weather' do
     pod 'RxCocoa',    '~> 4.0'	
     pod 'Alamofire', '~> 4.7'
     pod 'AlamofireImage', '~> 3.4'
+    pod 'Swinject'	
 
 
   # Pods for Weather
