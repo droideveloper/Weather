@@ -339,13 +339,10 @@
 				3DEF34302172668500780CF6 /* Intent.swift */,
 				3D45CA012172813100A67380 /* View.swift */,
 				3D45CA03217281A100A67380 /* ViewModel.swift */,
-<<<<<<< HEAD
 				3D7AC8052174BC5A00CAADC4 /* TableDataSource.swift */,
 				3D151F6C2174D08100CAA859 /* TableViewCell.swift */,
-=======
 				3DC29658217380340049A5F0 /* PropertyChangable.swift */,
 				3D58EC652173846A00239B59 /* ObservableList.swift */,
->>>>>>> master
 			);
 			path = Core;
 			sourceTree = "<group>";
