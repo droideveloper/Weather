@@ -129,7 +129,7 @@ extension TableViewDataSource {
   }
   
   public func itemAt(_ indexPath: IndexPath) -> D {
-    return dataSet[indexPath.row]
+    return dataSet.get(indexPath.row)
   }
 }
 

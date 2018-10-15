@@ -74,6 +74,10 @@ public class ObservableList<T> {
 		notifyChange(at, size: 1)
 	}
 	
+	public func get(_ index: Int) -> T {
+		return dataSet[index]
+	}
+	
 	private func notifyInsert(_ index: Int, size: Int) {
 		protocols.forEach { listener in listener.notifyItemsInserted(index, size: size) }
 	}

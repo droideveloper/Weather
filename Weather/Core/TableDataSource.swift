@@ -12,7 +12,7 @@ import UIKit
 public protocol TableViewDataSource: UITableViewDataSource { // TODO implement PropertyChangable here
   associatedtype D
   
-  var dataSet: [D] { get }
+  var dataSet: ObservableList<D> { get }
   
   func indentifierForIndexPath(_ indexPath: IndexPath) -> String
   func cellFor(_ tableView: UITableView, indexPath: IndexPath) -> TableViewCell<D>
