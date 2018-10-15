@@ -12,7 +12,7 @@ import RxSwift
 class CityRepositoryImp: CityRepository {
 	
 	private let FILE_NAME = "cities"
-	private let FILE_MIME = ".json"
+	private let FILE_MIME = "json"
 	
 	private let fileRepository: FileRepository
 	private let userDefaultsRepository: UserDefaultsRepository
