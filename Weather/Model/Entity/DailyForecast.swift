@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct DailyForecast: Codable, Equatable {
+public struct DailyForecast: Codable, Equatable {
 	
 	static let empty = DailyForecast(timestamp: Int64.min, main: Main.empty, weathers: [Weather](), cloud: Cloud.empty, wind: Wind.empty)
 	
@@ -26,7 +26,7 @@ struct DailyForecast: Codable, Equatable {
 		case wind
 	}
 	
-	static func == (lhs: DailyForecast, rhs: DailyForecast) -> Bool {
+	public static func == (lhs: DailyForecast, rhs: DailyForecast) -> Bool {
 		return lhs.timestamp == rhs.timestamp
 	}
 }

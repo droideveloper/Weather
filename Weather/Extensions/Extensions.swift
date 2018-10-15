@@ -9,6 +9,7 @@
 import Foundation
 import RxSwift
 import Alamofire
+import Swinject
 
 extension Double {
 	
@@ -101,4 +102,45 @@ extension DataRequest {
 	public func serialize<T: Decodable>(decoder: JSONDecoder = JSONDecoder(), completion: @escaping (DataResponse<T>) -> Void) -> Self {
 		return response(queue: nil, responseSerializer: DataRequest.serialize(decoder: decoder), completionHandler: completion)
 	}
+}
+
+extension TableViewDataSource {
+  
+  public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    return cellFor(tableView, indexPath: indexPath)
+  }
+  
+  public func cellFor(_ tableView: UITableView, indexPath: IndexPath) -> TableViewCell<D> {
+    let key = indentifierForIndexPath(indexPath)
+    let cell = tableView.dequeueReusableCell(withIdentifier: key, for: indexPath)
+    if let cellable = cell as? TableViewCell<D> {
+      cellable.bind(entity: itemAt(indexPath))
+      return cellable
+    }
+    fatalError("you should implement 'TableViewCell<D>' protocol to use this")
+  }
+  
+  public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    return dataSet.count
+  }
+  
+  public func numberOfSections(in tableView: UITableView) -> Int {
+    return 1
+  }
+  
+  public func itemAt(_ indexPath: IndexPath) -> D {
+    return dataSet[indexPath.row]
+  }
+}
+
+extension UIViewController {
+  
+  var container: Container? {
+    get {
+      if let delegate = UIApplication.shared.delegate as? AppDelegate {
+        return delegate.container
+      }
+      return nil
+    }
+  }
 }

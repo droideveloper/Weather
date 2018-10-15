@@ -8,10 +8,14 @@
 
 import Foundation
 
-struct DailyForecastModel: Model {
+public struct DailyForecastModel: Model {
 	
 	static let initState = DailyForecastModel(syncState: IdleState(), data: [DailyForecast]())
 	
 	var syncState: SyncState
 	var data: [DailyForecast]
+  
+  func copy(synsState: SyncState? = nil, data: [DailyForecast]? = nil) -> DailyForecastModel {
+    return DailyForecastModel(syncState: synsState ?? self.syncState, data: data ?? self.data)
+  }
 }
