@@ -18,7 +18,7 @@ public struct LoadTodayForecastIntent: ObservableInent {
 		self.todayForecastRepository = todayForecastRepository
 	}
 	
-	private let byDefaultState: () -> Reducer<Model> = {
+	private let byDefault: () -> Reducer<Model> = {
 		return { model in
 			return TodayForecastModel(syncState: ProcessState(.refresh), data: model.data)
 		}
@@ -50,6 +50,6 @@ public struct LoadTodayForecastIntent: ObservableInent {
 			.subscribeOn(MainScheduler.asyncInstance)
 			.map(bySuccess)
 			.catchError(byFailure)
-			.startWith(byDefaultState())
+			.startWith(byDefault())
 	}
 }
