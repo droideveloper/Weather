@@ -7,14 +7,57 @@
 //
 
 import UIKit
+import Swinject
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 	
 	var window: UIWindow?
-	
+  var container: Container?
 	
 	func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+    
+    self.container = Container()
+    self.container?.register(UserDefaultsRepository.self, factory: { _ in UserDefaultsRepositoryImp() })
+    self.container?.register(FileManager.self, factory: { _ in FileManager.default } )
+    self.container?.register(FileRepository.self, factory: { resolver in
+      let fileManager = resolver.resolve(FileManager.self)
+      if let fileManager = fileManager {
+        return FileRepositoryImp(fileManager: fileManager)
+      }
+      fatalError("can not resolve fileManager")
+    })
+    self.container?.register(CityRepository.self, factory: { resolver in
+      let fileRepository = resolver.resolve(FileRepository.self)
+      let userDefaultsRepository = resolver.resolve(UserDefaultsRepository.self)
+      if let fileRepository = fileRepository, let userDefaultsRepository = userDefaultsRepository {
+        return CityRepositoryImp(fileRepository: fileRepository, userDefaultsRepository: userDefaultsRepository)
+      }
+      fatalError("can not resolve fileRepository or userDefaultsRepository")
+    })
+    self.container?.register(WeatherService.self, factory: { resovler in
+      let userDefaultsRepository = resovler.resolve(UserDefaultsRepository.self)
+      if let userDefaultsRepository = userDefaultsRepository {
+        return WeatherServiceImp(userDefaultsRepository: userDefaultsRepository)
+      }
+      fatalError("can not resolve userDefaultsRepository")
+    })
+    self.container?.register(TodayForecastRepository.self, factory: { resolver in
+      let fileRepository = resolver.resolve(FileRepository.self)
+      let weatherService = resolver.resolve(WeatherService.self)
+      if let fileRepository = fileRepository, let weatherService = weatherService {
+        return TodayForecastRepositoryImp(fileRepository: fileRepository, weatherService: weatherService)
+      }
+      fatalError("can not resolve fileRepository or weatherService")
+    })
+    self.container?.register(DailyForecastRepository.self, factory: { resolver in
+      let fileRepository = resolver.resolve(FileRepository.self)
+      let weatherService = resolver.resolve(WeatherService.self)
+      if let fileRepository = fileRepository, let weatherService = weatherService {
+        return DailyForecastRepositoryImp(fileRepository: fileRepository, weatherService: weatherService)
+      }
+      fatalError("can not resolve fileRepository or weatherService")
+    })
 		// Override point for customization after application launch.
 		return true
 	}
