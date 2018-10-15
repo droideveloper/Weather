@@ -9,6 +9,7 @@
 import Foundation
 import RxSwift
 import Alamofire
+import Swinject
 
 extension Double {
 	
@@ -105,5 +106,17 @@ extension TableViewDataSource {
   
   public func itemAt(_ indexPath: IndexPath) -> D {
     return dataSet[indexPath.row]
+  }
+}
+
+extension UIViewController {
+  
+  var container: Container? {
+    get {
+      if let delegate = UIApplication.shared.delegate as? AppDelegate {
+        return delegate.container
+      }
+      return nil
+    }
   }
 }
