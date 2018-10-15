@@ -106,10 +106,6 @@ extension DataRequest {
 
 extension TableViewDataSource {
   
-  public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    return cellFor(tableView, indexPath: indexPath)
-  }
-  
   public func cellFor(_ tableView: UITableView, indexPath: IndexPath) -> TableViewCell<D> {
     let key = indentifierForIndexPath(indexPath)
     let cell = tableView.dequeueReusableCell(withIdentifier: key, for: indexPath)
@@ -118,14 +114,6 @@ extension TableViewDataSource {
       return cellable
     }
     fatalError("you should implement 'TableViewCell<D>' protocol to use this")
-  }
-  
-  public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return dataSet.count
-  }
-  
-  public func numberOfSections(in tableView: UITableView) -> Int {
-    return 1
   }
   
   public func itemAt(_ indexPath: IndexPath) -> D {
