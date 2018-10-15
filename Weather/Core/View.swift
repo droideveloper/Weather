@@ -7,10 +7,13 @@
 //
 
 import Foundation
+import Swinject
 import RxSwift
 
 public protocol View {
 	associatedtype Model
+	
+	var container: Container? { get }
 	
 	func render(model: Model)
 	func viewEvents() -> Observable<Event>

@@ -15,7 +15,7 @@ public struct DailyForecastModel: Model {
 	var syncState: SyncState
 	var data: [DailyForecast]
   
-  func copy(synsState: SyncState? = nil, data: [DailyForecast]? = nil) -> DailyForecastModel {
-    return DailyForecastModel(syncState: synsState ?? self.syncState, data: data ?? self.data)
+  func copy(syncState: SyncState? = nil, data: [DailyForecast]? = nil) -> DailyForecastModel {
+    return DailyForecastModel(syncState: syncState ?? self.syncState, data: data ?? self.data)
   }
 }

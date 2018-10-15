@@ -20,13 +20,13 @@ public struct LoadDailyForecastIntent: ObservableInent {
   
   private let byDefault: () -> Reducer<Model> = {
     return { model in
-      return model.copy(synsState: IdleState())
+      return model.copy(syncState: IdleState())
     }
   }
   
   private let bySuccess: ([DailyForecast]) -> Reducer<Model> = { data in
     return { model in
-      return model.copy(synsState: IdleState(), data: data)
+      return model.copy(syncState: IdleState(), data: data)
     }
   }
   
@@ -34,11 +34,11 @@ public struct LoadDailyForecastIntent: ObservableInent {
     return Observable.create { emitter in
       // error state first
       emitter.onNext({ model in
-        return model.copy(synsState: ErrorState(error: error))
+        return model.copy(syncState: ErrorState(error: error))
       })
       
       emitter.onNext({ model in
-        return model.copy(synsState: IdleState())
+        return model.copy(syncState: IdleState())
       })
       
       return Disposables.create()
