@@ -14,8 +14,15 @@ public struct TodayForecastModel: Model {
 	
 	var syncState: SyncState
 	var data: TodayForecast
+<<<<<<< HEAD
   
   public func copy(synsState: SyncState? = nil, data: TodayForecast? = nil) -> TodayForecastModel {
     return TodayForecastModel(syncState: synsState ?? self.syncState, data: data ?? self.data)
   }
+=======
+	
+	func copy(syncState: SyncState? = nil, data: TodayForecast? = nil) -> TodayForecastModel {
+		return TodayForecastModel(syncState: syncState ?? self.syncState, data: data ?? self.data)
+	}
+>>>>>>> master
 }

@@ -16,14 +16,14 @@ class TodayForecastController: UIViewController, View {
 	private let viewModel = TodayForecastViewModel()
 	private let disposeBag = DisposeBag()
 	private let events = PublishRelay<Event>()
-	
+		
 	@IBOutlet weak var viewImageBackground: UIImageView!
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		viewModel.view = self
 		viewModel.attach()
-		
+
 		// viewImageBackground.image = UIImage(named: "berlin")
 	}
 	
