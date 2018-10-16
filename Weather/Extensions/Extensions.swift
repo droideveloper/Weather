@@ -104,24 +104,6 @@ extension DataRequest {
 	}
 }
 
-extension TableViewDataSource {
-  
-  public func cellFor(_ tableView: UITableView, indexPath: IndexPath) -> TableViewCell<D> {
-    let key = indentifierForIndexPath(indexPath)
-    let cell = tableView.dequeueReusableCell(withIdentifier: key, for: indexPath)
-    if let cellable = cell as? TableViewCell<D> {
-      cellable.setUp() // we do call set up for change in styles
-      cellable.bind(entity: itemAt(indexPath))
-      return cellable
-    }
-    fatalError("you should implement 'TableViewCell<D>' protocol to use this")
-  }
-  
-  public func itemAt(_ indexPath: IndexPath) -> D {
-    return dataSet.get(indexPath.row)
-  }
-}
-
 extension UIViewController {
   
   var container: Container? {
