@@ -23,16 +23,19 @@ class DailyForecastViewModel: ViewModel {
     }
   }
   
-  weak var view: DailyForecastController?
-
-	lazy var dataSet = {
-		ObservableList<DailyForecast>()
-	}()
-	
-	lazy var dataSource = {
-		DailyForecastDataSource(dataSet: dataSet)
-	}()
-	
+  weak var view: DailyForecastController? {
+    didSet {
+      if let view = view {
+        if let container = view.container {
+          self.dataSet = container.resolve(ObservableList<DailyForecast>.self)
+        }
+      }
+    }
+  }
+    
+	// will be set when view binded here and when we view binded get container and resolve dependency
+  var dataSet: ObservableList<DailyForecast>?
+  
   private let disposeBag = DisposeBag()
   private let intents = PublishRelay<Intent>()
   private lazy var storage = { intents.asObservable()
@@ -43,7 +46,7 @@ class DailyForecastViewModel: ViewModel {
   }()
   
   func attach() {
-    disposeBag += storage.connect()
+    disposeBag += storage.connect() // will keep my stream in-line since I want my stream continous till model dies
     
     if let view = view {
       disposeBag += view.viewEvents()

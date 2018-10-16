@@ -70,6 +70,12 @@ extension UITableView: PropertyChangable {
 extension String {
 	
 	static let empty = ""
+  
+  public func capitalizeSentance() -> String {
+    let start = String(self.prefix(1)).uppercased()
+    let leftover = String(self.dropFirst())
+    return start + leftover
+  }
 }
 
 extension DataRequest {
@@ -104,23 +110,6 @@ extension DataRequest {
 	}
 }
 
-extension TableViewDataSource {
-  
-  public func cellFor(_ tableView: UITableView, indexPath: IndexPath) -> TableViewCell<D> {
-    let key = indentifierForIndexPath(indexPath)
-    let cell = tableView.dequeueReusableCell(withIdentifier: key, for: indexPath)
-    if let cellable = cell as? TableViewCell<D> {
-      cellable.bind(entity: itemAt(indexPath))
-      return cellable
-    }
-    fatalError("you should implement 'TableViewCell<D>' protocol to use this")
-  }
-  
-  public func itemAt(_ indexPath: IndexPath) -> D {
-    return dataSet.get(indexPath.row)
-  }
-}
-
 extension UIViewController {
   
   var container: Container? {
@@ -130,5 +119,20 @@ extension UIViewController {
       }
       return nil
     }
+  }
+}
+
+extension UIColor {
+  
+  static func parse(_ color: Int) -> UIColor {
+    return parse((color >> 16) & 0xFF, (color >> 8) & 0xFF, (color & 0xFF), (color >> 24) & 0xFF)
+  }
+  
+  static func parse(_ red: Int, _ green: Int, _ blue: Int) -> UIColor {
+    return parse(red, green, blue, 1)
+  }
+  
+  static func parse(_ red: Int, _ green: Int, _ blue: Int, _ alpha: Int) -> UIColor {
+    return UIColor(red: CGFloat(red), green: CGFloat(green), blue: CGFloat(blue), alpha: CGFloat(alpha))
   }
 }

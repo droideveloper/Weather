@@ -26,9 +26,15 @@ class DailyForecastController: UITableViewController, View {
 	
 	func setUp() {
 		self.viewModel.view = self
-		self.tableView.dataSource = viewModel.dataSource
-		self.viewModel.dataSet.register(self.tableView)
-		self.tableView.reloadData()
+    if let container = container {
+      if let dataSource = container.resolve(DailyForecastDataSource.self) {
+        self.tableView.dataSource = dataSource
+        self.tableView.reloadData()
+      }
+    }
+    if let dataSet = self.viewModel.dataSet {
+      dataSet.register(self.tableView)
+    }
 	}
 	
   func render(model: DailyForecastModel) {
@@ -43,7 +49,9 @@ class DailyForecastController: UITableViewController, View {
 	
 	override func viewDidDisappear(_ animated: Bool) {
 		super.viewDidDisappear(animated)
-		self.viewModel.dataSet.unregister(self.tableView)
+    if let dataSet = self.viewModel.dataSet {
+      dataSet.unregister(self.tableView)
+    }
 	}
   
   func viewEvents() -> Observable<Event> {

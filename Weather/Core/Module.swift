@@ -62,5 +62,15 @@ public struct Module {
 			}
 			fatalError("can not resolve fileRepository or weatherService")
 		})
+    // data set
+    self.container.register(ObservableList<DailyForecast>.self, factory: { _ in ObservableList<DailyForecast>() })
+    // daily forecast data source
+    self.container.register(DailyForecastDataSource.self, factory: { resolver in
+      let dataSet = resolver.resolve(ObservableList<DailyForecast>.self)
+      if let dataSet = dataSet {
+        return DailyForecastDataSource(dataSet: dataSet)
+      }
+      fatalError("can not resolve dataSet")
+    })
 	}
 }

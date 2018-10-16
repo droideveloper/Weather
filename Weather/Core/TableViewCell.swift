@@ -11,6 +11,10 @@ import UIKit
 
 open class TableViewCell<D>: UITableViewCell {
   
+  open func setUp() {
+    /* no opt */
+  }
+  
   open func bind(entity: D) {
     /* no opt */
   }
