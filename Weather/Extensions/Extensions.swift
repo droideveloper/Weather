@@ -70,6 +70,12 @@ extension UITableView: PropertyChangable {
 extension String {
 	
 	static let empty = ""
+  
+  public func capitalizeSentance() -> String {
+    let start = String(self.prefix(1)).uppercased()
+    let leftover = String(self.dropFirst())
+    return start + leftover
+  }
 }
 
 extension DataRequest {

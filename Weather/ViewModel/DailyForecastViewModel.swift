@@ -46,7 +46,7 @@ class DailyForecastViewModel: ViewModel {
   }()
   
   func attach() {
-    disposeBag += storage.connect()
+    disposeBag += storage.connect() // will keep my stream in-line since I want my stream continous till model dies
     
     if let view = view {
       disposeBag += view.viewEvents()
