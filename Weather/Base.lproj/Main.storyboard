@@ -205,6 +205,17 @@
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="HXR-vB-Wfs" id="0YH-uR-tGa">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="43.666666666666664"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XWM-pB-pF2">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.666666666666664"/>
+                                        </stackView>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="XWM-pB-pF2" firstAttribute="top" secondItem="0YH-uR-tGa" secondAttribute="top" id="9BQ-QW-let"/>
+                                        <constraint firstItem="XWM-pB-pF2" firstAttribute="leading" secondItem="0YH-uR-tGa" secondAttribute="leading" id="Rqv-wc-LX8"/>
+                                        <constraint firstAttribute="trailing" secondItem="XWM-pB-pF2" secondAttribute="trailing" id="kKy-9O-jvc"/>
+                                        <constraint firstAttribute="bottom" secondItem="XWM-pB-pF2" secondAttribute="bottom" id="rZb-P0-MhC"/>
+                                    </constraints>
                                 </tableViewCellContentView>
                             </tableViewCell>
                         </prototypes>
@@ -220,12 +231,12 @@
         </scene>
     </scenes>
     <resources>
-        <image name="direction" width="28" height="28"/>
-        <image name="drops" width="28" height="28"/>
-        <image name="humidity" width="28" height="28"/>
-        <image name="prague" width="512" height="341"/>
-        <image name="rain" width="28" height="28"/>
-        <image name="sunrise" width="31" height="28"/>
-        <image name="wind" width="31" height="28"/>
+        <image name="direction" width="13.439999580383301" height="13.439999580383301"/>
+        <image name="drops" width="13.439999580383301" height="13.439999580383301"/>
+        <image name="humidity" width="13.439999580383301" height="13.439999580383301"/>
+        <image name="prague" width="1024" height="683"/>
+        <image name="rain" width="13.439999580383301" height="13.439999580383301"/>
+        <image name="sunrise" width="15.119999885559082" height="13.439999580383301"/>
+        <image name="wind" width="15.119999885559082" height="13.439999580383301"/>
     </resources>
 </document>

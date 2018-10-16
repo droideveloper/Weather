@@ -110,6 +110,7 @@ extension TableViewDataSource {
     let key = indentifierForIndexPath(indexPath)
     let cell = tableView.dequeueReusableCell(withIdentifier: key, for: indexPath)
     if let cellable = cell as? TableViewCell<D> {
+      cellable.setUp() // we do call set up for change in styles
       cellable.bind(entity: itemAt(indexPath))
       return cellable
     }
@@ -130,5 +131,20 @@ extension UIViewController {
       }
       return nil
     }
+  }
+}
+
+extension UIColor {
+  
+  static func parse(_ color: Int) -> UIColor {
+    return parse((color >> 16) & 0xFF, (color >> 8) & 0xFF, (color & 0xFF), (color >> 24) & 0xFF)
+  }
+  
+  static func parse(_ red: Int, _ green: Int, _ blue: Int) -> UIColor {
+    return parse(red, green, blue, 1)
+  }
+  
+  static func parse(_ red: Int, _ green: Int, _ blue: Int, _ alpha: Int) -> UIColor {
+    return UIColor(red: CGFloat(red), green: CGFloat(green), blue: CGFloat(blue), alpha: CGFloat(alpha))
   }
 }
