@@ -39,6 +39,7 @@
 		3D151F712174D6FB00CAA859 /* LoadDailyForecastEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D151F702174D6FB00CAA859 /* LoadDailyForecastEvent.swift */; };
 		3D151F732174D79600CAA859 /* DailyForecastViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D151F722174D79600CAA859 /* DailyForecastViewModel.swift */; };
 		3D151F752174D7EC00CAA859 /* DailyForecastController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D151F742174D7EC00CAA859 /* DailyForecastController.swift */; };
+		3D1B3AB32175C3B900A4BB66 /* BaseTableDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D1B3AB22175C3B900A4BB66 /* BaseTableDataSource.swift */; };
 		3D45C9FE21727DC900A67380 /* TodayForecastRepositoryImp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D45C9FD21727DC800A67380 /* TodayForecastRepositoryImp.swift */; };
 		3D45CA0021727F9700A67380 /* DailyForecastRepositoryImp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D45C9FF21727F9700A67380 /* DailyForecastRepositoryImp.swift */; };
 		3D45CA022172813100A67380 /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D45CA012172813100A67380 /* View.swift */; };
@@ -125,6 +126,7 @@
 		3D151F702174D6FB00CAA859 /* LoadDailyForecastEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadDailyForecastEvent.swift; sourceTree = "<group>"; };
 		3D151F722174D79600CAA859 /* DailyForecastViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyForecastViewModel.swift; sourceTree = "<group>"; };
 		3D151F742174D7EC00CAA859 /* DailyForecastController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyForecastController.swift; sourceTree = "<group>"; };
+		3D1B3AB22175C3B900A4BB66 /* BaseTableDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTableDataSource.swift; sourceTree = "<group>"; };
 		3D45C9FD21727DC800A67380 /* TodayForecastRepositoryImp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayForecastRepositoryImp.swift; sourceTree = "<group>"; };
 		3D45C9FF21727F9700A67380 /* DailyForecastRepositoryImp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyForecastRepositoryImp.swift; sourceTree = "<group>"; };
 		3D45CA012172813100A67380 /* View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
@@ -352,6 +354,7 @@
 				3DC29658217380340049A5F0 /* PropertyChangable.swift */,
 				3D58EC652173846A00239B59 /* ObservableList.swift */,
 				3D51C4422175041A0077DC31 /* Module.swift */,
+				3D1B3AB22175C3B900A4BB66 /* BaseTableDataSource.swift */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -648,6 +651,7 @@
 				3D45CA022172813100A67380 /* View.swift in Sources */,
 				3D45CA0021727F9700A67380 /* DailyForecastRepositoryImp.swift in Sources */,
 				3D754D78216FC79100730F1E /* CityRepository.swift in Sources */,
+				3D1B3AB32175C3B900A4BB66 /* BaseTableDataSource.swift in Sources */,
 				05A7C231216CCE8700724CBF /* DailyForecast.swift in Sources */,
 				3DA776012170C4D1008FA53A /* Model.swift in Sources */,
 				05A7C229216CCB4300724CBF /* Cloud.swift in Sources */,
