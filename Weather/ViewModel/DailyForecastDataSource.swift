@@ -12,6 +12,8 @@ import UIKit
 class DailyForecastDataSource: NSObject, TableViewDataSource {
 	typealias D = DailyForecast
 
+	private let DAILY_FORECASST_CELL = "kDailyForecastCell"
+	
 	var dataSet: ObservableList<DailyForecast>
 	
 	init(dataSet: ObservableList<DailyForecast>) {
@@ -19,7 +21,7 @@ class DailyForecastDataSource: NSObject, TableViewDataSource {
 	}
 	
 	func indentifierForIndexPath(_ indexPath: IndexPath) -> String {
-		return String.empty
+		return DAILY_FORECASST_CELL
 	}
 	
 	public func numberOfSections(in tableView: UITableView) -> Int {

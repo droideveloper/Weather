@@ -24,7 +24,15 @@ class DailyForecastViewModel: ViewModel {
   }
   
   weak var view: DailyForecastController?
-  
+
+	lazy var dataSet = {
+		ObservableList<DailyForecast>()
+	}()
+	
+	lazy var dataSource = {
+		DailyForecastDataSource(dataSet: dataSet)
+	}()
+	
   private let disposeBag = DisposeBag()
   private let intents = PublishRelay<Intent>()
   private lazy var storage = { intents.asObservable()

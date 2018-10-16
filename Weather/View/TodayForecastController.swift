@@ -21,10 +21,15 @@ class TodayForecastController: UIViewController, View {
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
-		viewModel.view = self
+		setUp()
 		viewModel.attach()
 
 		// viewImageBackground.image = UIImage(named: "berlin")
+	}
+	
+	func setUp() {
+		viewModel.view = self
+
 	}
 	
 	override func viewDidDisappear(_ animated: Bool) {
