@@ -15,6 +15,7 @@ public protocol View {
 	
 	var container: Container? { get }
 	
+	func setUp()
 	func render(model: Model)
 	func viewEvents() -> Observable<Event>
 }

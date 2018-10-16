@@ -20,9 +20,17 @@ class DailyForecastController: UITableViewController, View {
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    viewModel.view = self
+		setUp()
+		self.viewModel.attach()
   }
-  
+	
+	func setUp() {
+		self.viewModel.view = self
+		self.tableView.dataSource = viewModel.dataSource
+		self.viewModel.dataSet.register(self.tableView)
+		self.tableView.reloadData()
+	}
+	
   func render(model: DailyForecastModel) {
     if model.syncState is IdleState {
       // TODO here
@@ -32,6 +40,11 @@ class DailyForecastController: UITableViewController, View {
       // TODO here
     }
   }
+	
+	override func viewDidDisappear(_ animated: Bool) {
+		super.viewDidDisappear(animated)
+		self.viewModel.dataSet.unregister(self.tableView)
+	}
   
   func viewEvents() -> Observable<Event> {
     return events.asObservable()
