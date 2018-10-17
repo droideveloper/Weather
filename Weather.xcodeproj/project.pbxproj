@@ -34,6 +34,8 @@
 		05F3AE06216C97F700BE61C2 /* WeatherTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05F3AE05216C97F700BE61C2 /* WeatherTests.swift */; };
 		05F3AE11216C97F700BE61C2 /* WeatherUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05F3AE10216C97F700BE61C2 /* WeatherUITests.swift */; };
 		26A3CD5269BF2B01C4DA9DB1 /* Pods_WeatherUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 528A0AB9692A3389D57BC184 /* Pods_WeatherUITests.framework */; };
+		3D09A53E21774A8000765329 /* BusManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D09A53D21774A8000765329 /* BusManager.swift */; };
+		3D09A5402177697A00765329 /* Tempereture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D09A53F2177697A00765329 /* Tempereture.swift */; };
 		3D151F6D2174D08100CAA859 /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D151F6C2174D08100CAA859 /* TableViewCell.swift */; };
 		3D151F6F2174D47200CAA859 /* LoadDailyForecastIntent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D151F6E2174D47200CAA859 /* LoadDailyForecastIntent.swift */; };
 		3D151F712174D6FB00CAA859 /* LoadDailyForecastEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D151F702174D6FB00CAA859 /* LoadDailyForecastEvent.swift */; };
@@ -123,6 +125,8 @@
 		05F3AE10216C97F700BE61C2 /* WeatherUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherUITests.swift; sourceTree = "<group>"; };
 		05F3AE12216C97F700BE61C2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3158DEB7F44FE3D6E8E801B5 /* Pods-WeatherTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeatherTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WeatherTests/Pods-WeatherTests.debug.xcconfig"; sourceTree = "<group>"; };
+		3D09A53D21774A8000765329 /* BusManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusManager.swift; sourceTree = "<group>"; };
+		3D09A53F2177697A00765329 /* Tempereture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tempereture.swift; sourceTree = "<group>"; };
 		3D151F6C2174D08100CAA859 /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
 		3D151F6E2174D47200CAA859 /* LoadDailyForecastIntent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadDailyForecastIntent.swift; sourceTree = "<group>"; };
 		3D151F702174D6FB00CAA859 /* LoadDailyForecastEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadDailyForecastEvent.swift; sourceTree = "<group>"; };
@@ -360,6 +364,7 @@
 				3D58EC652173846A00239B59 /* ObservableList.swift */,
 				3D51C4422175041A0077DC31 /* Module.swift */,
 				3D1B3AB22175C3B900A4BB66 /* BaseTableDataSource.swift */,
+				3D09A53D21774A8000765329 /* BusManager.swift */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -377,6 +382,7 @@
 				05A7C230216CCE8700724CBF /* DailyForecast.swift */,
 				05A7C232216CCF3200724CBF /* City.swift */,
 				05A7C234216CD00000724CBF /* DailyWeather.swift */,
+				3D09A53F2177697A00765329 /* Tempereture.swift */,
 			);
 			path = Entity;
 			sourceTree = "<group>";
@@ -666,6 +672,7 @@
 				3D45CA022172813100A67380 /* View.swift in Sources */,
 				3D45CA0021727F9700A67380 /* DailyForecastRepositoryImp.swift in Sources */,
 				3D754D78216FC79100730F1E /* CityRepository.swift in Sources */,
+				3D09A5402177697A00765329 /* Tempereture.swift in Sources */,
 				3D1B3AB32175C3B900A4BB66 /* BaseTableDataSource.swift in Sources */,
 				05A7C231216CCE8700724CBF /* DailyForecast.swift in Sources */,
 				3DA776012170C4D1008FA53A /* Model.swift in Sources */,
@@ -682,6 +689,7 @@
 				3D45C9FE21727DC900A67380 /* TodayForecastRepositoryImp.swift in Sources */,
 				05F3ADF1216C97F600BE61C2 /* AppDelegate.swift in Sources */,
 				05296535216F5AAE001286CC /* Extensions.swift in Sources */,
+				3D09A53E21774A8000765329 /* BusManager.swift in Sources */,
 				3D45CA0A21728BC200A67380 /* LoadTodayForecastIntent.swift in Sources */,
 				3D151F6D2174D08100CAA859 /* TableViewCell.swift in Sources */,
 				3DEF34312172668500780CF6 /* Intent.swift in Sources */,

@@ -16,7 +16,7 @@ enum WeatherRequestable: Requestable {
 	
 	var baseUrl: String {
 		get {
-			return "http://api.openweather.org/data/\(API_VERSION)"
+			return "http://api.openweathermap.org/data/\(API_VERSION)"
 		}
 	}
 	
@@ -24,7 +24,7 @@ enum WeatherRequestable: Requestable {
 		get {
 			switch self {
 			case .dailyForecast(let cityId):
-				return (.get, "\(baseUrl)/forecast?id=\(cityId)&appid=\(API_ID)")
+				return (.get, "\(baseUrl)/forecast/daily?id=\(cityId)&appid=\(API_ID)")
 			case .todayForecast(let cityId):
 				return (.get, "\(baseUrl)/weather?id=\(cityId)&appid=\(API_ID)")
 				
@@ -34,4 +34,4 @@ enum WeatherRequestable: Requestable {
 }
 
 private let API_VERSION = "2.5"
-private let API_ID = "b6907d289e10d714a6e88b30761fae22" // TODO change this
+private let API_ID = "61fa90fe66c16f3551b2c537c4d1f948"

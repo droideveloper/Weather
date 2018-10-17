@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="gcW-Al-psd">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="eLM-xQ-KNp">
     <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -196,7 +196,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sox-FE-6XL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1509.5999999999999" y="26.53673163418291"/>
+            <point key="canvasLocation" x="1374" y="-695"/>
         </scene>
         <!--Daily Forecast Controller-->
         <scene sceneID="GpP-ZN-LdA">
@@ -214,7 +214,7 @@
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="43.666666666666664"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="8RK-7L-8DU" customClass="CircleBackgroundImageView" customModule="Weather" customModuleProvider="target">
+                                        <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="8RK-7L-8DU" customClass="CircleBackgroundImageView" customModule="Weather" customModuleProvider="target">
                                             <rect key="frame" x="8" y="1" width="42" height="42"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="42" id="EWG-2o-eor"/>
@@ -252,11 +252,10 @@
                                 </connections>
                             </tableViewCell>
                         </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="eLM-xQ-KNp" id="cOl-cY-kPD"/>
-                            <outlet property="delegate" destination="eLM-xQ-KNp" id="qka-xZ-NQP"/>
-                        </connections>
                     </tableView>
+                    <connections>
+                        <outlet property="tableView" destination="orw-Xp-hoG" id="f9v-4a-5gS"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="u5U-LG-GBF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

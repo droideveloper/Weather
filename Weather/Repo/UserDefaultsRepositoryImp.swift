@@ -19,7 +19,11 @@ class UserDefaultsRepositoryImp: UserDefaultsRepository {
 	
 	var selectedCityId: Int {
 		get {
-			return userDefaults.integer(forKey: KEY_SELECTED_CITY)
+      let activeCityId = userDefaults.integer(forKey: KEY_SELECTED_CITY)
+      if activeCityId == 0 {
+        return 3067696 // prague
+      }
+			return activeCityId
 		}
 		set {
 			userDefaults.set(newValue, forKey: KEY_SELECTED_CITY)

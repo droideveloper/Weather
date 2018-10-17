@@ -10,20 +10,26 @@ import Foundation
 
 public struct DailyForecast: Codable, Equatable {
 	
-	static let empty = DailyForecast(timestamp: Int64.min, main: Main.empty, weathers: [Weather](), cloud: Cloud.empty, wind: Wind.empty)
+  static let empty = DailyForecast(timestamp: Int64.min, tempereture: Tempereture.empty, weathers: [Weather](), cloud: Double.nan, wind: nil, speed: nil, degree: nil, rain: nil)
 	
 	var timestamp: Int64
-	var main: Main
+	var tempereture: Tempereture
 	var weathers: [Weather]
-	var cloud: Cloud
-	var wind: Wind
+	var cloud: Double
+	var wind: Wind?
+  var speed: Double?
+  var degree: Double?
+  var rain: Double?
 	
 	enum CodingKeys: String, CodingKey {
 		case timestamp = "dt"
-		case main
+		case tempereture = "temp"
 		case weathers = "weather"
 		case cloud = "clouds"
 		case wind
+    case speed
+    case degree = "deg"
+    case rain
 	}
 	
 	public static func == (lhs: DailyForecast, rhs: DailyForecast) -> Bool {

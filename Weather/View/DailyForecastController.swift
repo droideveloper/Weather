@@ -11,33 +11,37 @@ import UIKit
 import RxSwift
 import RxCocoa
 
-class DailyForecastController: UITableViewController, View {
+class DailyForecastController: UIViewController, View {
   typealias Model = DailyForecastModel
+  
+  @IBOutlet var tableView: UITableView!
   
   private let viewModel = DailyForecastViewModel()
   private let disposeBag = DisposeBag()
   private let events = PublishRelay<Event>()
   
-  var dataSet: ObservableList<DailyForecast>? = nil
+  private let dataSet = ObservableList<DailyForecast>()
+  private lazy var dataSource = {
+    return DailyForecastDataSource(dataSet: dataSet)
+  }()
   
   override func viewDidLoad() {
     super.viewDidLoad()
 		setUp()
 		self.viewModel.attach()
+    
+    checkIfInitialLoadNeeded()
   }
 	
 	func setUp() {
 		self.viewModel.view = self
-    if let container = container {
-      if let dataSource = container.resolve(DailyForecastDataSource.self) {
-        self.dataSet = container.resolve(ObservableList<DailyForecast>.self)
-        self.tableView.dataSource = dataSource
-        self.tableView.reloadData()
-      }
-    }
-    if let dataSet = dataSet {
-      dataSet.register(self.tableView)
-    }
+    dataSet.register(self.tableView)
+    
+    self.tableView.dataSource = dataSource
+    
+    disposeBag += viewModel.store()
+      .subscribe(onNext: render(model:))
+    
 	}
 	
   func render(model: DailyForecastModel) {
@@ -50,10 +54,8 @@ class DailyForecastController: UITableViewController, View {
   }
 	
 	override func viewDidDisappear(_ animated: Bool) {
+    dataSet.unregister(self.tableView)
 		super.viewDidDisappear(animated)
-    if let dataSet = self.dataSet {
-      dataSet.unregister(self.tableView)
-    }
 	}
   
   func viewEvents() -> Observable<Event> {
@@ -61,10 +63,14 @@ class DailyForecastController: UITableViewController, View {
   }
   
   private func render(data: [DailyForecast]) {
-    if let dataSet = dataSet {
-      if !data.isEmpty {
-        dataSet.append(data)
-      }
+    if !data.isEmpty {
+      dataSet.append(data)
+    }
+  }
+  
+  private func checkIfInitialLoadNeeded() {
+    if dataSet.isEmpty {
+      events.accept(LoadDailyForecastEvent())
     }
   }
 }

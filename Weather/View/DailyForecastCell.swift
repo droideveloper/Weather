@@ -36,13 +36,12 @@ class DailyForecastCell: TableViewCell<DailyForecast> {
       // an set the text
       self.viewTextTitleDailyForecast.text = string
       
-      let url = "http://i.openweather.org/\(weather.icon).png"
-      if let uri = URL(string: url) {
+      if let uri = URL(string: weather.icon.toWeatherIconUrl()) { // will convert weather icon from icon id
         self.viewImageDailyForecast.af_setImage(withURL: uri)
       }
     }
     // parse text for tempereture
-    let temperetureString = String.init(format: celciusFormat, Int(entity.main.temperature.kelvinToCelsius())) // only supporting celcius for now 
+    let temperetureString = String.init(format: celciusFormat, Int(entity.tempereture.day.kelvinToCelsius())) // only supporting celcius for now
     self.viewTextTemperetureDailyForecast.text = temperetureString
 	}
 	
