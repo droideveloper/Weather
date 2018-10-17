@@ -23,18 +23,7 @@ class DailyForecastViewModel: ViewModel {
     }
   }
   
-  weak var view: DailyForecastController? {
-    didSet {
-      if let view = view {
-        if let container = view.container {
-          self.dataSet = container.resolve(ObservableList<DailyForecast>.self)
-        }
-      }
-    }
-  }
-    
-	// will be set when view binded here and when we view binded get container and resolve dependency
-  var dataSet: ObservableList<DailyForecast>?
+  weak var view: DailyForecastController?
   
   private let disposeBag = DisposeBag()
   private let intents = PublishRelay<Intent>()

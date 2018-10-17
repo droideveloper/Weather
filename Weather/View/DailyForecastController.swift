@@ -18,6 +18,8 @@ class DailyForecastController: UITableViewController, View {
   private let disposeBag = DisposeBag()
   private let events = PublishRelay<Event>()
   
+  var dataSet: ObservableList<DailyForecast>? = nil
+  
   override func viewDidLoad() {
     super.viewDidLoad()
 		setUp()
@@ -28,20 +30,20 @@ class DailyForecastController: UITableViewController, View {
 		self.viewModel.view = self
     if let container = container {
       if let dataSource = container.resolve(DailyForecastDataSource.self) {
+        self.dataSet = container.resolve(ObservableList<DailyForecast>.self)
         self.tableView.dataSource = dataSource
         self.tableView.reloadData()
       }
     }
-    if let dataSet = self.viewModel.dataSet {
+    if let dataSet = dataSet {
       dataSet.register(self.tableView)
     }
 	}
 	
   func render(model: DailyForecastModel) {
     if model.syncState is IdleState {
-      // TODO here
+      render(data: model.data)
     } else if model.syncState is ProcessState {
-      // TODO here
     } else if model.syncState is ErrorState {
       // TODO here
     }
@@ -49,12 +51,20 @@ class DailyForecastController: UITableViewController, View {
 	
 	override func viewDidDisappear(_ animated: Bool) {
 		super.viewDidDisappear(animated)
-    if let dataSet = self.viewModel.dataSet {
+    if let dataSet = self.dataSet {
       dataSet.unregister(self.tableView)
     }
 	}
   
   func viewEvents() -> Observable<Event> {
     return events.asObservable()
+  }
+  
+  private func render(data: [DailyForecast]) {
+    if let dataSet = dataSet {
+      if !data.isEmpty {
+        dataSet.append(data)
+      }
+    }
   }
 }

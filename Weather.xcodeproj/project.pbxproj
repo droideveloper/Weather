@@ -63,6 +63,8 @@
 		3DA7760B2170CA27008FA53A /* LoadTodayForecastEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DA7760A2170CA27008FA53A /* LoadTodayForecastEvent.swift */; };
 		3DA776132170CFC3008FA53A /* TodayForecastRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DA776122170CFC3008FA53A /* TodayForecastRepository.swift */; };
 		3DA776152170D00A008FA53A /* DailyForecastRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DA776142170D00A008FA53A /* DailyForecastRepository.swift */; };
+		3DA941A521770D56002F6912 /* CircleBackgroundImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DA941A421770D56002F6912 /* CircleBackgroundImageView.swift */; };
+		3DA941A721770EC3002F6912 /* BackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DA941A621770EC3002F6912 /* BackgroundView.swift */; };
 		3DC29659217380340049A5F0 /* PropertyChangable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DC29658217380340049A5F0 /* PropertyChangable.swift */; };
 		3DEF34312172668500780CF6 /* Intent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DEF34302172668500780CF6 /* Intent.swift */; };
 		6B8F2C2CCEC5D6ACF083B112 /* Pods_Weather.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C721FD9EBB7732B96AA11026 /* Pods_Weather.framework */; };
@@ -150,6 +152,8 @@
 		3DA7760A2170CA27008FA53A /* LoadTodayForecastEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadTodayForecastEvent.swift; sourceTree = "<group>"; };
 		3DA776122170CFC3008FA53A /* TodayForecastRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayForecastRepository.swift; sourceTree = "<group>"; };
 		3DA776142170D00A008FA53A /* DailyForecastRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyForecastRepository.swift; sourceTree = "<group>"; };
+		3DA941A421770D56002F6912 /* CircleBackgroundImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleBackgroundImageView.swift; sourceTree = "<group>"; };
+		3DA941A621770EC3002F6912 /* BackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundView.swift; sourceTree = "<group>"; };
 		3DC29658217380340049A5F0 /* PropertyChangable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropertyChangable.swift; sourceTree = "<group>"; };
 		3DEF34302172668500780CF6 /* Intent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Intent.swift; sourceTree = "<group>"; };
 		47D172537BB3D5B7F2763045 /* Pods_WeatherTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WeatherTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -262,6 +266,7 @@
 		05F3ADEF216C97F600BE61C2 /* Weather */ = {
 			isa = PBXGroup;
 			children = (
+				3DA941A321770CB9002F6912 /* Widget */,
 				3DA775F52170BC98008FA53A /* Core */,
 				3DA775F22170BA08008FA53A /* View */,
 				3DA775F12170B9F5008FA53A /* ViewModel */,
@@ -325,8 +330,6 @@
 			children = (
 				3D45CA052172821500A67380 /* TodayForecastViewModel.swift */,
 				3D151F722174D79600CAA859 /* DailyForecastViewModel.swift */,
-				3D51C444217505440077DC31 /* DailyForecastDataSource.swift */,
-				3D51C446217505540077DC31 /* DailyForecastCell.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -334,6 +337,8 @@
 		3DA775F22170BA08008FA53A /* View */ = {
 			isa = PBXGroup;
 			children = (
+				3D51C444217505440077DC31 /* DailyForecastDataSource.swift */,
+				3D51C446217505540077DC31 /* DailyForecastCell.swift */,
 				3D45CA07217287D400A67380 /* TodayForecastController.swift */,
 				3D151F742174D7EC00CAA859 /* DailyForecastController.swift */,
 			);
@@ -383,6 +388,15 @@
 				3D151F702174D6FB00CAA859 /* LoadDailyForecastEvent.swift */,
 			);
 			path = Event;
+			sourceTree = "<group>";
+		};
+		3DA941A321770CB9002F6912 /* Widget */ = {
+			isa = PBXGroup;
+			children = (
+				3DA941A421770D56002F6912 /* CircleBackgroundImageView.swift */,
+				3DA941A621770EC3002F6912 /* BackgroundView.swift */,
+			);
+			path = Widget;
 			sourceTree = "<group>";
 		};
 		A51794599445C851E91990EA /* Frameworks */ = {
@@ -644,6 +658,7 @@
 				05A7C22D216CCC0300724CBF /* Main.swift in Sources */,
 				3D45CA04217281A100A67380 /* ViewModel.swift in Sources */,
 				3D151F732174D79600CAA859 /* DailyForecastViewModel.swift in Sources */,
+				3DA941A521770D56002F6912 /* CircleBackgroundImageView.swift in Sources */,
 				05AC274C216E0232000859F7 /* WeatherServiceImp.swift in Sources */,
 				3D58EC662173846A00239B59 /* ObservableList.swift in Sources */,
 				3D45CA08217287D400A67380 /* TodayForecastController.swift in Sources */,
@@ -676,6 +691,7 @@
 				3DA776152170D00A008FA53A /* DailyForecastRepository.swift in Sources */,
 				3DA776042170C512008FA53A /* TodayForecastModel.swift in Sources */,
 				05A7C245216CF96A00724CBF /* WeatherService.swift in Sources */,
+				3DA941A721770EC3002F6912 /* BackgroundView.swift in Sources */,
 				3DC29659217380340049A5F0 /* PropertyChangable.swift in Sources */,
 				3D51C445217505440077DC31 /* DailyForecastDataSource.swift in Sources */,
 				050636BE216CBD6000E3195E /* Coordinate.swift in Sources */,
