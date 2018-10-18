@@ -15,6 +15,7 @@ class CircleBackgroundImageView: UIImageView {
   
   required init?(coder aDecoder: NSCoder) {
     super.init(coder: aDecoder)
+    
     let oval = CAShapeLayer()
     oval.path = UIBezierPath(ovalIn: self.bounds).cgPath
     oval.fillColor = UIColor.gray.withAlphaComponent(0.5).cgColor

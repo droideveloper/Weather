@@ -13,28 +13,28 @@
         <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="6xP-SJ-aDx" customClass="DailyForecastCell" customModule="Weather" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="791" height="80"/>
             <autoresizingMask key="autoresizingMask"/>
-            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="6xP-SJ-aDx" id="hQd-wc-3yG" customClass="BackgroundView" customModule="Weather" customModuleProvider="target">
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="6xP-SJ-aDx" id="hQd-wc-3yG">
                 <rect key="frame" x="0.0" y="0.0" width="791" height="79.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="52D-4d-5GL">
-                        <rect key="frame" x="0.0" y="0.0" width="791" height="79.5"/>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="52D-4d-5GL" customClass="BackgroundView" customModule="Weather" customModuleProvider="target">
+                        <rect key="frame" x="20" y="11" width="751" height="76.5"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="YPJ-XD-War" customClass="CircleBackgroundImageView" customModule="Weather" customModuleProvider="target">
-                                <rect key="frame" x="8" y="19" width="42" height="42"/>
+                                <rect key="frame" x="8" y="17.5" width="42" height="42"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="42" id="F0I-vw-zCc"/>
                                     <constraint firstAttribute="height" constant="42" id="UOz-pv-jeM"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bjh-zZ-E5h">
-                                <rect key="frame" x="58" y="12" width="725" height="21"/>
+                                <rect key="frame" x="58" y="12" width="685" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AgY-g3-5fm">
-                                <rect key="frame" x="58" y="37" width="725" height="17"/>
+                                <rect key="frame" x="58" y="37" width="685" height="17"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <color key="textColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
                                 <nil key="highlightedColor"/>
@@ -53,10 +53,10 @@
                     </view>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="52D-4d-5GL" firstAttribute="leading" secondItem="hQd-wc-3yG" secondAttribute="leading" id="eiu-2I-5Wh"/>
-                    <constraint firstItem="52D-4d-5GL" firstAttribute="top" secondItem="hQd-wc-3yG" secondAttribute="top" id="fiD-i1-LUj"/>
-                    <constraint firstAttribute="trailing" secondItem="52D-4d-5GL" secondAttribute="trailing" id="i2d-YJ-a08"/>
-                    <constraint firstAttribute="bottom" secondItem="52D-4d-5GL" secondAttribute="bottom" id="vd5-to-ZCF"/>
+                    <constraint firstItem="52D-4d-5GL" firstAttribute="leading" secondItem="hQd-wc-3yG" secondAttribute="leading" constant="20" symbolic="YES" id="eiu-2I-5Wh"/>
+                    <constraint firstItem="52D-4d-5GL" firstAttribute="top" secondItem="hQd-wc-3yG" secondAttribute="top" constant="20" symbolic="YES" id="fiD-i1-LUj"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="52D-4d-5GL" secondAttribute="trailing" id="i2d-YJ-a08"/>
+                    <constraint firstAttribute="bottom" secondItem="52D-4d-5GL" secondAttribute="bottom" constant="20" symbolic="YES" id="vd5-to-ZCF"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>

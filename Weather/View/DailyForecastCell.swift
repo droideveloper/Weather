@@ -25,7 +25,6 @@ class DailyForecastCell: TableViewCell<DailyForecast> {
     return dateFormat
   }()
 
-  
 	override func bind(entity: DailyForecast) {
     if let weather = entity.weathers.first {
       // capitelize text

@@ -10,6 +10,7 @@ target 'Weather' do
     pod 'Alamofire', '~> 4.7'
     pod 'AlamofireImage', '~> 3.4'
     pod 'Swinject'	
+    pod 'SnapKit', '~> 4.0.0'
 
 
   # Pods for Weather
