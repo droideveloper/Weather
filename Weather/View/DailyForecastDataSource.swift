@@ -11,13 +11,13 @@ import UIKit
 
 class DailyForecastDataSource: BaseTableDataSource<DailyForecast> {
 
-	private let DAILY_FORECASST_CELL = "kDailyForecastCell"
+	static let DAILY_FORECASST_CELL = "kDailyForecastCell"
   
 	override init(dataSet: ObservableList<DailyForecast>) {
 		super.init(dataSet: dataSet)
 	}
 	
 	override func indentifierForIndexPath(_ indexPath: IndexPath) -> String {
-		return DAILY_FORECASST_CELL
+		return DailyForecastDataSource.DAILY_FORECASST_CELL
 	}
 }

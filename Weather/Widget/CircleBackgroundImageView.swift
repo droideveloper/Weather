@@ -13,10 +13,11 @@ import CoreGraphics
 @IBDesignable
 class CircleBackgroundImageView: UIImageView {
   
-  override func draw(_ rect: CGRect) {
-    super.draw(rect)
-    let path = UIBezierPath(ovalIn: self.frame)
-    UIColor.parse(0x000000).setFill()
-    path.fill()
+  required init?(coder aDecoder: NSCoder) {
+    super.init(coder: aDecoder)
+    let oval = CAShapeLayer()
+    oval.path = UIBezierPath(ovalIn: self.bounds).cgPath
+    oval.fillColor = UIColor.gray.withAlphaComponent(0.5).cgColor
+    self.layer.addSublayer(oval)
   }
 }
