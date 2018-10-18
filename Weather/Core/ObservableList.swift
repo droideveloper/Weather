@@ -18,6 +18,12 @@ public class ObservableList<T> {
 			return dataSet.count
 		}
 	}
+  
+  public var isEmpty: Bool {
+    get {
+      return dataSet.isEmpty
+    }
+  }
 	
 	public func register(_ callback: PropertyChangable) {
 		let index = protocols.firstIndex(where: { listener in
@@ -38,25 +44,29 @@ public class ObservableList<T> {
 	}
 	
 	public func append(_ value: T) {
+    let empty = isEmpty
 		let index = dataSet.count
 		dataSet.append(value)
-		notifyInsert(index, size: 1)
+		notifyInsert(index, size: 1, initial: empty)
 	}
 	
 	public func append(_ values: [T]) {
+    let empty = isEmpty
 		let index = dataSet.count
 		dataSet.append(contentsOf: values)
-		notifyInsert(index, size: values.count)
+		notifyInsert(index, size: values.count, initial: empty)
 	}
 	
 	public func insert(_ value: T, at: Int) {
+    let empty = isEmpty
 		dataSet.insert(value, at: at)
-		notifyInsert(at, size: 1)
+		notifyInsert(at, size: 1, initial: empty)
 	}
 	
 	public func insert(_ values: [T], at: Int) {
+    let empty = isEmpty
 		dataSet.insert(contentsOf: values, at: at)
-		notifyInsert(at, size: values.count)
+		notifyInsert(at, size: values.count, initial: empty)
 	}
 	
 	public func remove(at: Int) {
@@ -78,8 +88,8 @@ public class ObservableList<T> {
 		return dataSet[index]
 	}
 	
-	private func notifyInsert(_ index: Int, size: Int) {
-		protocols.forEach { listener in listener.notifyItemsInserted(index, size: size) }
+  private func notifyInsert(_ index: Int, size: Int, initial: Bool) {
+		protocols.forEach { listener in listener.notifyItemsInserted(index, size: size, initial: initial) }
 	}
 	
 	private func notifyRemove(_ index: Int, size: Int) {

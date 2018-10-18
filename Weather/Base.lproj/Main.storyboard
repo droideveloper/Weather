@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="gcW-Al-psd">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="eLM-xQ-KNp">
     <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -169,26 +169,34 @@
                                     <constraint firstItem="K6w-BR-Ozz" firstAttribute="top" secondItem="bfZ-Z8-yqx" secondAttribute="top" constant="12" id="iWm-zn-ftc"/>
                                 </constraints>
                             </view>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="Kfd-x9-U1e">
+                                <rect key="frame" x="188.66666666666666" y="349.66666666666669" width="37" height="37"/>
+                                <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="0.21545911815068494" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="color" red="0.0" green="0.49019607840000001" blue="0.72549019609999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="bfZ-Z8-yqx" firstAttribute="leading" secondItem="zYb-KQ-xrh" secondAttribute="leading" constant="16" id="0ac-CG-29w"/>
                             <constraint firstItem="k9E-r3-tM3" firstAttribute="leading" secondItem="Z6j-RU-ALl" secondAttribute="leading" id="Ain-VD-zd1"/>
+                            <constraint firstItem="Kfd-x9-U1e" firstAttribute="centerY" secondItem="Z6j-RU-ALl" secondAttribute="centerY" id="IaK-af-U4m"/>
                             <constraint firstItem="k9E-r3-tM3" firstAttribute="top" secondItem="Z6j-RU-ALl" secondAttribute="top" id="a52-KK-MJ4"/>
                             <constraint firstItem="zYb-KQ-xrh" firstAttribute="trailing" secondItem="bfZ-Z8-yqx" secondAttribute="trailing" constant="16" id="ebM-w2-dEs"/>
                             <constraint firstItem="zYb-KQ-xrh" firstAttribute="bottom" secondItem="bfZ-Z8-yqx" secondAttribute="bottom" constant="16" id="mJs-5G-8Gl"/>
                             <constraint firstAttribute="trailing" secondItem="k9E-r3-tM3" secondAttribute="trailing" id="pBe-2L-DJM"/>
                             <constraint firstAttribute="bottom" secondItem="k9E-r3-tM3" secondAttribute="bottom" id="qmT-B5-Kwg"/>
+                            <constraint firstItem="Kfd-x9-U1e" firstAttribute="centerX" secondItem="Z6j-RU-ALl" secondAttribute="centerX" id="tOA-Qf-kG6"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="zYb-KQ-xrh"/>
                     </view>
                     <connections>
                         <outlet property="viewImageBackground" destination="k9E-r3-tM3" id="RM8-Hq-tRN"/>
+                        <outlet property="viewProgress" destination="Z6j-RU-ALl" id="Caa-8P-W0J"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sox-FE-6XL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1509.5999999999999" y="26.53673163418291"/>
+            <point key="canvasLocation" x="1374" y="-695"/>
         </scene>
         <!--Daily Forecast Controller-->
         <scene sceneID="GpP-ZN-LdA">
@@ -202,11 +210,11 @@
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="kDailyForecastCell" id="HXR-vB-Wfs" customClass="DailyForecastCell" customModule="Weather" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="414" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="HXR-vB-Wfs" id="0YH-uR-tGa">
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="HXR-vB-Wfs" id="0YH-uR-tGa" customClass="BackgroundView" customModule="Weather" customModuleProvider="target">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="43.666666666666664"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="8RK-7L-8DU">
+                                        <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="8RK-7L-8DU" customClass="CircleBackgroundImageView" customModule="Weather" customModuleProvider="target">
                                             <rect key="frame" x="8" y="1" width="42" height="42"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="42" id="EWG-2o-eor"/>
@@ -238,17 +246,16 @@
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <outlet property="viewImageDailyForecast" destination="0YH-uR-tGa" id="yAp-1a-IsS"/>
-                                    <outlet property="viewTextTemperetureDailyForecast" destination="0YH-uR-tGa" id="bpl-dK-j6U"/>
-                                    <outlet property="viewTextTitleDailyForecast" destination="0YH-uR-tGa" id="Ek1-UE-CPQ"/>
+                                    <outlet property="viewImageDailyForecast" destination="8RK-7L-8DU" id="IeQ-B3-EZR"/>
+                                    <outlet property="viewTextTemperetureDailyForecast" destination="tZL-il-bzW" id="4q5-0e-LNz"/>
+                                    <outlet property="viewTextTitleDailyForecast" destination="L0L-0g-W2S" id="RAm-hn-Byr"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="eLM-xQ-KNp" id="cOl-cY-kPD"/>
-                            <outlet property="delegate" destination="eLM-xQ-KNp" id="qka-xZ-NQP"/>
-                        </connections>
                     </tableView>
+                    <connections>
+                        <outlet property="tableView" destination="orw-Xp-hoG" id="f9v-4a-5gS"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="u5U-LG-GBF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

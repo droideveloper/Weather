@@ -13,35 +13,16 @@ import RxCocoa
 class DailyForecastViewModel: ViewModel {
   typealias Model = DailyForecastModel
   
-  private let byEvents: (Event) -> Intent = { event in
-    return NothingIntent()
-  }
-  
-  private let byIntents: (Intent) -> Reducer<Model> = { intent in
-    return { model in
-      return model
-    }
-  }
-  
-  weak var view: DailyForecastController? {
-    didSet {
-      if let view = view {
-        if let container = view.container {
-          self.dataSet = container.resolve(ObservableList<DailyForecast>.self)
-        }
-      }
-    }
-  }
-    
-	// will be set when view binded here and when we view binded get container and resolve dependency
-  var dataSet: ObservableList<DailyForecast>?
+  weak var view: DailyForecastController?
   
   private let disposeBag = DisposeBag()
   private let intents = PublishRelay<Intent>()
   private lazy var storage = { intents.asObservable()
-    .toReducer(byIntents)
+    .toReducer(byIntents(_:))
     .observeOn(MainScheduler.instance)
-    .scan(DailyForecastModel.initState, accumulator: { o, reducer in reducer(o) })
+    .scan(DailyForecastModel.initState, accumulator: { o, reducer in
+      return reducer(o)
+    })
     .replay(1)
   }()
   
@@ -50,7 +31,7 @@ class DailyForecastViewModel: ViewModel {
     
     if let view = view {
       disposeBag += view.viewEvents()
-        .toIntent(byEvents)
+        .toIntent(byEvents(_:))
         .subscribe(onNext: accept)
     }
   }
@@ -67,5 +48,23 @@ class DailyForecastViewModel: ViewModel {
   
   func accept(intent: Intent) {
     intents.accept(intent)
+  }
+  
+  private func byEvents(_ event: Event) -> Intent {
+    if event is LoadDailyForecastEvent {
+      if let container = view?.container {
+        if let dailyForecastRepository = container.resolve(DailyForecastRepository.self) {
+          return LoadDailyForecastIntent(dailyForecastRepository: dailyForecastRepository)
+        }
+      }
+    }
+    return NothingIntent()
+  }
+  
+  private func byIntents(_ intent: Intent) -> Observable<Reducer<Model>> {
+    if let intent = intent as? LoadDailyForecastIntent {
+      return intent.invoke()
+    }
+    return Observable.just({ model in return model })
   }
 }

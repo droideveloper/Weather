@@ -38,7 +38,6 @@ open class BaseTableDataSource<T>: NSObject, TableViewDataSource {
     let key = indentifierForIndexPath(indexPath)
     let cell = tableView.dequeueReusableCell(withIdentifier: key, for: indexPath)
     if let cellable = cell as? TableViewCell<D> {
-      cellable.setUp() // we do call set up for change in styles
       cellable.bind(entity: itemAt(indexPath))
       return cellable
     }

@@ -15,25 +15,15 @@ class TodayForecastViewModel: ViewModel {
 	
 	weak var view: TodayForecastController?
 	
-	// TODO change this event to intent thing in satisfying manner
-	private let byEvents: (Event) -> Intent = { event in
-		return NothingIntent()
-	}
-	
-	// TODO change this intent to reducer thing in satisfying manner
-	private let byIntents: (Intent) -> Reducer<TodayForecastModel> = { intent in
-		return { model in
-			return model
-		}
-	}
-	
 	private let disposeBag = DisposeBag()
 	private let intents = PublishRelay<Intent>()
 	
 	private lazy var storage = { intents.asObservable()
-		.toReducer(byIntents)
+    .toReducer(byIntents(_:))
 		.observeOn(MainScheduler.instance)
-		.scan(TodayForecastModel.initState, accumulator: { o, reducer in reducer(o) })
+		.scan(TodayForecastModel.initState, accumulator: { o, reducer in
+      return reducer(o)
+    })
 		.replay(1)
 	}()
 	
@@ -43,7 +33,7 @@ class TodayForecastViewModel: ViewModel {
 		if let view = view {
 			// then I can observe events and convert them to intents
 			disposeBag += view.viewEvents()
-				.toIntent(byEvents)
+				.toIntent(byEvents(_:))
 				.subscribe(onNext: accept)
 		}
 	}
@@ -61,4 +51,22 @@ class TodayForecastViewModel: ViewModel {
 	func accept(intent: Intent) {
 		intents.accept(intent)
 	}
+  
+  private func byEvents(_ event: Event) -> Intent {
+    if event is LoadTodayForecastEvent {
+      if let container = view?.container {
+        if let todayForecastRepository = container.resolve(TodayForecastRepository.self) {
+          return LoadTodayForecastIntent(todayForecastRepository: todayForecastRepository)
+        }
+      }
+    }
+    return NothingIntent()
+  }
+  
+  private func byIntents(_ intent: Intent) -> Observable<Reducer<Model>> {
+    if let intent = intent as? LoadTodayForecastIntent {
+      return intent.invoke()
+    }
+    return Observable.just({ model in return model })
+  }
 }

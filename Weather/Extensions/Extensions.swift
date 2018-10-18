@@ -38,8 +38,8 @@ extension Observable where Element == Event {
 
 extension Observable where Element == Intent {
 	
-	func toReducer<T>(_ block: @escaping (Element) -> Reducer<T>) -> Observable<Reducer<T>> {
-		return self.map(block)
+	func toReducer<T>(_ block: @escaping (Element) -> Observable<Reducer<T>>) -> Observable<Reducer<T>> {
+    return self.concatMap(block)
 	}
 }
 
@@ -55,9 +55,13 @@ extension UITableView: PropertyChangable {
 		self.deleteRows(at: paths, with: .automatic)
 	}
 	
-	public func notifyItemsInserted(_ index: Int, size: Int) {
-	  let paths = toIndexPath(index: index, size: size)
-		self.insertRows(at: paths, with: .automatic)
+  public func notifyItemsInserted(_ index: Int, size: Int, initial: Bool) {
+    if initial {
+      self.reloadData()
+    } else {
+      let paths = toIndexPath(index: index, size: size)
+      self.insertRows(at: paths, with: .automatic)
+    }
 	}
 	
 	private func toIndexPath(index: Int, size: Int) -> [IndexPath] {
@@ -75,6 +79,10 @@ extension String {
     let start = String(self.prefix(1)).uppercased()
     let leftover = String(self.dropFirst())
     return start + leftover
+  }
+  
+  public func toWeatherIconUrl() -> String {
+    return "http://openweathermap.org/img/w/\(self).png"
   }
 }
 
@@ -125,7 +133,7 @@ extension UIViewController {
 extension UIColor {
   
   static func parse(_ color: Int) -> UIColor {
-    return parse((color >> 16) & 0xFF, (color >> 8) & 0xFF, (color & 0xFF), (color >> 24) & 0xFF)
+    return parse((color >> 16) & 0xFF, (color >> 8) & 0xFF, (color & 0xFF))
   }
   
   static func parse(_ red: Int, _ green: Int, _ blue: Int) -> UIColor {
@@ -133,6 +141,6 @@ extension UIColor {
   }
   
   static func parse(_ red: Int, _ green: Int, _ blue: Int, _ alpha: Int) -> UIColor {
-    return UIColor(red: CGFloat(red), green: CGFloat(green), blue: CGFloat(blue), alpha: CGFloat(alpha))
+    return UIColor(red: CGFloat(red / 255), green: CGFloat(green / 255), blue: CGFloat(blue / 255), alpha: CGFloat(alpha))
   }
 }
