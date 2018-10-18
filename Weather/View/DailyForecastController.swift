@@ -37,6 +37,8 @@ class DailyForecastController: UIViewController, View {
 		self.viewModel.view = self
     dataSet.register(self.tableView)
     
+    self.tableView.register(UINib(nibName: "DailyForecastCell", bundle: Bundle.main), forCellReuseIdentifier: DailyForecastDataSource.DAILY_FORECASST_CELL)
+    self.tableView.separatorStyle = .none
     self.tableView.dataSource = dataSource
     
     disposeBag += viewModel.store()

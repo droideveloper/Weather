@@ -202,56 +202,10 @@
         <scene sceneID="GpP-ZN-LdA">
             <objects>
                 <tableViewController id="eLM-xQ-KNp" customClass="DailyForecastController" customModule="Weather" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="orw-Xp-hoG">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="80" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="orw-Xp-hoG">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="kDailyForecastCell" id="HXR-vB-Wfs" customClass="DailyForecastCell" customModule="Weather" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="414" height="44"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="HXR-vB-Wfs" id="0YH-uR-tGa" customClass="BackgroundView" customModule="Weather" customModuleProvider="target">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.666666666666664"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="8RK-7L-8DU" customClass="CircleBackgroundImageView" customModule="Weather" customModuleProvider="target">
-                                            <rect key="frame" x="8" y="1" width="42" height="42"/>
-                                            <constraints>
-                                                <constraint firstAttribute="height" constant="42" id="EWG-2o-eor"/>
-                                                <constraint firstAttribute="width" constant="42" id="n4b-BX-7FT"/>
-                                            </constraints>
-                                        </imageView>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Clear sky on Sunday" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L0L-0g-W2S">
-                                            <rect key="frame" x="58" y="11" width="328" height="18"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="12 C" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tZL-il-bzW">
-                                            <rect key="frame" x="58" y="28.999999999999996" width="328" height="14.333333333333332"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                            <color key="textColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                    </subviews>
-                                    <constraints>
-                                        <constraint firstItem="L0L-0g-W2S" firstAttribute="leading" secondItem="8RK-7L-8DU" secondAttribute="trailing" constant="8" id="6Mz-Mp-E9J"/>
-                                        <constraint firstItem="8RK-7L-8DU" firstAttribute="centerY" secondItem="0YH-uR-tGa" secondAttribute="centerY" id="OYV-Nf-bnr"/>
-                                        <constraint firstAttribute="trailingMargin" secondItem="tZL-il-bzW" secondAttribute="trailing" constant="8" id="QLT-wn-dSV"/>
-                                        <constraint firstAttribute="trailingMargin" secondItem="L0L-0g-W2S" secondAttribute="trailing" constant="8" id="Tht-wg-jtV"/>
-                                        <constraint firstItem="tZL-il-bzW" firstAttribute="top" secondItem="L0L-0g-W2S" secondAttribute="bottom" id="Ymd-Vw-YMC"/>
-                                        <constraint firstItem="tZL-il-bzW" firstAttribute="leading" secondItem="8RK-7L-8DU" secondAttribute="trailing" constant="8" id="Z28-FS-HDD"/>
-                                        <constraint firstItem="L0L-0g-W2S" firstAttribute="top" secondItem="0YH-uR-tGa" secondAttribute="topMargin" id="dIk-Oo-YYI"/>
-                                        <constraint firstItem="8RK-7L-8DU" firstAttribute="leading" secondItem="0YH-uR-tGa" secondAttribute="leading" constant="8" id="tyT-dR-JQw"/>
-                                    </constraints>
-                                </tableViewCellContentView>
-                                <connections>
-                                    <outlet property="viewImageDailyForecast" destination="8RK-7L-8DU" id="IeQ-B3-EZR"/>
-                                    <outlet property="viewTextTemperetureDailyForecast" destination="tZL-il-bzW" id="4q5-0e-LNz"/>
-                                    <outlet property="viewTextTitleDailyForecast" destination="L0L-0g-W2S" id="RAm-hn-Byr"/>
-                                </connections>
-                            </tableViewCell>
-                        </prototypes>
                     </tableView>
                     <connections>
                         <outlet property="tableView" destination="orw-Xp-hoG" id="f9v-4a-5gS"/>
@@ -259,7 +213,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="u5U-LG-GBF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2265" y="24"/>
+            <point key="canvasLocation" x="2263.768115942029" y="23.64130434782609"/>
         </scene>
     </scenes>
     <resources>

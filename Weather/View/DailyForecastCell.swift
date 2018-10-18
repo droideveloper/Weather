@@ -17,13 +17,14 @@ class DailyForecastCell: TableViewCell<DailyForecast> {
   @IBOutlet weak var viewTextTitleDailyForecast: UILabel!
   @IBOutlet weak var viewTextTemperetureDailyForecast: UILabel!
   
-  private let celciusFormat = "%d \u{00b0c}"
+  private let celciusFormat = "%d "
   
   private lazy var dateFormatter: DateFormatter = {
     let dateFormat = DateFormatter()
     dateFormat.dateFormat = "EEEE"
     return dateFormat
   }()
+
   
 	override func bind(entity: DailyForecast) {
     if let weather = entity.weathers.first {
