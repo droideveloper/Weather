@@ -19,6 +19,8 @@ public struct Module {
 		self.container.register(UserDefaultsRepository.self, factory: { _ in UserDefaultsRepositoryImp() })
 		// file manager
 		self.container.register(FileManager.self, factory: { _ in FileManager.default } )
+    // connectivity repository
+    self.container.register(ConnectityRepository.self, factory: { _ in ConnectityRepositoryImp() })
 		// file repository
 		self.container.register(FileRepository.self, factory: { resolver in
 			let fileManager = resolver.resolve(FileManager.self)

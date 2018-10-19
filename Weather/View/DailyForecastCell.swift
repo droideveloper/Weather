@@ -41,7 +41,7 @@ class DailyForecastCell: TableViewCell<DailyForecast> {
       // capitelize text
       let text = weather.description.capitalizeSentance()
       // will parse date
-      let date = Date(timeIntervalSince1970: TimeInterval(entity.timestamp * 1000))
+      let date = Date(timeIntervalSince1970: TimeInterval(entity.timestamp))
       // fotmat all together
       let string = "\(text) on \(dateFormatter.string(from: date))"
       // an set the text
