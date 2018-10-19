@@ -20,13 +20,13 @@ public struct LoadTodayForecastIntent: ObservableInent {
 	
 	private let byDefault: () -> Reducer<Model> = {
 		return { model in
-			return TodayForecastModel(syncState: ProcessState(.refresh), data: model.data)
+			return TodayForecastModel(syncState: refresh, data: model.data)
 		}
 	}
 	
 	private let bySuccess: (TodayForecast) -> Reducer<Model> = { todayForecast in
 		return { model in
-			return model.copy(syncState: IdleState(), data: todayForecast)
+			return model.copy(syncState: idle, data: todayForecast)
 			// return TodayForecastModel(syncState: IdleState(), data: todayForecast)
 		}
 	}
@@ -40,7 +40,7 @@ public struct LoadTodayForecastIntent: ObservableInent {
 			})
 			// after we signal error we do not go on with error state
 			emitter.onNext({ model in
-				return model.copy(syncState: IdleState())
+				return model.copy(syncState: idle)
 			})
 			
 			return Disposables.create()

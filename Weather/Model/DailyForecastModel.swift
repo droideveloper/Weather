@@ -10,7 +10,7 @@ import Foundation
 
 public struct DailyForecastModel: Model {
 	
-	static let initState = DailyForecastModel(syncState: IdleState(), data: [DailyForecast]())
+	static let initState = DailyForecastModel(syncState: idle, data: [DailyForecast]())
 	
 	var syncState: SyncState
 	var data: [DailyForecast]

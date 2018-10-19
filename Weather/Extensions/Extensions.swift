@@ -65,9 +65,7 @@ extension UITableView: PropertyChangable {
 	}
 	
 	private func toIndexPath(index: Int, size: Int) -> [IndexPath] {
-		return Array(index...size).map { position in
-			return IndexPath(row: position, section: 0)
-		}
+		return Array(index...size).map { position in IndexPath(row: position, section: 0) }
 	}
 }
 

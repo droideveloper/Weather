@@ -11,10 +11,8 @@ import UIKit
 import RxSwift
 import RxCocoa
 
-class DailyForecastController: UIViewController, View {
+class DailyForecastController: UITableViewController, View {
   typealias Model = DailyForecastModel
-  
-  @IBOutlet var tableView: UITableView!
   
   private let viewModel = DailyForecastViewModel()
   private let disposeBag = DisposeBag()
@@ -37,7 +35,30 @@ class DailyForecastController: UIViewController, View {
 		self.viewModel.view = self
     dataSet.register(self.tableView)
     
+    self.refreshControl = UIRefreshControl()
+    
+    if let refreshControl = self.refreshControl {
+      refreshControl.tintColor = UIColor.parse(0x0054ED)
+      // will bind this for me
+      disposeBag += refreshControl.rx.controlEvent(.valueChanged)
+        .map { _ in refreshControl.isRefreshing }
+        .filter { $0 == true }
+        .map { _ in LoadDailyForecastEvent() }
+        .subscribe(onNext: events.accept)
+      
+      disposeBag += viewModel.state()
+        .map {
+          if let refresh = $0 as? ProcessState {
+            return refresh == refresh
+          }
+          return false
+        }
+        .do(onNext: { [weak weakSelf = self] _ in weakSelf?.dataSet.clear() })
+        .subscribe(refreshControl.rx.isRefreshing)
+    }
+    // register our xib file for dequeue
     self.tableView.register(UINib(nibName: "DailyForecastCell", bundle: Bundle.main), forCellReuseIdentifier: DailyForecastDataSource.DAILY_FORECASST_CELL)
+    // we will set style of
     self.tableView.separatorStyle = .none
     self.tableView.dataSource = dataSource
     

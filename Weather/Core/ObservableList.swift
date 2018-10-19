@@ -45,16 +45,16 @@ public class ObservableList<T> {
 	
 	public func append(_ value: T) {
     let empty = isEmpty
-		let index = dataSet.count
+		let index = dataSet.count - 1
 		dataSet.append(value)
 		notifyInsert(index, size: 1, initial: empty)
 	}
 	
 	public func append(_ values: [T]) {
     let empty = isEmpty
-		let index = dataSet.count
+		let index = dataSet.count - 1
 		dataSet.append(contentsOf: values)
-		notifyInsert(index, size: values.count, initial: empty)
+		notifyInsert(index, size: index + values.count - 1, initial: empty)
 	}
 	
 	public func insert(_ value: T, at: Int) {
@@ -66,7 +66,7 @@ public class ObservableList<T> {
 	public func insert(_ values: [T], at: Int) {
     let empty = isEmpty
 		dataSet.insert(contentsOf: values, at: at)
-		notifyInsert(at, size: values.count, initial: empty)
+		notifyInsert(at, size: at + values.count - 1, initial: empty)
 	}
 	
 	public func remove(at: Int) {
@@ -74,9 +74,12 @@ public class ObservableList<T> {
 		notifyRemove(at, size: 1)
 	}
 	
-	public func removeAll() {
-		dataSet.removeAll()
-		notifyRemove(0, size: dataSet.count)
+	public func clear() {
+    if !dataSet.isEmpty {
+      let size = dataSet.count - 1
+      dataSet.removeAll()
+      notifyRemove(0, size: size)
+    }
 	}
 	
 	public func put(at: Int, value: T) {

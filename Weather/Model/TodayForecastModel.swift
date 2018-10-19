@@ -10,7 +10,7 @@ import Foundation
 
 public struct TodayForecastModel: Model {
 	
-	public static let initState = TodayForecastModel(syncState: IdleState(), data: TodayForecast.empty)
+	public static let initState = TodayForecastModel(syncState: idle, data: TodayForecast.empty)
 	
 	var syncState: SyncState
 	var data: TodayForecast
