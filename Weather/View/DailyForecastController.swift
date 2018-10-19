@@ -36,9 +36,11 @@ class DailyForecastController: UITableViewController, View {
     dataSet.register(self.tableView)
     
     self.refreshControl = UIRefreshControl()
+    self.refreshControl?.tintColor = UIColor.parse(0x0054ED)
+    self.refreshControl?.setNeedsDisplay() // will invaldiate it stage one
+
     
     if let refreshControl = self.refreshControl {
-      refreshControl.tintColor = UIColor.parse(0x0054ED)
       // will bind this for me
       disposeBag += refreshControl.rx.controlEvent(.valueChanged)
         .map { _ in refreshControl.isRefreshing }
@@ -64,7 +66,6 @@ class DailyForecastController: UITableViewController, View {
     
     disposeBag += viewModel.store()
       .subscribe(onNext: render(model:))
-    
 	}
 	
   func render(model: DailyForecastModel) {

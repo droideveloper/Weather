@@ -139,6 +139,6 @@ extension UIColor {
   }
   
   static func parse(_ red: Int, _ green: Int, _ blue: Int, _ alpha: Int) -> UIColor {
-    return UIColor(red: CGFloat(red / 255), green: CGFloat(green / 255), blue: CGFloat(blue / 255), alpha: CGFloat(alpha))
+    return UIColor(red: CGFloat(red) / 255.0, green: CGFloat(green) / 255.0, blue: CGFloat(blue) / 255.0, alpha: CGFloat(alpha))
   }
 }
