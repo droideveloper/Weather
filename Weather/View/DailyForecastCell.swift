@@ -13,7 +13,7 @@ import AlamofireImage
 
 class DailyForecastCell: TableViewCell<DailyForecast> {
   
-  @IBOutlet weak var viewImageDailyForecast: CircleBackgroundImageView!
+  @IBOutlet weak var viewImageDailyForecast: UIImageView!
   @IBOutlet weak var viewTextTitleDailyForecast: UILabel!
   @IBOutlet weak var viewTextTemperetureDailyForecast: UILabel!
   
@@ -24,6 +24,11 @@ class DailyForecastCell: TableViewCell<DailyForecast> {
     dateFormat.dateFormat = "EEEE"
     return dateFormat
   }()
+  
+  required init?(coder aDecoder: NSCoder) {
+    super.init(coder: aDecoder)
+    self.selectionStyle = .none // disable selection here
+  }
 
 	override func bind(entity: DailyForecast) {
     if let weather = entity.weathers.first {
