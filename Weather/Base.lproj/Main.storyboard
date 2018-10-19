@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="eLM-xQ-KNp">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Gpy-Aq-xbg">
     <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -9,6 +9,68 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--Start Up Controller-->
+        <scene sceneID="biU-9j-fxq">
+            <objects>
+                <viewController id="T5u-gC-4Gr" customClass="StartUpController" customModule="Weather" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Zgr-bQ-siJ">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="kT4-H6-fve">
+                                <rect key="frame" x="0.0" y="64" width="414" height="672"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.0" green="0.49019607840000001" blue="0.72549019609999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="El6-jD-SY8" firstAttribute="bottom" secondItem="kT4-H6-fve" secondAttribute="bottom" id="9Mc-Lj-HJ1"/>
+                            <constraint firstItem="kT4-H6-fve" firstAttribute="leading" secondItem="El6-jD-SY8" secondAttribute="leading" id="cLj-jT-R9C"/>
+                            <constraint firstItem="kT4-H6-fve" firstAttribute="top" secondItem="El6-jD-SY8" secondAttribute="top" id="isg-pT-S2C"/>
+                            <constraint firstItem="El6-jD-SY8" firstAttribute="trailing" secondItem="kT4-H6-fve" secondAttribute="trailing" id="qcC-SZ-xpg"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="El6-jD-SY8"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="csN-RM-RDf"/>
+                    <connections>
+                        <outlet property="viewImageBackground" destination="kT4-H6-fve" id="fpd-Pb-jT9"/>
+                        <segue destination="1ne-mD-qVw" kind="show" id="MGA-0W-KNK"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="oNz-mr-JhP" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="355.07246376811599" y="18.75"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="IO3-hD-Quv">
+            <objects>
+                <viewController id="Hdv-OM-DZ7" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="NqU-dI-lPj">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="odL-1g-tkH"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xpp-el-Pty" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-552" y="736"/>
+        </scene>
+        <!--Weather-->
+        <scene sceneID="ddf-gM-E19">
+            <objects>
+                <viewController id="1ne-mD-qVw" customClass="MainController" customModule="Weather" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="G9I-Tv-QGL">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="Mbp-8B-HR3"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Weather" id="1qc-Ck-60q"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8zV-xD-Pli" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1171.0144927536232" y="18.75"/>
+        </scene>
         <!--Today Forecast Controller-->
         <scene sceneID="7eU-EZ-S8y">
             <objects>
@@ -182,7 +244,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sox-FE-6XL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1374" y="-695"/>
+            <point key="canvasLocation" x="2165.217391304348" y="23.64130434782609"/>
         </scene>
         <!--Daily Forecast Controller-->
         <scene sceneID="GpP-ZN-LdA">
@@ -199,7 +261,29 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="u5U-LG-GBF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2263.768115942029" y="23.64130434782609"/>
+            <point key="canvasLocation" x="3171.0144927536235" y="23.64130434782609"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="qUt-WG-8vV">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Gpy-Aq-xbg" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="ShL-e3-u6Y">
+                        <rect key="frame" x="0.0" y="20" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="0.0" green="0.49019607840000001" blue="0.72549019609999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </textAttributes>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="T5u-gC-4Gr" kind="relationship" relationship="rootViewController" id="Hs7-QE-x6g"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Tf1-X4-g0L" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-552.17391304347825" y="18.75"/>
         </scene>
     </scenes>
     <resources>
