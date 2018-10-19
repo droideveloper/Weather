@@ -13,9 +13,9 @@ class DailyForecastDataSource: BaseTableDataSource<DailyForecast> {
 
 	static let DAILY_FORECASST_CELL = "kDailyForecastCell"
   
-	override init(dataSet: ObservableList<DailyForecast>) {
-		super.init(dataSet: dataSet)
-	}
+  override init(dataSet: ObservableList<DailyForecast>) {
+    super.init(dataSet: dataSet)
+  }
 	
 	override func indentifierForIndexPath(_ indexPath: IndexPath) -> String {
 		return DailyForecastDataSource.DAILY_FORECASST_CELL

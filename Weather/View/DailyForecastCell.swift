@@ -9,21 +9,32 @@
 import Foundation
 import UIKit
 import CoreGraphics
+import RxSwift
 import AlamofireImage
 
 class DailyForecastCell: TableViewCell<DailyForecast> {
   
-  @IBOutlet weak var viewImageDailyForecast: CircleBackgroundImageView!
+  @IBOutlet weak var viewImageDailyForecast: UIImageView!
   @IBOutlet weak var viewTextTitleDailyForecast: UILabel!
   @IBOutlet weak var viewTextTemperetureDailyForecast: UILabel!
   
-  private let celciusFormat = "%d "
+  var userDefaultsRepository: UserDefaultsRepository? = nil
+  
+  private let celciusFormat = "%d °C"
+  private let fahreneihtFormat = "%d °F"
+  
+  private let disposeBag = DisposeBag()
   
   private lazy var dateFormatter: DateFormatter = {
     let dateFormat = DateFormatter()
     dateFormat.dateFormat = "EEEE"
     return dateFormat
   }()
+  
+  required init?(coder aDecoder: NSCoder) {
+    super.init(coder: aDecoder)
+    self.selectionStyle = .none // disable selection here
+  }
 
 	override func bind(entity: DailyForecast) {
     if let weather = entity.weathers.first {
@@ -40,10 +51,26 @@ class DailyForecastCell: TableViewCell<DailyForecast> {
         self.viewImageDailyForecast.af_setImage(withURL: uri)
       }
     }
-    // parse text for tempereture
-    let temperetureString = String.init(format: celciusFormat, Int(entity.tempereture.day.kelvinToCelsius())) // only supporting celcius for now
-    self.viewTextTemperetureDailyForecast.text = temperetureString
+    bindTemperature(entity.tempereture) // bind temperature like this
+        
+    disposeBag += BusManager.register { [weak weakSelf = self] event in
+      if event is UnitOfTemperatureChangedEvent {
+        weakSelf?.bindTemperature(entity.tempereture)
+      }
+    }
 	}
 	
   override func unbind() { /*no opt*/ }
+  
+  private func bindTemperature(_ temperature: Tempereture) {
+    if let userDefaultsRepository = userDefaultsRepository {
+      let text: String
+      if (userDefaultsRepository.selectedUnitOfTemperature == 0) {
+        text = String.init(format: celciusFormat, Int(temperature.day.kelvinToCelsius()))
+      } else {
+        text = String.init(format: fahreneihtFormat, Int(temperature.day.kelvinToFahrenheit()))
+      }
+      self.viewTextTemperetureDailyForecast.text = text
+    }
+  }
 }

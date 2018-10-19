@@ -19,34 +19,22 @@ public struct LoadDailyForecastIntent: ObservableInent {
   }
   
   private let byDefault: () -> Reducer<Model> = {
-    return { model in
-      return model.copy(syncState: IdleState())
-    }
+    return { model in model.copy(syncState: refresh) }
   }
   
   private let bySuccess: ([DailyForecast]) -> Reducer<Model> = { data in
-    return { model in
-      return model.copy(syncState: IdleState(), data: data)
-    }
+    return { model in model.copy(syncState: idle, data: data) }
   }
   
   private let byFailure: (Error) -> Observable<Reducer<Model>> = { error in
-    return Observable.create { emitter in
-      // error state first
-      emitter.onNext({ model in
-        return model.copy(syncState: ErrorState(error: error))
-      })
-      
-      emitter.onNext({ model in
-        return model.copy(syncState: IdleState())
-      })
-      
-      return Disposables.create()
-    }
+    return Observable.of(
+      { model in model.copy(syncState: ErrorState(error: error)) },
+      { model in model.copy(syncState: idle) })
   }
   
   public func invoke() -> Observable<Reducer<Model>> {
     return dailyForecastRepository.loadDailyForecast()
+      .delay(0.5, scheduler: MainScheduler.asyncInstance)
       .subscribeOn(MainScheduler.asyncInstance)
       .map(bySuccess)
       .catchError(byFailure)
