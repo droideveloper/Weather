@@ -71,6 +71,8 @@
 		3DF90CDD2179F9F80074FE7B /* UnitOfTemperatureChangedEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF90CDC2179F9F80074FE7B /* UnitOfTemperatureChangedEvent.swift */; };
 		3DF90CDF217A08190074FE7B /* ConnectivityRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF90CDE217A08190074FE7B /* ConnectivityRepository.swift */; };
 		3DF90CE1217A08590074FE7B /* ConnectivityRepositoryImp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF90CE0217A08590074FE7B /* ConnectivityRepositoryImp.swift */; };
+		3DF90CE3217A0D4C0074FE7B /* StartUpController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF90CE2217A0D4C0074FE7B /* StartUpController.swift */; };
+		3DF90CE5217A0D7C0074FE7B /* MainController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF90CE4217A0D7C0074FE7B /* MainController.swift */; };
 		6B8F2C2CCEC5D6ACF083B112 /* Pods_Weather.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C721FD9EBB7732B96AA11026 /* Pods_Weather.framework */; };
 		9716E2F06B563D2F2046BBB9 /* Pods_WeatherTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 47D172537BB3D5B7F2763045 /* Pods_WeatherTests.framework */; };
 /* End PBXBuildFile section */
@@ -164,6 +166,8 @@
 		3DF90CDC2179F9F80074FE7B /* UnitOfTemperatureChangedEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnitOfTemperatureChangedEvent.swift; sourceTree = "<group>"; };
 		3DF90CDE217A08190074FE7B /* ConnectivityRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectivityRepository.swift; sourceTree = "<group>"; };
 		3DF90CE0217A08590074FE7B /* ConnectivityRepositoryImp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectivityRepositoryImp.swift; sourceTree = "<group>"; };
+		3DF90CE2217A0D4C0074FE7B /* StartUpController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartUpController.swift; sourceTree = "<group>"; };
+		3DF90CE4217A0D7C0074FE7B /* MainController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainController.swift; sourceTree = "<group>"; };
 		47D172537BB3D5B7F2763045 /* Pods_WeatherTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WeatherTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		528A0AB9692A3389D57BC184 /* Pods_WeatherUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WeatherUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5976F1DAC7876A15F1CCF77D /* Pods-Weather.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Weather.release.xcconfig"; path = "Pods/Target Support Files/Pods-Weather/Pods-Weather.release.xcconfig"; sourceTree = "<group>"; };
@@ -351,6 +355,8 @@
 				3D51C446217505540077DC31 /* DailyForecastCell.swift */,
 				3D45CA07217287D400A67380 /* TodayForecastController.swift */,
 				3D151F742174D7EC00CAA859 /* DailyForecastController.swift */,
+				3DF90CE2217A0D4C0074FE7B /* StartUpController.swift */,
+				3DF90CE4217A0D7C0074FE7B /* MainController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -664,6 +670,7 @@
 				3DA775FF2170C3C0008FA53A /* SyncState.swift in Sources */,
 				05A7C22B216CCB7800724CBF /* Sys.swift in Sources */,
 				3D151F712174D6FB00CAA859 /* LoadDailyForecastEvent.swift in Sources */,
+				3DF90CE5217A0D7C0074FE7B /* MainController.swift in Sources */,
 				05296537216F5D5A001286CC /* FileRepository.swift in Sources */,
 				05A7C22F216CCD3B00724CBF /* TodayForecast.swift in Sources */,
 				05296539216F5DDB001286CC /* FileRepositoryImp.swift in Sources */,
@@ -698,6 +705,7 @@
 				3D45C9FE21727DC900A67380 /* TodayForecastRepositoryImp.swift in Sources */,
 				05F3ADF1216C97F600BE61C2 /* AppDelegate.swift in Sources */,
 				3DF90CDF217A08190074FE7B /* ConnectivityRepository.swift in Sources */,
+				3DF90CE3217A0D4C0074FE7B /* StartUpController.swift in Sources */,
 				05296535216F5AAE001286CC /* Extensions.swift in Sources */,
 				3D09A53E21774A8000765329 /* BusManager.swift in Sources */,
 				3D45CA0A21728BC200A67380 /* LoadTodayForecastIntent.swift in Sources */,
