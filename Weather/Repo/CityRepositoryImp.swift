@@ -11,11 +11,11 @@ import RxSwift
 
 class CityRepositoryImp: CityRepository {
 	
-	private let FILE_NAME = "cities"
-	private let FILE_MIME = "json"
+	private let fileName = "cities"
+	private let fileMime = "json"
 	
 	private let fileRepository: FileRepository
-	private let userDefaultsRepository: UserDefaultsRepository
+	private var userDefaultsRepository: UserDefaultsRepository
 	private let decoder = JSONDecoder()
 	
 	init(fileRepository: FileRepository, userDefaultsRepository: UserDefaultsRepository) {
@@ -26,19 +26,8 @@ class CityRepositoryImp: CityRepository {
 	func loadCities() -> Observable<[City]> {
 		if userDefaultsRepository.shouldReadFromLocalRepository {
 			return readSource()
-				.flatMap { [weak weakSelf = self] cities -> Observable<[City]> in
-					if let fileRepository = weakSelf?.fileRepository {
-						if let url = fileRepository.cityUrl {
-							return fileRepository.write(url: url, object: cities)
-								.andThen(Observable.just(cities))
-						}
-					}
-					return Observable.just(cities)
-				}.do(onNext: { [weak weakSelf = self] _ -> Void in
-					if var userDefaultsRepository = weakSelf?.userDefaultsRepository {
-						userDefaultsRepository.shouldReadFromLocalRepository = false
-					}
-				})
+				.flatMap(persistIfNeeded)
+				.do(onNext: doOnNext)
 		} else {
 			if let cityStoredUrl = fileRepository.cityUrl {
 				return fileRepository.read(url: cityStoredUrl, as: [City].self)
@@ -47,22 +36,35 @@ class CityRepositoryImp: CityRepository {
 		}
 	}
 	
+	fileprivate func doOnNext(cities: [City]) {
+		userDefaultsRepository.shouldReadFromLocalRepository = true
+	}
+	
+	fileprivate func persistIfNeeded(cities: [City]) -> Observable<[City]> {
+		return Observable.of(fileRepository)
+			.flatMap { fileRepository -> Observable<[City]> in
+				if let url = fileRepository.cityUrl {
+					return fileRepository.write(url: url, object: cities)
+						.andThen(Observable.of(cities))
+				}
+				return Observable.of(cities)
+			}
+	}
+	
 	fileprivate func readSource() -> Observable<[City]> {
-		return Observable.create { [weak weakSelf = self] emitter in
-			if let decoder = weakSelf?.decoder, let fileName = weakSelf?.FILE_NAME, let fileMime = weakSelf?.FILE_MIME {
-				if let path = Bundle.main.path(forResource: fileName, ofType: fileMime) {
+		if let path = Bundle.main.path(forResource: fileName, ofType: fileMime) {
+			return Observable.of(path)
+				.flatMap { path -> Observable<[City]> in
 					do {
+						let decoder = JSONDecoder()
 						let data = try Data(contentsOf: URL(fileURLWithPath: path))
 						let result = try decoder.decode([City].self, from: data)
-						emitter.onNext(result)
-						emitter.onCompleted()
+						return Observable.of(result)
 					} catch {
-						emitter.onError(error)
+						return Observable.error(error)
 					}
 				}
-			}
-			return Disposables.create()
 		}
+		return Observable.never()
 	}
-
 }

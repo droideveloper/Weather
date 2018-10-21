@@ -50,7 +50,7 @@ class UserDefaultsRepositoryImp: UserDefaultsRepository {
 	
 	var shouldReadFromLocalRepository: Bool {
 		get {
-			return userDefaults.bool(forKey: keyShouldReadFromLocalRepository)
+			return !userDefaults.bool(forKey: keyShouldReadFromLocalRepository)
 		}
 		set {
 			userDefaults.set(newValue, forKey: keyShouldReadFromLocalRepository)

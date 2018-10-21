@@ -17,18 +17,10 @@ public struct Module {
 		self.container = Container()
 		// user defaults
 		self.container.register(UserDefaultsRepository.self, factory: { _ in UserDefaultsRepositoryImp() })
-		// file manager
-		self.container.register(FileManager.self, factory: { _ in FileManager.default } )
     // connectivity repository
     self.container.register(ConnectityRepository.self, factory: { _ in ConnectityRepositoryImp() })
 		// file repository
-		self.container.register(FileRepository.self, factory: { resolver in
-			let fileManager = resolver.resolve(FileManager.self)
-			if let fileManager = fileManager {
-				return FileRepositoryImp(fileManager: fileManager)
-			}
-			fatalError("can not resolve fileManager")
-		})
+		self.container.register(FileRepository.self, factory: { _ in FileRepositoryImp() })
 		// city repository
 		self.container.register(CityRepository.self, factory: { resolver in
 			let fileRepository = resolver.resolve(FileRepository.self)
