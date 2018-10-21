@@ -15,9 +15,9 @@ class FileRepositoryImp: FileRepository {
 	private let decoder = JSONDecoder()
 	private let encoder = JSONEncoder()
 	
-	private let KEY_CITY_FILE = "cities.json"
-	private let KEY_DAILY_FORECAST_FILE = "daily_forecast.json"
-	private let KEY_TODAY_FORECAST_FILE = "today_forecast.json"
+	private let keyCityFile = "cities.json"
+	private let keyDailyForecastFile = "daily_forecast.json"
+	private let keyTodayForecastFile = "today_forecast.json"
 	
 	private let directory = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, false).first
 	
@@ -25,7 +25,7 @@ class FileRepositoryImp: FileRepository {
 		get {
 			if let directory = directory {
 				if let uri = URL(string: directory) {
-					return uri.appendingPathComponent(KEY_CITY_FILE)
+					return uri.appendingPathComponent(keyCityFile)
 				}
 			}
 			return nil
@@ -36,7 +36,7 @@ class FileRepositoryImp: FileRepository {
 		get {
 			if let directory = directory {
 				if let uri = URL(string: directory) {
-					return uri.appendingPathComponent(KEY_DAILY_FORECAST_FILE)
+					return uri.appendingPathComponent(keyDailyForecastFile)
 				}
 			}
 			return nil
@@ -47,7 +47,7 @@ class FileRepositoryImp: FileRepository {
 		get {
 			if let directory = directory {
 				if let uri = URL(string: directory) {
-					return uri.appendingPathComponent(KEY_TODAY_FORECAST_FILE)
+					return uri.appendingPathComponent(keyTodayForecastFile)
 				}
 			}
 			return nil

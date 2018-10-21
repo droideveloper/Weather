@@ -126,9 +126,37 @@ extension UIViewController {
       return nil
     }
   }
+	
+	func attachParentViewController(viewController: UIViewController) {
+		viewController.addChild(self)
+		if let view = viewController.view.viewWithTag(0xFF) {
+			view.addSubview(self.view)
+			self.didMove(toParent: viewController)
+		} else {
+			fatalError("you can only pass child view controller fo view tag \(0xFF)")
+		}
+	}
+	
+	func detachParentViewController() {
+		self.willMove(toParent: nil)
+		self.view.removeFromSuperview()
+		self.removeFromParent()
+	}
 }
 
 extension UIColor {
+	
+	static var brightBlue: UIColor {
+		get {
+			return UIColor.parse(0x0054ED)
+		}
+	}
+	
+	static var paleGrey: UIColor {
+		get {
+			return UIColor.parse(0xECF0F8)
+		}
+	}
   
   static func parse(_ color: Int) -> UIColor {
     return parse((color >> 16) & 0xFF, (color >> 8) & 0xFF, (color & 0xFF))
