@@ -45,6 +45,7 @@ extension Observable where Element == Intent {
 
 extension UITableView: PropertyChangable {
 	
+	/// ui table view default imple
 	public func notifyItemsChanged(_ index: Int, size: Int) {
 		let paths = toIndexPath(index: index, size: size)
 		self.reloadRows(at: paths, with: .automatic)
@@ -71,14 +72,17 @@ extension UITableView: PropertyChangable {
 
 extension String {
 	
+	/// empty string contant what will be used through project
 	static let empty = ""
-  
+	
+	/// capitalize sentances of given string
   public func capitalizeSentance() -> String {
     let start = String(self.prefix(1)).uppercased()
     let leftover = String(self.dropFirst())
     return start + leftover
   }
-  
+	
+	/// converts string of weather icon into open weather image url for fetch
   public func toWeatherIconUrl() -> String {
     return "http://openweathermap.org/img/w/\(self).png"
   }
@@ -117,7 +121,8 @@ extension DataRequest {
 }
 
 extension UIViewController {
-  
+	
+	/// container that holds dependency injection resolvable items for view controllers
   var container: Container? {
     get {
       if let delegate = UIApplication.shared.delegate as? AppDelegate {
@@ -126,18 +131,53 @@ extension UIViewController {
       return nil
     }
   }
+	
+	/// attach child view controller to parent view controller as provided in parameter
+	func attachParentViewController(viewController: UIViewController) {
+		viewController.addChild(self)
+		if let view = viewController.view.viewWithTag(0xFF) {
+			view.addSubview(self.view)
+			self.didMove(toParent: viewController)
+		} else {
+			fatalError("you can only pass child view controller fo view tag \(0xFF)")
+		}
+	}
+	
+	/// detach child view controller from it's perent view controller
+	func detachParentViewController() {
+		self.willMove(toParent: nil)
+		self.view.removeFromSuperview()
+		self.removeFromParent()
+	}
 }
 
 extension UIColor {
-  
+	
+	/// bright blue color as #0054ED hex
+	static var brightBlue: UIColor {
+		get {
+			return UIColor.parse(0x0054ED)
+		}
+	}
+	
+	/// plae grey color as #ECF0F8 hex
+	static var paleGrey: UIColor {
+		get {
+			return UIColor.parse(0xECF0F8)
+		}
+	}
+	
+	/// color parse func that parses 0xFFFFFF representation of int into UIColor
   static func parse(_ color: Int) -> UIColor {
     return parse((color >> 16) & 0xFF, (color >> 8) & 0xFF, (color & 0xFF))
   }
-  
+	
+	/// color parse sub function that will convert int (0 - 255) for each channel
   static func parse(_ red: Int, _ green: Int, _ blue: Int) -> UIColor {
     return parse(red, green, blue, 1)
   }
-  
+	
+	/// color parse sub function that will convert int (0 - 255) for each channel with alpha
   static func parse(_ red: Int, _ green: Int, _ blue: Int, _ alpha: Int) -> UIColor {
     return UIColor(red: CGFloat(red) / 255.0, green: CGFloat(green) / 255.0, blue: CGFloat(blue) / 255.0, alpha: CGFloat(alpha))
   }

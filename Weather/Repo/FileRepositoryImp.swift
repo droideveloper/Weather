@@ -11,22 +11,16 @@ import RxSwift
 
 class FileRepositoryImp: FileRepository {
 	
-	private let fileManager: FileManager
-	private let decoder = JSONDecoder()
-	private let encoder = JSONEncoder()
+	private let keyCityFile = "cities.json"
+	private let keyDailyForecastFile = "daily_forecast.json"
+	private let keyTodayForecastFile = "today_forecast.json"
 	
-	private let KEY_CITY_FILE = "cities.json"
-	private let KEY_DAILY_FORECAST_FILE = "daily_forecast.json"
-	private let KEY_TODAY_FORECAST_FILE = "today_forecast.json"
-	
-	private let directory = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, false).first
+	private let directory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first
 	
 	var cityUrl: URL? {
 		get {
 			if let directory = directory {
-				if let uri = URL(string: directory) {
-					return uri.appendingPathComponent(KEY_CITY_FILE)
-				}
+				return directory.appendingPathComponent(keyCityFile)
 			}
 			return nil
 		}
@@ -35,9 +29,7 @@ class FileRepositoryImp: FileRepository {
 	var dailyForecastUrl: URL? {
 		get {
 			if let directory = directory {
-				if let uri = URL(string: directory) {
-					return uri.appendingPathComponent(KEY_DAILY_FORECAST_FILE)
-				}
+				return directory.appendingPathComponent(keyDailyForecastFile)
 			}
 			return nil
 		}
@@ -46,22 +38,18 @@ class FileRepositoryImp: FileRepository {
 	var todayForecastUrl: URL? {
 		get {
 			if let directory = directory {
-				if let uri = URL(string: directory) {
-					return uri.appendingPathComponent(KEY_TODAY_FORECAST_FILE)
-				}
+				return directory.appendingPathComponent(keyTodayForecastFile)
 			}
 			return nil
 		}
 	}
 	
-	init(fileManager: FileManager) {
-		self.fileManager = fileManager
-	}
-	
 	func read<T>(url: URL, as type: T.Type) -> Observable<T> where T: Decodable, T: Encodable {
-		return Observable.create { [weak weakSelf = self] emitter in
-			if let fileManager = weakSelf?.fileManager, let decoder = weakSelf?.decoder {
+		return Observable.create { emitter in
 				do {
+					let decoder = JSONDecoder()
+					let fileManager = FileManager.default
+					
 					if fileManager.fileExists(atPath: url.path) {
 						if let data = fileManager.contents(atPath: url.path) {
 							let result = try decoder.decode(type, from: data)
@@ -75,25 +63,31 @@ class FileRepositoryImp: FileRepository {
 				} catch {
 					emitter.onError(error)
 				}
-			}
+			
 			return Disposables.create()
 		}
 	}
 	
 	func write<T>(url: URL, object: T) -> Completable where T : Decodable, T : Encodable {
-		return Completable.create { [weak weakSelf = self] emitter in
-			if let fileManager = weakSelf?.fileManager, let encoder = weakSelf?.encoder {
+		return Completable.create { emitter in
 				do {
+					let encoder = JSONEncoder()
+					let fileManager = FileManager.default
+					
 					let data = try encoder.encode(object)
 					if fileManager.fileExists(atPath: url.path) {
 						try fileManager.removeItem(at: url)
 					}
-					fileManager.createFile(atPath: url.path, contents: data, attributes: nil)
-					emitter(.completed)
+					let success = fileManager.createFile(atPath: url.path, contents: data, attributes: nil)
+					if success {
+						emitter(.completed)
+					} else {
+						let error = NSError(domain: "you could not create file at \(url.path)", code: 404, userInfo: nil)
+						emitter(.error(error))
+					}
 				} catch {
 					emitter(.error(error))
 				}
-			}
 			return Disposables.create()
 		}
 	}

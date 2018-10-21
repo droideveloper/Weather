@@ -57,6 +57,9 @@
 		3D754D7A216FC7E900730F1E /* CityRepositoryImp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D754D79216FC7E900730F1E /* CityRepositoryImp.swift */; };
 		3D754D7C216FC9B100730F1E /* cities.json in Resources */ = {isa = PBXBuildFile; fileRef = 3D754D7B216FC9B100730F1E /* cities.json */; };
 		3D7AC8062174BC5A00CAADC4 /* TableDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D7AC8052174BC5A00CAADC4 /* TableDataSource.swift */; };
+		3D9C035A217CE29800B05EA0 /* TabItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D9C0359217CE29800B05EA0 /* TabItemView.swift */; };
+		3D9C035C217CE36700B05EA0 /* TabImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D9C035B217CE36700B05EA0 /* TabImageView.swift */; };
+		3D9C035E217CE3FD00B05EA0 /* TabLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D9C035D217CE3FD00B05EA0 /* TabLabel.swift */; };
 		3DA775F92170BD39008FA53A /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DA775F82170BD39008FA53A /* Event.swift */; };
 		3DA775FF2170C3C0008FA53A /* SyncState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DA775FE2170C3C0008FA53A /* SyncState.swift */; };
 		3DA776012170C4D1008FA53A /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DA776002170C4D1008FA53A /* Model.swift */; };
@@ -154,6 +157,9 @@
 		3D754D79216FC7E900730F1E /* CityRepositoryImp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityRepositoryImp.swift; sourceTree = "<group>"; };
 		3D754D7B216FC9B100730F1E /* cities.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = cities.json; sourceTree = "<group>"; };
 		3D7AC8052174BC5A00CAADC4 /* TableDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableDataSource.swift; sourceTree = "<group>"; };
+		3D9C0359217CE29800B05EA0 /* TabItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabItemView.swift; sourceTree = "<group>"; };
+		3D9C035B217CE36700B05EA0 /* TabImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabImageView.swift; sourceTree = "<group>"; };
+		3D9C035D217CE3FD00B05EA0 /* TabLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabLabel.swift; sourceTree = "<group>"; };
 		3DA775F82170BD39008FA53A /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 		3DA775FE2170C3C0008FA53A /* SyncState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyncState.swift; sourceTree = "<group>"; };
 		3DA776002170C4D1008FA53A /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
@@ -419,6 +425,9 @@
 			isa = PBXGroup;
 			children = (
 				3DA941A621770EC3002F6912 /* BackgroundView.swift */,
+				3D9C0359217CE29800B05EA0 /* TabItemView.swift */,
+				3D9C035B217CE36700B05EA0 /* TabImageView.swift */,
+				3D9C035D217CE3FD00B05EA0 /* TabLabel.swift */,
 			);
 			path = Widget;
 			sourceTree = "<group>";
@@ -686,6 +695,7 @@
 				3D151F6F2174D47200CAA859 /* LoadDailyForecastIntent.swift in Sources */,
 				05A7C23C216CE11600724CBF /* Requestable.swift in Sources */,
 				3DF90CE1217A08590074FE7B /* ConnectivityRepositoryImp.swift in Sources */,
+				3D9C035E217CE3FD00B05EA0 /* TabLabel.swift in Sources */,
 				05A7C22D216CCC0300724CBF /* Main.swift in Sources */,
 				3D45CA04217281A100A67380 /* ViewModel.swift in Sources */,
 				3D151F732174D79600CAA859 /* DailyForecastViewModel.swift in Sources */,
@@ -697,6 +707,7 @@
 				3D45CA0021727F9700A67380 /* DailyForecastRepositoryImp.swift in Sources */,
 				3D754D78216FC79100730F1E /* CityRepository.swift in Sources */,
 				3D09A5402177697A00765329 /* Tempereture.swift in Sources */,
+				3D9C035C217CE36700B05EA0 /* TabImageView.swift in Sources */,
 				3DF90CDD2179F9F80074FE7B /* UnitOfTemperatureChangedEvent.swift in Sources */,
 				3D1B3AB32175C3B900A4BB66 /* BaseTableDataSource.swift in Sources */,
 				05A7C231216CCE8700724CBF /* DailyForecast.swift in Sources */,
@@ -725,6 +736,7 @@
 				3DA776152170D00A008FA53A /* DailyForecastRepository.swift in Sources */,
 				3DA776042170C512008FA53A /* TodayForecastModel.swift in Sources */,
 				05A7C245216CF96A00724CBF /* WeatherService.swift in Sources */,
+				3D9C035A217CE29800B05EA0 /* TabItemView.swift in Sources */,
 				3DA941A721770EC3002F6912 /* BackgroundView.swift in Sources */,
 				3DC29659217380340049A5F0 /* PropertyChangable.swift in Sources */,
 				3D51C445217505440077DC31 /* DailyForecastDataSource.swift in Sources */,

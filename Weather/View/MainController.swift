@@ -10,7 +10,12 @@ import Foundation
 import UIKit
 
 class MainController: UIViewController {
-  
+	
+	override func viewWillAppear(_ animated: Bool) {
+		super.viewWillAppear(animated)
+		self.navigationItem.leftBarButtonItem = nil // we do not want to show it
+	}
+	
   override func viewDidLoad() {
     super.viewDidLoad()
   }

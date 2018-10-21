@@ -10,50 +10,50 @@ import Foundation
 
 class UserDefaultsRepositoryImp: UserDefaultsRepository {
 	
-	private let KEY_SELECTED_CITY = "key.selected.city"
-	private let KEY_SELECTED_UNIT_OF_LENGTH = "key.selected.unit.of.length"
-	private let KEY_SELECTED_UNIT_OF_TEMPERATURE = "key.selected.unit.of.temperature"
-	private let KEY_SHOULD_READ_FROM_LOCAL_REPOSITORY = "key.should.read.from.local.repository"
+	private let keySelectedCity = "key.selected.city"
+	private let keySelectedUnitOfLength = "key.selected.unit.of.length"
+	private let keySelectedUnitOfTemperature = "key.selected.unit.of.temperature"
+	private let keyShouldReadFromLocalRepository = "key.should.read.from.local.repository"
 	
 	private let userDefaults = UserDefaults.standard
 	
 	var selectedCityId: Int {
 		get {
-      let activeCityId = userDefaults.integer(forKey: KEY_SELECTED_CITY)
+      let activeCityId = userDefaults.integer(forKey: keySelectedCity)
       if activeCityId == 0 {
         return 3067696 // prague
       }
 			return activeCityId
 		}
 		set {
-			userDefaults.set(newValue, forKey: KEY_SELECTED_CITY)
+			userDefaults.set(newValue, forKey: keySelectedCity)
 		}
 	}
 	
 	var selectedUnitOfLength: Int {
 		get {
-			return userDefaults.integer(forKey: KEY_SELECTED_UNIT_OF_LENGTH)
+			return userDefaults.integer(forKey: keySelectedUnitOfLength)
 		}
 		set {
-			userDefaults.set(newValue, forKey: KEY_SELECTED_UNIT_OF_LENGTH)
+			userDefaults.set(newValue, forKey: keySelectedUnitOfLength)
 		}
 	}
 	
 	var selectedUnitOfTemperature: Int {
 		get {
-			return userDefaults.integer(forKey: KEY_SELECTED_UNIT_OF_TEMPERATURE)
+			return userDefaults.integer(forKey: keySelectedUnitOfTemperature)
 		}
 		set {
-			userDefaults.set(newValue, forKey: KEY_SELECTED_UNIT_OF_TEMPERATURE)
+			userDefaults.set(newValue, forKey: keySelectedUnitOfTemperature)
 		}
 	}
 	
 	var shouldReadFromLocalRepository: Bool {
 		get {
-			return userDefaults.bool(forKey: KEY_SHOULD_READ_FROM_LOCAL_REPOSITORY)
+			return !userDefaults.bool(forKey: keyShouldReadFromLocalRepository)
 		}
 		set {
-			userDefaults.set(newValue, forKey: KEY_SHOULD_READ_FROM_LOCAL_REPOSITORY)
+			userDefaults.set(newValue, forKey: keyShouldReadFromLocalRepository)
 		}
 	}
 }
