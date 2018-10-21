@@ -21,23 +21,28 @@ class TodayForecastRepositoryImp: TodayForecastRepository {
 	
 	func loadTodayForecast() -> Observable<TodayForecast> {
 		return weatherService.loadTodayForecast()
-			.flatMap { [weak weakSelf = self] todayForecast -> Observable<TodayForecast> in
-				if let fileRepository = weakSelf?.fileRepository {
-					if let url = fileRepository.todayForecastUrl {
-						return fileRepository.write(url: url, object: todayForecast)
-							.andThen(Observable.just(todayForecast))
-						
-					}
+			.flatMap(persistIfNeeded)
+			.catchError(ifNetworkFails)
+	}
+	
+	fileprivate func ifNetworkFails(error: Error) -> Observable<TodayForecast> {
+		return Observable.of(fileRepository)
+			.flatMap { fileRepository -> Observable<TodayForecast> in
+				if let url = fileRepository.todayForecastUrl {
+					return fileRepository.read(url: url, as: TodayForecast.self)
 				}
-				return Observable.just(todayForecast)
+				return Observable.error(error)
 			}
-			.catchError { [weak weakSelf = self] error -> Observable<TodayForecast> in
-				if let fileRepository = weakSelf?.fileRepository {
-					if let url = fileRepository.todayForecastUrl {
-						return fileRepository.read(url: url, as: TodayForecast.self)
-					}
+	}
+	
+	fileprivate func persistIfNeeded(todayForecast: TodayForecast) -> Observable<TodayForecast> {
+		return Observable.of(fileRepository)
+			.flatMap { fileRepository -> Observable<TodayForecast> in
+				if let url = fileRepository.todayForecastUrl {
+					return fileRepository.write(url: url, object: todayForecast)
+						.andThen(Observable.of(todayForecast))
 				}
-				return Observable.empty()
+				return Observable.of(todayForecast)
 			}
 	}
 }

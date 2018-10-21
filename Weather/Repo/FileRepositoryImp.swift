@@ -15,14 +15,12 @@ class FileRepositoryImp: FileRepository {
 	private let keyDailyForecastFile = "daily_forecast.json"
 	private let keyTodayForecastFile = "today_forecast.json"
 	
-	private let directory = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, false).first
+	private let directory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first
 	
 	var cityUrl: URL? {
 		get {
 			if let directory = directory {
-				if let uri = URL(string: directory) {
-					return uri.appendingPathComponent(keyCityFile)
-				}
+				return directory.appendingPathComponent(keyCityFile)
 			}
 			return nil
 		}
@@ -31,9 +29,7 @@ class FileRepositoryImp: FileRepository {
 	var dailyForecastUrl: URL? {
 		get {
 			if let directory = directory {
-				if let uri = URL(string: directory) {
-					return uri.appendingPathComponent(keyDailyForecastFile)
-				}
+				return directory.appendingPathComponent(keyDailyForecastFile)
 			}
 			return nil
 		}
@@ -42,9 +38,7 @@ class FileRepositoryImp: FileRepository {
 	var todayForecastUrl: URL? {
 		get {
 			if let directory = directory {
-				if let uri = URL(string: directory) {
-					return uri.appendingPathComponent(keyTodayForecastFile)
-				}
+				return directory.appendingPathComponent(keyTodayForecastFile)
 			}
 			return nil
 		}
@@ -88,7 +82,7 @@ class FileRepositoryImp: FileRepository {
 					if success {
 						emitter(.completed)
 					} else {
-						let error = NSError(domain: "you could not create file now", code: 404, userInfo: nil)
+						let error = NSError(domain: "you could not create file at \(url.path)", code: 404, userInfo: nil)
 						emitter(.error(error))
 					}
 				} catch {
