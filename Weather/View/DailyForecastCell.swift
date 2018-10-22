@@ -20,9 +20,6 @@ class DailyForecastCell: TableViewCell<DailyForecast> {
   
   var userDefaultsRepository: UserDefaultsRepository? = nil
   
-  private let celciusFormat = "%d °C"
-  private let fahreneihtFormat = "%d °F"
-  
   private let disposeBag = DisposeBag()
   
   private lazy var dateFormatter: DateFormatter = {
@@ -39,20 +36,20 @@ class DailyForecastCell: TableViewCell<DailyForecast> {
 	override func bind(entity: DailyForecast) {
     if let weather = entity.weathers.first {
       // capitelize text
-      let text = weather.description.capitalizeSentance()
+      let text = weather.toDescription()
       // will parse date
       let date = Date(timeIntervalSince1970: TimeInterval(entity.timestamp))
       // fotmat all together
       let string = "\(text) on \(dateFormatter.string(from: date))"
       // an set the text
       self.viewTextTitleDailyForecast.text = string
-      
-      if let uri = URL(string: weather.icon.toWeatherIconUrl()) { // will convert weather icon from icon id
+      // image url will be loaded in here
+      if let uri = URL(string: weather.toIconUrl()) { // will convert weather icon from icon id
         self.viewImageDailyForecast.af_setImage(withURL: uri)
       }
     }
     bindTemperature(entity.tempereture) // bind temperature like this
-        
+    // bus manager will listen changes in here
     disposeBag += BusManager.register { [weak weakSelf = self] event in
       if event is UnitOfTemperatureChangedEvent {
         weakSelf?.bindTemperature(entity.tempereture)
@@ -64,13 +61,9 @@ class DailyForecastCell: TableViewCell<DailyForecast> {
   
   private func bindTemperature(_ temperature: Tempereture) {
     if let userDefaultsRepository = userDefaultsRepository {
-      let text: String
-      if (userDefaultsRepository.selectedUnitOfTemperature == 0) {
-        text = String.init(format: celciusFormat, Int(temperature.day.kelvinToCelsius()))
-      } else {
-        text = String.init(format: fahreneihtFormat, Int(temperature.day.kelvinToFahrenheit()))
+      if let unit = UnitOfTemperature(rawValue: userDefaultsRepository.selectedUnitOfTemperature) {
+        self.viewTextTemperetureDailyForecast.text = temperature.toDegreeString(unit: unit)
       }
-      self.viewTextTemperetureDailyForecast.text = text
     }
   }
 }

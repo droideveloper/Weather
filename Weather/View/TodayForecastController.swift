@@ -28,24 +28,32 @@ class TodayForecastController: UIViewController, View {
 	
 	func setUp() {
 		viewModel.view = self
-
+    
+    // bind animating state from coming model state
+    disposeBag += viewModel.state()
+      .map {
+        if let state = $0 as? ProcessState {
+          return state == refresh
+        }
+        return false
+      }
+      .subscribe(viewProgress.rx.isAnimating)
 	}
 	
 	override func viewDidDisappear(_ animated: Bool) {
-		viewModel.view = nil
+		viewModel.view = nil // remove view referance when this is detached
 		super.viewDidDisappear(animated)
 	}
 	
 	func render(model: TodayForecastModel) {
-    var progresState: Bool = false
 		if model.syncState is IdleState {
       render(todayForecast: model.data)
 		} else if model.syncState is ProcessState {
-			progresState = true
 		} else if model.syncState is ErrorState {
-      // TODO show error case to use
+      if let errorState = model.syncState as? ErrorState {
+        showError(error: errorState.error)
+      }
 		}
-    changeProgress(progresState)
 	}
 	
 	func viewEvents() -> Observable<Event> {
@@ -53,8 +61,7 @@ class TodayForecastController: UIViewController, View {
 	}
   
   private func render(todayForecast: TodayForecast) {
-    // background image rendered
-    viewImageBackground.image = UIImage(named: todayForecast.name.lowercased())
+      viewImageBackground.image = UIImage(named: todayForecast.name.lowercased())
   }
   
   private func changeProgress(_ state: Bool) {

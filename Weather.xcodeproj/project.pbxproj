@@ -60,6 +60,9 @@
 		3D9C035A217CE29800B05EA0 /* TabItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D9C0359217CE29800B05EA0 /* TabItemView.swift */; };
 		3D9C035C217CE36700B05EA0 /* TabImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D9C035B217CE36700B05EA0 /* TabImageView.swift */; };
 		3D9C035E217CE3FD00B05EA0 /* TabLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D9C035D217CE3FD00B05EA0 /* TabLabel.swift */; };
+		3DA4B56F217DB28F0075DB52 /* UnitOfLength.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DA4B56E217DB28F0075DB52 /* UnitOfLength.swift */; };
+		3DA4B571217DB2B80075DB52 /* UnitOfTemperature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DA4B570217DB2B80075DB52 /* UnitOfTemperature.swift */; };
+		3DA4B573217DDC290075DB52 /* Rain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DA4B572217DDC290075DB52 /* Rain.swift */; };
 		3DA775F92170BD39008FA53A /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DA775F82170BD39008FA53A /* Event.swift */; };
 		3DA775FF2170C3C0008FA53A /* SyncState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DA775FE2170C3C0008FA53A /* SyncState.swift */; };
 		3DA776012170C4D1008FA53A /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DA776002170C4D1008FA53A /* Model.swift */; };
@@ -160,6 +163,9 @@
 		3D9C0359217CE29800B05EA0 /* TabItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabItemView.swift; sourceTree = "<group>"; };
 		3D9C035B217CE36700B05EA0 /* TabImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabImageView.swift; sourceTree = "<group>"; };
 		3D9C035D217CE3FD00B05EA0 /* TabLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabLabel.swift; sourceTree = "<group>"; };
+		3DA4B56E217DB28F0075DB52 /* UnitOfLength.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnitOfLength.swift; sourceTree = "<group>"; };
+		3DA4B570217DB2B80075DB52 /* UnitOfTemperature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnitOfTemperature.swift; sourceTree = "<group>"; };
+		3DA4B572217DDC290075DB52 /* Rain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rain.swift; sourceTree = "<group>"; };
 		3DA775F82170BD39008FA53A /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 		3DA775FE2170C3C0008FA53A /* SyncState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyncState.swift; sourceTree = "<group>"; };
 		3DA776002170C4D1008FA53A /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
@@ -388,6 +394,8 @@
 				3D51C4422175041A0077DC31 /* Module.swift */,
 				3D1B3AB22175C3B900A4BB66 /* BaseTableDataSource.swift */,
 				3D09A53D21774A8000765329 /* BusManager.swift */,
+				3DA4B56E217DB28F0075DB52 /* UnitOfLength.swift */,
+				3DA4B570217DB2B80075DB52 /* UnitOfTemperature.swift */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -406,6 +414,7 @@
 				05A7C232216CCF3200724CBF /* City.swift */,
 				05A7C234216CD00000724CBF /* DailyWeather.swift */,
 				3D09A53F2177697A00765329 /* Tempereture.swift */,
+				3DA4B572217DDC290075DB52 /* Rain.swift */,
 			);
 			path = Entity;
 			sourceTree = "<group>";
@@ -698,6 +707,7 @@
 				3D9C035E217CE3FD00B05EA0 /* TabLabel.swift in Sources */,
 				05A7C22D216CCC0300724CBF /* Main.swift in Sources */,
 				3D45CA04217281A100A67380 /* ViewModel.swift in Sources */,
+				3DA4B571217DB2B80075DB52 /* UnitOfTemperature.swift in Sources */,
 				3D151F732174D79600CAA859 /* DailyForecastViewModel.swift in Sources */,
 				05AC274C216E0232000859F7 /* WeatherServiceImp.swift in Sources */,
 				3D58EC662173846A00239B59 /* ObservableList.swift in Sources */,
@@ -716,7 +726,9 @@
 				05A7C243216CF3D100724CBF /* UserDefaultsRepositoryImp.swift in Sources */,
 				3DA7760B2170CA27008FA53A /* LoadTodayForecastEvent.swift in Sources */,
 				05A7C227216CCAF600724CBF /* Wind.swift in Sources */,
+				3DA4B56F217DB28F0075DB52 /* UnitOfLength.swift in Sources */,
 				05A7C233216CCF3200724CBF /* City.swift in Sources */,
+				3DA4B573217DDC290075DB52 /* Rain.swift in Sources */,
 				05A7C235216CD00000724CBF /* DailyWeather.swift in Sources */,
 				3D51C4432175041A0077DC31 /* Module.swift in Sources */,
 				3DA776132170CFC3008FA53A /* TodayForecastRepository.swift in Sources */,
