@@ -16,6 +16,8 @@ class UserDefaultsRepositoryImp: UserDefaultsRepository {
 	private let keyShouldReadFromLocalRepository = "key.should.read.from.local.repository"
 	
 	private let userDefaults = UserDefaults.standard
+  private let fileManaeger = FileManager.default
+  private let fileRepository: FileRepository
 	
 	var selectedCityId: Int {
 		get {
@@ -50,10 +52,14 @@ class UserDefaultsRepositoryImp: UserDefaultsRepository {
 	
 	var shouldReadFromLocalRepository: Bool {
 		get {
-			return !userDefaults.bool(forKey: keyShouldReadFromLocalRepository)
-		}
-		set {
-			userDefaults.set(newValue, forKey: keyShouldReadFromLocalRepository)
+      if let url = fileRepository.cityUrl {
+        return !fileManaeger.fileExists(atPath: url.path) // if not exists we read from bundled file...
+      }
+      return true
 		}
 	}
+  
+  init(fileRepository: FileRepository) {
+    self.fileRepository = fileRepository
+  }
 }

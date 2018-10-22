@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct Sys: Codable {
+struct Sys: Codable, Equatable {
 	static let empty = Sys(type: Int.min, id: Int64.min, message: Double.nan, country: String.empty, sunrise: Int64.min, sunset: Int64.min)
 	
 	var type: Int
@@ -17,4 +17,8 @@ struct Sys: Codable {
 	var country: String
 	var sunrise: Int64
 	var sunset: Int64
+  
+  static func == (lhs: Sys, rhs: Sys) -> Bool {
+    return lhs.id == rhs.id
+  }
 }

@@ -8,4 +8,7 @@
 
 import Foundation
 
-public struct UnitOfTemperatureChangedEvent: Event { }
+public struct UnitOfTemperatureChangedEvent: Event {
+  
+  var unit: UnitOfTemperature
+}

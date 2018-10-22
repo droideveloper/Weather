@@ -21,11 +21,11 @@ class DailyForecastRepositoryImp: DailyForecastRepository {
 	
 	func loadDailyForecast() -> Observable<[DailyForecast]> {
 		return weatherService.loadDailyForecast()
-			.flatMap(persistIfNeeded)
-			.catchError(ifNetworkFails)
+      .flatMap(persistIfNeeded(_ :))
+      .catchError(ifNetworkFails(_ :))
 	}
 	
-	fileprivate func ifNetworkFails(error: Error) -> Observable<[DailyForecast]> {
+	fileprivate func ifNetworkFails(_ error: Error) -> Observable<[DailyForecast]> {
 		return Observable.of(fileRepository)
 			.flatMap { fileRepository -> Observable<[DailyForecast]> in
 				if let url = fileRepository.dailyForecastUrl {
@@ -35,7 +35,7 @@ class DailyForecastRepositoryImp: DailyForecastRepository {
 			}
 	}
 	
-	fileprivate func persistIfNeeded(dailyForecasts: [DailyForecast]) -> Observable<[DailyForecast]> {
+	fileprivate func persistIfNeeded(_ dailyForecasts: [DailyForecast]) -> Observable<[DailyForecast]> {
 		return Observable.of(fileRepository)
 			.flatMap { fileRepository -> Observable<[DailyForecast]> in
 				if let url = fileRepository.dailyForecastUrl {

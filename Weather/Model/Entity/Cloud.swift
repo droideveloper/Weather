@@ -8,8 +8,12 @@
 
 import Foundation
 
-struct Cloud: Codable {
+struct Cloud: Codable, Equatable {
 	static let empty = Cloud(all: Double.nan)
 	
 	var all: Double
+  
+  static func == (lhs: Cloud, rhs: Cloud) -> Bool {
+    return lhs.all == rhs.all
+  }
 }

@@ -36,10 +36,9 @@ class DailyForecastController: UITableViewController, View {
     dataSet.register(self.tableView)
     
     self.refreshControl = UIRefreshControl()
-    self.refreshControl?.tintColor = UIColor.parse(0x0054ED)
+    self.refreshControl?.tintColor = UIColor.brightBlue
     self.refreshControl?.setNeedsDisplay() // will invaldiate it stage one
 
-    
     if let refreshControl = self.refreshControl {
       // will bind this for me
       disposeBag += refreshControl.rx.controlEvent(.valueChanged)
@@ -50,11 +49,12 @@ class DailyForecastController: UITableViewController, View {
       
       disposeBag += viewModel.state()
         .map {
-          if let refresh = $0 as? ProcessState {
-            return refresh == refresh
+          if let state = $0 as? ProcessState {
+            return state == refresh
           }
           return false
         }
+        .filter { $0 }
         .do(onNext: { [weak weakSelf = self] _ in weakSelf?.dataSet.clear() })
         .subscribe(refreshControl.rx.isRefreshing)
     }
@@ -72,8 +72,11 @@ class DailyForecastController: UITableViewController, View {
     if model.syncState is IdleState {
       render(data: model.data)
     } else if model.syncState is ProcessState {
+      // do we need any thing in here when state is process
     } else if model.syncState is ErrorState {
-      // TODO here
+      if let errorState = model.syncState as? ErrorState {
+        showError(error: errorState.error)
+      }
     }
   }
 	

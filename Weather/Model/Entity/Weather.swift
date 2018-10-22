@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct Weather: Codable {
+struct Weather: Codable, Equatable {
 	
 	static let empty = Weather(id: Int64.min, title: String.empty, description: String.empty, icon: String.empty)
 	
@@ -23,4 +23,8 @@ struct Weather: Codable {
 		case description
 		case icon
 	}
+  
+  static func == (lhs: Weather, rhs: Weather) -> Bool {
+    return lhs.id == rhs.id
+  }
 }

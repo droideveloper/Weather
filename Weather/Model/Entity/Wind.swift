@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct Wind: Codable {
+struct Wind: Codable, Equatable {
 	
 	static let empty = Wind(speed: Double.nan, degree: Double.nan)
 	
@@ -19,4 +19,8 @@ struct Wind: Codable {
 		case speed
 		case degree = "deg"
 	}
+  
+  static func == (lhs: Wind, rhs: Wind) -> Bool {
+    return lhs.degree == rhs.degree
+  }
 }

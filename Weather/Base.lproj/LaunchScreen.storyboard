@@ -18,15 +18,17 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="waether" translatesAutoresizingMaskIntoConstraints="NO" id="R9h-6J-6qV">
-                                <rect key="frame" x="128" y="232" width="128" height="128"/>
+                                <rect key="frame" x="139.5" y="285.5" width="96" height="96"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="96" id="dfL-oD-Fmp"/>
+                                    <constraint firstAttribute="height" constant="96" id="fvO-NL-Ql1"/>
+                                </constraints>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.49019607843137253" blue="0.72549019607843135" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="R9h-6J-6qV" secondAttribute="bottom" constant="307" id="Q69-ex-DhT"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="R9h-6J-6qV" secondAttribute="trailing" constant="119" id="VM7-ez-hAa"/>
-                            <constraint firstItem="R9h-6J-6qV" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" constant="232" id="eMo-AR-UTm"/>
-                            <constraint firstItem="R9h-6J-6qV" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" constant="128" id="fgN-zp-qyW"/>
+                            <constraint firstItem="R9h-6J-6qV" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="uwm-vP-JGm"/>
+                            <constraint firstItem="R9h-6J-6qV" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="vTM-Dn-R1Q"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
@@ -37,6 +39,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="waether" width="200" height="200"/>
+        <image name="waether" width="96" height="96"/>
     </resources>
 </document>

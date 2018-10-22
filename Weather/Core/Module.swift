@@ -15,12 +15,17 @@ public struct Module {
 	
 	init() {
 		self.container = Container()
+    // file repository
+    self.container.register(FileRepository.self, factory: { _ in FileRepositoryImp() })
 		// user defaults
-		self.container.register(UserDefaultsRepository.self, factory: { _ in UserDefaultsRepositoryImp() })
+		self.container.register(UserDefaultsRepository.self, factory: { resolver in
+      if let fileRepository = resolver.resolve(FileRepository.self) {
+        return UserDefaultsRepositoryImp(fileRepository: fileRepository)
+      }
+      fatalError("can not resolve fileRepository")
+    })
     // connectivity repository
     self.container.register(ConnectityRepository.self, factory: { _ in ConnectityRepositoryImp() })
-		// file repository
-		self.container.register(FileRepository.self, factory: { _ in FileRepositoryImp() })
 		// city repository
 		self.container.register(CityRepository.self, factory: { resolver in
 			let fileRepository = resolver.resolve(FileRepository.self)

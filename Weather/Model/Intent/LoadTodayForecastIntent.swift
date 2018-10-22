@@ -22,8 +22,8 @@ public struct LoadTodayForecastIntent: ObservableInent {
 		return todayForecastRepository.loadTodayForecast()
       .delay(0.5, scheduler: MainScheduler.asyncInstance)
 			.subscribeOn(MainScheduler.asyncInstance)
-			.map(bySuccess)
-			.catchError(byFailure)
+      .map(bySuccess (_ :))
+      .catchError(byFailure(_ :))
 			.startWith(byIntial())
 	}
   

@@ -12,5 +12,5 @@ protocol UserDefaultsRepository {
 	var selectedCityId: Int { get set }
 	var selectedUnitOfLength: Int { get set }
 	var selectedUnitOfTemperature: Int { get set }
-	var shouldReadFromLocalRepository: Bool { get set }
+	var shouldReadFromLocalRepository: Bool { get }
 }

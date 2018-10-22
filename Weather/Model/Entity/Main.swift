@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct Main: Codable {
+struct Main: Codable, Equatable {
 	
 	static let empty = Main(temperature: Double.nan, pressure: Double.nan, humidity: Double.nan, minTemperature: Double.nan, maxTemperature: Double.nan)
 	
@@ -25,5 +25,9 @@ struct Main: Codable {
 		case minTemperature = "temp_min"
 		case maxTemperature = "temp_max"
 	}
+  
+  static func == (lhs: Main, rhs: Main) -> Bool {
+    return lhs.humidity == rhs.humidity
+  }
 }
 

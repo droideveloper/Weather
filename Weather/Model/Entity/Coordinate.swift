@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct Coordinate: Codable {
+struct Coordinate: Codable, Equatable {
 	
 	static let empty = Coordinate(longittude: Double.nan, lattitude: Double.nan)
 	
@@ -19,4 +19,8 @@ struct Coordinate: Codable {
 		case longittude = "lon"
 		case lattitude = "lat"
 	}
+  
+  static func == (lhs: Coordinate, rhs: Coordinate) -> Bool {
+    return lhs.lattitude == rhs.lattitude
+  }
 }

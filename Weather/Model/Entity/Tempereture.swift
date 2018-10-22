@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct Tempereture: Codable {
+struct Tempereture: Codable, Equatable {
   
   static let empty = Tempereture(day: Double.nan, min: Double.nan, max: Double.nan, night: Double.nan, eve: Double.nan, morning: Double.nan)
   
@@ -22,5 +22,9 @@ struct Tempereture: Codable {
   enum CodingKeys: String, CodingKey {
     case day, min, max, night, eve
     case morning = "morn"
+  }
+  
+  static func == (lhs: Tempereture, rhs: Tempereture) -> Bool {
+    return lhs.morning == rhs.morning
   }
 }
