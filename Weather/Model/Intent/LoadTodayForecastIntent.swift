@@ -20,10 +20,10 @@ public struct LoadTodayForecastIntent: ObservableInent {
   
 	public func invoke() -> Observable<Reducer<Model>> {
 		return todayForecastRepository.loadTodayForecast()
-      .delay(0.5, scheduler: MainScheduler.asyncInstance)
+      .delay(25, scheduler: MainScheduler.asyncInstance)
 			.subscribeOn(MainScheduler.asyncInstance)
-			.map(bySuccess)
-			.catchError(byFailure)
+      .map(bySuccess (_ :))
+      .catchError(byFailure(_ :))
 			.startWith(byIntial())
 	}
   

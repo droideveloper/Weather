@@ -26,21 +26,16 @@ class CityRepositoryImp: CityRepository {
 	func loadCities() -> Observable<[City]> {
 		if userDefaultsRepository.shouldReadFromLocalRepository {
 			return readSource()
-				.flatMap(persistIfNeeded)
-				.do(onNext: doOnNext)
+        .flatMap(persistIfNeeded(_ :))
 		} else {
 			if let cityStoredUrl = fileRepository.cityUrl {
 				return fileRepository.read(url: cityStoredUrl, as: [City].self)
 			}
 			return Observable.never()
 		}
-	}
+  }
 	
-	fileprivate func doOnNext(cities: [City]) {
-		userDefaultsRepository.shouldReadFromLocalRepository = true
-	}
-	
-	fileprivate func persistIfNeeded(cities: [City]) -> Observable<[City]> {
+	fileprivate func persistIfNeeded(_ cities: [City]) -> Observable<[City]> {
 		return Observable.of(fileRepository)
 			.flatMap { fileRepository -> Observable<[City]> in
 				if let url = fileRepository.cityUrl {

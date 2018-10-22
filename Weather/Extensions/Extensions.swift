@@ -240,7 +240,7 @@ extension TodayForecast {
   }
   
   /// converts direction of wind into String cardinals
-  public func degreeToCardinals() -> String {
+  public func toCardinals() -> String {
     let cardinals = ["N", "NE", "E", "SE", "S", "SW", "W", "NW", "N"]
     let position = Int(Darwin.round((self.wind.degree.truncatingRemainder(dividingBy: 360))) / 45)
     return cardinals[position]
@@ -283,12 +283,23 @@ extension TodayForecast {
     }
     return "\(self.rain?.percentage ?? 0) mm"
   }
+  
+  /// to pressure string if available or N/A
+  public func toPressure() -> String {
+    if self == TodayForecast.empty {
+      return "N/A"
+    }
+    return String(format: "%d hPa", Int(main.pressure))
+  }
 }
 
 extension Weather {
   
   /// converts string of weather icon into open weather image url for fetch
   public func toIconUrl() -> String {
+    if self == Weather.empty {
+      return "N/A"
+    }
     return "http://openweathermap.org/img/w/\(icon).png"
   }
   

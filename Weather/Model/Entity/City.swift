@@ -9,6 +9,9 @@
 import Foundation
 
 struct City: Codable, Equatable {
+  
+  static let empty = City(id: Int64.min, name: String.empty, coordinate: Coordinate.empty)
+  
 	var id: Int64
 	var name: String
 	var coordinate: Coordinate
