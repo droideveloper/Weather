@@ -143,6 +143,7 @@ extension UIViewController {
 	func attachParentViewController(viewController: UIViewController) {
 		viewController.addChild(self)
 		if let view = viewController.view.viewWithTag(0xFF) {
+      self.view.frame = view.bounds // lets try to set it this way
 			view.addSubview(self.view)
 			self.didMove(toParent: viewController)
 		} else {
