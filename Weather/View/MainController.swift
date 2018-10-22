@@ -14,6 +14,10 @@ class MainController: UIViewController {
   @IBOutlet private var viewTodayForecastTab: TabItemView!
   @IBOutlet private var viewDailyForecastTab: TabItemView!
   
+ let todayForecastRecognizer = UIGestureRecognizer(target: self, action: #selector(viewTodayForecastSelected(_ :)))
+  
+  let dailyForecastRecognizer = UIGestureRecognizer(target: self, action: #selector(viewDailyForecastSelected(_:)))
+  
   private let storyBoard = UIStoryboard(name: "Main", bundle: nil)
   private lazy var todayForecastController = {
     return storyBoard.instantiateViewController(withIdentifier: "todayForecastController") as! TodayForecastController
@@ -30,12 +34,14 @@ class MainController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     
-    let todayForecastRecognizer = UIGestureRecognizer(target: self, action: #selector(self.viewTodayForecastSelected(_ :)))
+ 
     viewTodayForecastTab.addGestureRecognizer(todayForecastRecognizer)
+    viewTodayForecastTab.isUserInteractionEnabled = true
     
-    let dailyForecastRecognizer = UIGestureRecognizer(target: self, action: #selector(self.viewDailyForecastSelected(_:)))
+
     viewDailyForecastTab.addGestureRecognizer(dailyForecastRecognizer)
-    
+    viewDailyForecastTab.isUserInteractionEnabled = true
+
     checkIfInitialSelectionNeeded()
   }
   
