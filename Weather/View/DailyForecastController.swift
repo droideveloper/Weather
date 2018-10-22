@@ -34,10 +34,12 @@ class DailyForecastController: UITableViewController, View {
 	func setUp() {
 		self.viewModel.view = self
     dataSet.register(self.tableView)
-    
-    self.refreshControl = UIRefreshControl()
-    self.refreshControl?.tintColor = UIColor.brightBlue
-    self.refreshControl?.setNeedsDisplay() // will invaldiate it stage one
+		
+		if self.refreshControl == nil {
+    	self.refreshControl = UIRefreshControl()
+		}
+		self.refreshControl?.tintColor = UIColor.brightBlue
+		self.refreshControl?.setNeedsDisplay() // will invaldiate it stage one
 
     if let refreshControl = self.refreshControl {
       // will bind this for me

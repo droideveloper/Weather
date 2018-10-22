@@ -17,8 +17,9 @@ class DailyForecastCell: TableViewCell<DailyForecast> {
   @IBOutlet weak var viewImageDailyForecast: UIImageView!
   @IBOutlet weak var viewTextTitleDailyForecast: UILabel!
   @IBOutlet weak var viewTextTemperetureDailyForecast: UILabel!
-  
-  var userDefaultsRepository: UserDefaultsRepository? = nil
+	
+	private let keySelectedUnitOfTemperature = "key.selected.unit.of.temperature"
+	private let userDefaults = UserDefaults.standard
   
   private let disposeBag = DisposeBag()
   
@@ -60,10 +61,8 @@ class DailyForecastCell: TableViewCell<DailyForecast> {
   override func unbind() { /*no opt*/ }
   
   private func bindTemperature(_ temperature: Tempereture) {
-    if let userDefaultsRepository = userDefaultsRepository {
-      if let unit = UnitOfTemperature(rawValue: userDefaultsRepository.selectedUnitOfTemperature) {
-        self.viewTextTemperetureDailyForecast.text = temperature.toDegreeString(unit: unit)
-      }
-    }
+		if let unit = UnitOfTemperature(rawValue: userDefaults.integer(forKey: keySelectedUnitOfTemperature)) {
+			self.viewTextTemperetureDailyForecast.text = temperature.toDegreeString(unit: unit)
+		}
   }
 }

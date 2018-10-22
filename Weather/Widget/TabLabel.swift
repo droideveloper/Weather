@@ -17,7 +17,7 @@ class TabLabel: UILabel {
 			if isSelected {
 				textColor = UIColor.white
 			} else {
-				textColor = UIColor.paleGrey
+				textColor = UIColor.lightGray
 			}
 		}
 	}

@@ -86,14 +86,21 @@
                                                         <color key="textColor" red="0.92549019610000005" green="0.94117647059999998" blue="0.97254901959999995" alpha="1" colorSpace="calibratedRGB"/>
                                                         <color key="highlightedColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     </label>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PJq-Rh-7XR">
+                                                        <rect key="frame" x="0.0" y="0.0" width="207" height="56"/>
+                                                    </button>
                                                 </subviews>
                                                 <color key="backgroundColor" red="0.0" green="0.49019607840000001" blue="0.72549019609999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
+                                                    <constraint firstItem="PJq-Rh-7XR" firstAttribute="top" secondItem="2n2-nW-RLZ" secondAttribute="top" id="0A6-sJ-XwF"/>
                                                     <constraint firstItem="Aph-s3-9zQ" firstAttribute="top" secondItem="Mep-ON-wOB" secondAttribute="bottom" constant="2" id="0P4-ty-nqp"/>
                                                     <constraint firstAttribute="bottom" secondItem="Aph-s3-9zQ" secondAttribute="bottom" constant="2" id="CPS-U0-PFk"/>
                                                     <constraint firstItem="Mep-ON-wOB" firstAttribute="top" secondItem="2n2-nW-RLZ" secondAttribute="top" constant="8" id="H9b-MS-FoI"/>
+                                                    <constraint firstAttribute="bottom" secondItem="PJq-Rh-7XR" secondAttribute="bottom" id="Hoh-n5-mgq"/>
+                                                    <constraint firstAttribute="trailing" secondItem="PJq-Rh-7XR" secondAttribute="trailing" id="WA0-vK-S53"/>
                                                     <constraint firstItem="Mep-ON-wOB" firstAttribute="centerX" secondItem="2n2-nW-RLZ" secondAttribute="centerX" id="ZQm-tY-40W"/>
                                                     <constraint firstItem="Aph-s3-9zQ" firstAttribute="centerX" secondItem="2n2-nW-RLZ" secondAttribute="centerX" id="f5h-G2-5XY"/>
+                                                    <constraint firstItem="PJq-Rh-7XR" firstAttribute="leading" secondItem="2n2-nW-RLZ" secondAttribute="leading" id="nxK-L3-eLA"/>
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UFv-Hs-Joz" customClass="TabItemView" customModule="Weather" customModuleProvider="target">
@@ -114,14 +121,21 @@
                                                         <color key="textColor" red="0.92549019610000005" green="0.94117647059999998" blue="0.97254901959999995" alpha="1" colorSpace="calibratedRGB"/>
                                                         <color key="highlightedColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     </label>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sEy-xG-swq">
+                                                        <rect key="frame" x="0.0" y="0.0" width="207" height="56"/>
+                                                    </button>
                                                 </subviews>
                                                 <color key="backgroundColor" red="0.0" green="0.49019607840000001" blue="0.72549019609999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstItem="N5g-rH-YAi" firstAttribute="top" secondItem="jO3-0d-4B7" secondAttribute="bottom" constant="2" id="5VN-Bu-VWx"/>
+                                                    <constraint firstItem="sEy-xG-swq" firstAttribute="leading" secondItem="UFv-Hs-Joz" secondAttribute="leading" id="8zs-mT-D8H"/>
                                                     <constraint firstItem="jO3-0d-4B7" firstAttribute="top" secondItem="UFv-Hs-Joz" secondAttribute="top" constant="8" id="JMh-3N-XkS"/>
+                                                    <constraint firstAttribute="bottom" secondItem="sEy-xG-swq" secondAttribute="bottom" id="O2M-L9-p5b"/>
                                                     <constraint firstItem="N5g-rH-YAi" firstAttribute="centerX" secondItem="UFv-Hs-Joz" secondAttribute="centerX" id="SG4-mi-7cK"/>
                                                     <constraint firstAttribute="bottom" secondItem="N5g-rH-YAi" secondAttribute="bottom" constant="2" id="YsR-xc-QTH"/>
                                                     <constraint firstItem="jO3-0d-4B7" firstAttribute="centerX" secondItem="UFv-Hs-Joz" secondAttribute="centerX" id="njB-1h-Umm"/>
+                                                    <constraint firstItem="sEy-xG-swq" firstAttribute="top" secondItem="UFv-Hs-Joz" secondAttribute="top" id="uPn-3k-xjx"/>
+                                                    <constraint firstAttribute="trailing" secondItem="sEy-xG-swq" secondAttribute="trailing" id="zkL-vj-IA4"/>
                                                 </constraints>
                                             </view>
                                         </subviews>
@@ -155,8 +169,10 @@
                     </view>
                     <navigationItem key="navigationItem" title="Weather" id="1qc-Ck-60q"/>
                     <connections>
-                        <outlet property="viewDailyForecastTab" destination="UFv-Hs-Joz" id="qRf-Jr-swM"/>
-                        <outlet property="viewTodayForecastTab" destination="2n2-nW-RLZ" id="nsY-cM-zwG"/>
+                        <outlet property="viewDailyForecastButton" destination="sEy-xG-swq" id="eCO-1K-3HL"/>
+                        <outlet property="viewDailyForecastTabItemView" destination="UFv-Hs-Joz" id="Qkk-kf-k2e"/>
+                        <outlet property="viewTodayForecastButton" destination="PJq-Rh-7XR" id="2d6-J2-55h"/>
+                        <outlet property="viewTodayForecastTabItemView" destination="2n2-nW-RLZ" id="YmH-mx-GPc"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8zV-xD-Pli" userLabel="First Responder" sceneMemberID="firstResponder"/>

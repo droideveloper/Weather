@@ -8,24 +8,23 @@
 
 import Foundation
 import UIKit
+import RxSwift
+import RxCocoa
 
 class MainController: UIViewController {
 	
-  @IBOutlet private var viewTodayForecastTab: TabItemView!
-  @IBOutlet private var viewDailyForecastTab: TabItemView!
-  
- let todayForecastRecognizer = UIGestureRecognizer(target: self, action: #selector(viewTodayForecastSelected(_ :)))
-  
-  let dailyForecastRecognizer = UIGestureRecognizer(target: self, action: #selector(viewDailyForecastSelected(_:)))
-  
+  @IBOutlet private var viewTodayForecastButton: UIButton!
+	@IBOutlet private var viewTodayForecastTabItemView: TabItemView!
+	
+  @IBOutlet private var viewDailyForecastButton: UIButton!
+	@IBOutlet private var viewDailyForecastTabItemView: TabItemView!
+	
   private let storyBoard = UIStoryboard(name: "Main", bundle: nil)
-  private lazy var todayForecastController = {
-    return storyBoard.instantiateViewController(withIdentifier: "todayForecastController") as! TodayForecastController
-  }()
-  private lazy var dailyForecastController = {
-    return storyBoard.instantiateViewController(withIdentifier: "dailyForecastController") as! DailyForecastController
-  }()
-  
+	private var todayForecastController: TodayForecastController? = nil
+	private var dailyForecastController: DailyForecastController? = nil
+	
+	private let disposeBag = DisposeBag()
+	
 	override func viewWillAppear(_ animated: Bool) {
 		super.viewWillAppear(animated)
 		self.navigationItem.leftBarButtonItem = nil // we do not want to show it
@@ -34,35 +33,42 @@ class MainController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     
- 
-    viewTodayForecastTab.addGestureRecognizer(todayForecastRecognizer)
-    viewTodayForecastTab.isUserInteractionEnabled = true
-    
-
-    viewDailyForecastTab.addGestureRecognizer(dailyForecastRecognizer)
-    viewDailyForecastTab.isUserInteractionEnabled = true
+		disposeBag += viewDailyForecastButton.rx.tap
+			.bind { [weak weakSelf = self] _ in
+					weakSelf?.viewDailyForecastSelected()
+			}
+		
+		disposeBag += viewTodayForecastButton.rx.tap
+			.bind { [weak weakSelf = self] _ in
+					weakSelf?.viewTodayForecastSelected()
+			}
 
     checkIfInitialSelectionNeeded()
   }
   
-  override func viewDidDisappear(_ animated: Bool) {
-    super.viewDidDisappear(animated)
-    // TODO
+	func viewTodayForecastSelected() {
+		if !viewTodayForecastTabItemView.isSelected {
+    	applyTabSelection(viewTodayForecastTabItemView, viewDailyForecastTabItemView)
+			if todayForecastController == nil {
+				todayForecastController = storyBoard.instantiateViewController(withIdentifier: "todayForecastController") as? TodayForecastController
+			}
+    	applyControllerSelection(todayForecastController, dailyForecastController)
+		}
   }
   
-  @objc func viewTodayForecastSelected(_ sender: UIGestureRecognizer?) {
-    applyTabSelection(viewTodayForecastTab, viewDailyForecastTab)
-    applyControllerSelection(todayForecastController, dailyForecastController)
-  }
-  
-  @objc func viewDailyForecastSelected(_ sender: UIGestureRecognizer?) {
-    applyTabSelection(viewDailyForecastTab, viewTodayForecastTab)
-    applyControllerSelection(dailyForecastController, todayForecastController)
+	func viewDailyForecastSelected() {
+		if !viewDailyForecastTabItemView.isSelected {
+			applyTabSelection(viewDailyForecastTabItemView, viewTodayForecastTabItemView)
+			if dailyForecastController == nil {
+				dailyForecastController = storyBoard.instantiateViewController(withIdentifier: "dailyForecastController") as? DailyForecastController
+			}
+    	applyControllerSelection(dailyForecastController, todayForecastController)
+		}
   }
   
   private func checkIfInitialSelectionNeeded()  {
-    if !viewDailyForecastTab.isSelected && !viewDailyForecastTab.isSelected {
-      viewTodayForecastSelected(nil) // initial selection
+    if !viewDailyForecastTabItemView.isSelected && !viewDailyForecastTabItemView.isSelected {
+			viewTodayForecastSelected() // initial selection
     }
   }
   
@@ -72,7 +78,9 @@ class MainController: UIViewController {
   }
   
   private func applyControllerSelection(_ attached: UIViewController?, _ detached: UIViewController?) {
-    detached?.detachParentViewController()
+		if detached?.view?.superview != nil {
+    	detached?.detachParentViewController()
+		}
     attached?.attachParentViewController(viewController: self)
   }
 }
