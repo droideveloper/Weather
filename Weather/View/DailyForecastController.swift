@@ -11,13 +11,16 @@ import UIKit
 import RxSwift
 import RxCocoa
 
-class DailyForecastController: UITableViewController, View {
+class DailyForecastController: UIViewController, View {
   typealias Model = DailyForecastModel
   
   private let viewModel = DailyForecastViewModel()
   private let disposeBag = DisposeBag()
   private let events = PublishRelay<Event>()
-  
+
+	@IBOutlet private var viewTable: UITableView!
+	@IBOutlet private var viewProgress: UIActivityIndicatorView!
+	
   private let dataSet = ObservableList<DailyForecast>()
   private lazy var dataSource = {
     return DailyForecastDataSource(dataSet: dataSet)
@@ -33,38 +36,23 @@ class DailyForecastController: UITableViewController, View {
 	
 	func setUp() {
 		self.viewModel.view = self
-    dataSet.register(self.tableView)
+    dataSet.register(self.viewTable)
 		
-		if self.refreshControl == nil {
-    	self.refreshControl = UIRefreshControl()
-		}
-		self.refreshControl?.tintColor = UIColor.brightBlue
-		self.refreshControl?.setNeedsDisplay() // will invaldiate it stage one
-
-    if let refreshControl = self.refreshControl {
-      // will bind this for me
-      disposeBag += refreshControl.rx.controlEvent(.valueChanged)
-        .map { _ in refreshControl.isRefreshing }
-        .filter { $0 == true }
-        .map { _ in LoadDailyForecastEvent() }
-        .subscribe(onNext: events.accept)
-      
-      disposeBag += viewModel.state()
-        .map {
-          if let state = $0 as? ProcessState {
-            return state == refresh
-          }
-          return false
-        }
-        .filter { $0 }
-        .do(onNext: { [weak weakSelf = self] _ in weakSelf?.dataSet.clear() })
-        .subscribe(refreshControl.rx.isRefreshing)
-    }
+		disposeBag += viewModel.state()
+			.map {
+				if let state = $0 as? ProcessState {
+					return state == refresh
+				}
+				return false
+			}
+			.do(onNext: invaldiateProgress(_ :))
+			.subscribe(viewProgress.rx.isAnimating)
+		
     // register our xib file for dequeue
-    self.tableView.register(UINib(nibName: "DailyForecastCell", bundle: Bundle.main), forCellReuseIdentifier: DailyForecastDataSource.DAILY_FORECASST_CELL)
+    self.viewTable.register(UINib(nibName: "DailyForecastCell", bundle: Bundle.main), forCellReuseIdentifier: DailyForecastDataSource.DAILY_FORECASST_CELL)
     // we will set style of
-    self.tableView.separatorStyle = .none
-    self.tableView.dataSource = dataSource
+    self.viewTable.separatorStyle = .none
+    self.viewTable.dataSource = dataSource
     
     disposeBag += viewModel.store()
       .subscribe(onNext: render(model:))
@@ -83,7 +71,7 @@ class DailyForecastController: UITableViewController, View {
   }
 	
 	override func viewDidDisappear(_ animated: Bool) {
-    dataSet.unregister(self.tableView)
+    dataSet.unregister(self.viewTable)
 		super.viewDidDisappear(animated)
 	}
   
@@ -102,4 +90,8 @@ class DailyForecastController: UITableViewController, View {
       events.accept(LoadDailyForecastEvent())
     }
   }
+	
+	private func invaldiateProgress(_ visible: Bool) {
+		viewProgress.alpha = visible ? 1 : 0
+	}
 }

@@ -32,6 +32,9 @@ class MainController: UIViewController {
 	
   override func viewDidLoad() {
     super.viewDidLoad()
+		
+		self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
+		self.navigationController?.navigationBar.shadowImage = UIImage()
     
 		disposeBag += viewDailyForecastButton.rx.tap
 			.bind { [weak weakSelf = self] _ in
@@ -50,7 +53,7 @@ class MainController: UIViewController {
 		if !viewTodayForecastTabItemView.isSelected {
     	applyTabSelection(viewTodayForecastTabItemView, viewDailyForecastTabItemView)
 			if todayForecastController == nil {
-				todayForecastController = storyBoard.instantiateViewController(withIdentifier: "todayForecastController") as? TodayForecastController
+				todayForecastController = storyBoard.instantiateViewController(withIdentifier: "todayForecast") as? TodayForecastController
 			}
     	applyControllerSelection(todayForecastController, dailyForecastController)
 		}
@@ -60,7 +63,7 @@ class MainController: UIViewController {
 		if !viewDailyForecastTabItemView.isSelected {
 			applyTabSelection(viewDailyForecastTabItemView, viewTodayForecastTabItemView)
 			if dailyForecastController == nil {
-				dailyForecastController = storyBoard.instantiateViewController(withIdentifier: "dailyForecastController") as? DailyForecastController
+				dailyForecastController = storyBoard.instantiateViewController(withIdentifier: "dailyForecast") as? DailyForecastController
 			}
     	applyControllerSelection(dailyForecastController, todayForecastController)
 		}
