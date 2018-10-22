@@ -19,7 +19,7 @@ class TabImageView: UIImageView {
 				if isSelected {
 					tintColor = UIColor.white
 				} else {
-					tintColor = UIColor.paleGrey
+					tintColor = UIColor.lightGray
 				}
 			}
 		}
