@@ -27,28 +27,41 @@ class StartUpController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     
+    // set up button label scalablity
+    viewButtonSelectedCity.titleLabel?.numberOfLines = 0 // will improve those into next level of change in text
+    viewButtonSelectedCity.titleLabel?.adjustsFontSizeToFitWidth = true
+    
+    if let userDefaultsRepository = container?.resolve(UserDefaultsRepository.self) {
+      viewButtonContinue.isEnabled = userDefaultsRepository.selectedCityId != 0
+    }
+    
     viewImageBackground.image = UIImage(named: "berlin")
 		if let cityRepository = container?.resolve(CityRepository.self) {
       
       disposeBag += cityRepository.loadCities()
         .async()
+        .do( onNext: { [weak weakSelf = self] cities in
+          weakSelf?.viewCityPicker.selectRow(0, inComponent: 0, animated: true)
+          }
+        )
         .bind(to: viewCityPicker.rx.itemTitles) { _, city -> String in
           return "\(city.name)"
         }
       
       disposeBag += viewCityPicker.rx.modelSelected(City.self)
-        .subscribe(onNext: { [weak weakSelf = self] city in
-          
+        .subscribe(onNext: { [weak weakSelf = self] cities in
+          if var userDefaultsRepository = weakSelf?.container?.resolve(UserDefaultsRepository.self) {
+            if let city = cities.first {
+              weakSelf?.viewButtonContinue.isEnabled = city.id != 0
+              // will bind image on change
+              weakSelf?.viewImageBackground.image = UIImage(named: city.name.lowercased())
+              // will bind text on change
+              weakSelf?.viewButtonSelectedCity.titleLabel?.text = city.name
+              // will store id on change
+              userDefaultsRepository.selectedCityId = Int(city.id)
+            }
+          }
         })
-      
-			disposeBag += cityRepository.loadCities()
-				.subscribeOn(MainScheduler.asyncInstance)
-				.observeOn(MainScheduler.instance)
-				.subscribe(onNext: { data in
-					print(data)
-					}, onError: { error in
-						print(error.localizedDescription)
-					})
 		}
   }
   
