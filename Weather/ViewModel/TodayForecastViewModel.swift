@@ -60,7 +60,6 @@ class TodayForecastViewModel: ViewModel {
         }
       }
     }
-    let error = NSError(domain: "you have event but can not resolve it's intent", code: 404, userInfo: nil)
-    throw error
+    return event.toNothingIntent()
   }
 }

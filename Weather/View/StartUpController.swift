@@ -12,7 +12,10 @@ import RxSwift
 
 class StartUpController: UIViewController {
   
-  @IBOutlet weak var viewImageBackground: UIImageView!
+  @IBOutlet private var viewImageBackground: UIImageView!
+  @IBOutlet private var viewButtonSelectedCity: UIButton!
+  @IBOutlet private var viewButtonContinue: UIButton!
+  @IBOutlet private var viewCityPicker: UIPickerView!
 	
 	private let disposeBag = DisposeBag()
 	
@@ -23,21 +26,52 @@ class StartUpController: UIViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    viewImageBackground.image = UIImage(named: "berlin")
+    
+    if let userDefaultsRepository = container?.resolve(UserDefaultsRepository.self) {
+      viewButtonContinue.isEnabled = userDefaultsRepository.selectedCityId != 0
+    }
+    
 		if let cityRepository = container?.resolve(CityRepository.self) {
-			disposeBag += cityRepository.loadCities()
-				.subscribeOn(MainScheduler.asyncInstance)
-				.observeOn(MainScheduler.instance)
-				.subscribe(onNext: { data in
-					print(data)
-					}, onError: { error in
-						print(error.localizedDescription)
-					})
+      
+      let dataSource = cityRepository.loadCities()
+        .async()
+    
+      disposeBag += dataSource
+        .bind(to: viewCityPicker.rx.itemTitles) { _, city -> String in
+          return "\(city.name)"
+        }
+      
+      disposeBag += dataSource
+        .delay(0.5, scheduler: MainScheduler.instance)
+        .subscribe(onNext: selectDefault(_ :))
+      
+      disposeBag += viewCityPicker.rx.modelSelected(City.self)
+        .subscribe(onNext: selectionChanged(_ :))
 		}
   }
   
   override func viewDidDisappear(_ animated: Bool) {
     self.navigationController?.setNavigationBarHidden(false, animated: false)
     super.viewDidDisappear(animated)
+  }
+  
+  private func selectDefault(_ cities: [City]) {
+    if let city = cities.first {
+      selectionChanged([city])
+    }
+  }
+  
+  private func selectionChanged(_ cities: [City]) {
+    if var userDefaultsRepository = container?.resolve(UserDefaultsRepository.self) {
+      if let city = cities.first {
+        viewButtonContinue.isEnabled = city.id != 0
+        // will bind image on change
+        viewImageBackground.image = UIImage(named: city.name.lowercased())
+        // will bind text on change
+        viewButtonSelectedCity.setTitle(city.name, for: .normal)
+        // will store id on change
+        userDefaultsRepository.selectedCityId = Int(city.id)
+      }
+    }
   }
 }

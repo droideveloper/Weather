@@ -58,7 +58,6 @@ class DailyForecastViewModel: ViewModel {
         }
       }
     }
-    let error = NSError(domain: "we can not implement this", code: 404, userInfo: nil)
-    throw error
+    return event.toNothingIntent()
   }
 }

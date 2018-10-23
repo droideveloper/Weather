@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="2B2-zA-7Vh">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Gpy-Aq-xbg">
     <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -38,7 +38,7 @@
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fdt-aT-RqJ">
                                         <rect key="frame" x="12" y="123.66666666666669" width="216" height="30"/>
-                                        <state key="normal" title="Berlin">
+                                        <state key="normal">
                                             <color key="titleColor" red="0.1333333333" green="0.1333333333" blue="0.1333333333" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
                                     </button>
@@ -88,6 +88,9 @@
                     </view>
                     <navigationItem key="navigationItem" id="csN-RM-RDf"/>
                     <connections>
+                        <outlet property="viewButtonContinue" destination="NMg-rs-ZG2" id="Nis-lV-ovv"/>
+                        <outlet property="viewButtonSelectedCity" destination="fdt-aT-RqJ" id="Yug-dC-0QM"/>
+                        <outlet property="viewCityPicker" destination="2An-7o-Gww" id="isl-HF-212"/>
                         <outlet property="viewImageBackground" destination="kT4-H6-fve" id="fpd-Pb-jT9"/>
                     </connections>
                 </viewController>
