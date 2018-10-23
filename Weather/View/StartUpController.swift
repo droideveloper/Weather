@@ -21,11 +21,19 @@ class StartUpController: UIViewController {
 	
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
+		if let userDefaultsRepository = container?.resolve(UserDefaultsRepository.self) {
+			if userDefaultsRepository.selectedCityId != 0 {
+				performSegue(withIdentifier: "mainController", sender: nil)
+			}
+		}
     self.navigationController?.setNavigationBarHidden(true, animated: false)
   }
   
   override func viewDidLoad() {
     super.viewDidLoad()
+		
+		self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
+		self.navigationController?.navigationBar.shadowImage = UIImage()
     
     if let userDefaultsRepository = container?.resolve(UserDefaultsRepository.self) {
       viewButtonContinue.isEnabled = userDefaultsRepository.selectedCityId != 0
@@ -50,15 +58,22 @@ class StartUpController: UIViewController {
 		}
   }
   
-  override func viewDidDisappear(_ animated: Bool) {
-    self.navigationController?.setNavigationBarHidden(false, animated: false)
-    super.viewDidDisappear(animated)
-  }
-  
-  private func selectDefault(_ cities: [City]) {
-    if let city = cities.first {
-      selectionChanged([city])
-    }
+	private func selectDefault(_ cities: [City]) {
+		if let userDefaultsRepository = container?.resolve(UserDefaultsRepository.self) {
+			if userDefaultsRepository.selectedCityId != 0 {
+				if let city = cities.first(where: { c in Int(c.id) == userDefaultsRepository.selectedCityId }) {
+					if let index = cities.firstIndex(of: city) {
+						viewCityPicker.selectRow(index, inComponent: 0, animated: true)
+					}
+					selectionChanged([city])
+				}
+			} else {
+				if let city = cities.first { // default choice
+					viewCityPicker.selectRow(0, inComponent: 0, animated: true)
+					selectionChanged([city])
+				}
+			}
+		}
   }
   
   private func selectionChanged(_ cities: [City]) {
