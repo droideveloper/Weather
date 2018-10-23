@@ -46,19 +46,7 @@ class StartUpController: UIViewController {
         .subscribe(onNext: selectDefault(_ :))
       
       disposeBag += viewCityPicker.rx.modelSelected(City.self)
-        .subscribe(onNext: { [weak weakSelf = self] cities in
-          if var userDefaultsRepository = weakSelf?.container?.resolve(UserDefaultsRepository.self) {
-            if let city = cities.first {
-              weakSelf?.viewButtonContinue.isEnabled = city.id != 0
-              // will bind image on change
-              weakSelf?.viewImageBackground.image = UIImage(named: city.name.lowercased())
-              // will bind text on change
-              weakSelf?.viewButtonSelectedCity.setTitle(city.name, for: .normal)
-              // will store id on change
-              userDefaultsRepository.selectedCityId = Int(city.id)
-            }
-          }
-        })
+        .subscribe(onNext: selectionChanged(_ :))
 		}
   }
   
@@ -68,6 +56,22 @@ class StartUpController: UIViewController {
   }
   
   private func selectDefault(_ cities: [City]) {
-    viewCityPicker.selectRow(0, inComponent: 0, animated: true)
+    if let city = cities.first {
+      selectionChanged([city])
+    }
+  }
+  
+  private func selectionChanged(_ cities: [City]) {
+    if var userDefaultsRepository = container?.resolve(UserDefaultsRepository.self) {
+      if let city = cities.first {
+        viewButtonContinue.isEnabled = city.id != 0
+        // will bind image on change
+        viewImageBackground.image = UIImage(named: city.name.lowercased())
+        // will bind text on change
+        viewButtonSelectedCity.setTitle(city.name, for: .normal)
+        // will store id on change
+        userDefaultsRepository.selectedCityId = Int(city.id)
+      }
+    }
   }
 }
