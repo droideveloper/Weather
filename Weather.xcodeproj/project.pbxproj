@@ -74,6 +74,12 @@
 		3DA776152170D00A008FA53A /* DailyForecastRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DA776142170D00A008FA53A /* DailyForecastRepository.swift */; };
 		3DA941A721770EC3002F6912 /* BackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DA941A621770EC3002F6912 /* BackgroundView.swift */; };
 		3DC29659217380340049A5F0 /* PropertyChangable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DC29658217380340049A5F0 /* PropertyChangable.swift */; };
+		3DD0BD9B217FA78600130150 /* SettingCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3DD0BD9A217FA78600130150 /* SettingCell.xib */; };
+		3DD0BD9D217FA9C500130150 /* Settingable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DD0BD9C217FA9C400130150 /* Settingable.swift */; };
+		3DD0BD9F217FAA8E00130150 /* SettingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DD0BD9E217FAA8E00130150 /* SettingCell.swift */; };
+		3DD0BDA1217FAB4800130150 /* LengthSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DD0BDA0217FAB4800130150 /* LengthSetting.swift */; };
+		3DD0BDA3217FAC2100130150 /* TemperetureSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DD0BDA2217FAC2100130150 /* TemperetureSetting.swift */; };
+		3DD0BDA5217FAE1600130150 /* SettingDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DD0BDA4217FAE1600130150 /* SettingDataSource.swift */; };
 		3DEF34312172668500780CF6 /* Intent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DEF34302172668500780CF6 /* Intent.swift */; };
 		3DF90CDD2179F9F80074FE7B /* UnitOfTemperatureChangedEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF90CDC2179F9F80074FE7B /* UnitOfTemperatureChangedEvent.swift */; };
 		3DF90CDF217A08190074FE7B /* ConnectivityRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF90CDE217A08190074FE7B /* ConnectivityRepository.swift */; };
@@ -178,6 +184,12 @@
 		3DA776142170D00A008FA53A /* DailyForecastRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyForecastRepository.swift; sourceTree = "<group>"; };
 		3DA941A621770EC3002F6912 /* BackgroundView.swift */ = {isa = PBXFileReference; indentWidth = 1; lastKnownFileType = sourcecode.swift; path = BackgroundView.swift; sourceTree = "<group>"; tabWidth = 1; };
 		3DC29658217380340049A5F0 /* PropertyChangable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropertyChangable.swift; sourceTree = "<group>"; };
+		3DD0BD9A217FA78600130150 /* SettingCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingCell.xib; sourceTree = "<group>"; };
+		3DD0BD9C217FA9C400130150 /* Settingable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settingable.swift; sourceTree = "<group>"; };
+		3DD0BD9E217FAA8E00130150 /* SettingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingCell.swift; sourceTree = "<group>"; };
+		3DD0BDA0217FAB4800130150 /* LengthSetting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LengthSetting.swift; sourceTree = "<group>"; };
+		3DD0BDA2217FAC2100130150 /* TemperetureSetting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemperetureSetting.swift; sourceTree = "<group>"; };
+		3DD0BDA4217FAE1600130150 /* SettingDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingDataSource.swift; sourceTree = "<group>"; };
 		3DEF34302172668500780CF6 /* Intent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Intent.swift; sourceTree = "<group>"; };
 		3DF90CDC2179F9F80074FE7B /* UnitOfTemperatureChangedEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnitOfTemperatureChangedEvent.swift; sourceTree = "<group>"; };
 		3DF90CDE217A08190074FE7B /* ConnectivityRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectivityRepository.swift; sourceTree = "<group>"; };
@@ -313,6 +325,7 @@
 				05F3ADF9216C97F700BE61C2 /* LaunchScreen.storyboard */,
 				05F3ADFC216C97F700BE61C2 /* Info.plist */,
 				3D39791F21789527005F7B11 /* DailyForecastCell.xib */,
+				3DD0BD9A217FA78600130150 /* SettingCell.xib */,
 			);
 			path = Weather;
 			sourceTree = "<group>";
@@ -376,6 +389,8 @@
 				3DF90CE2217A0D4C0074FE7B /* StartUpController.swift */,
 				3DF90CE4217A0D7C0074FE7B /* MainController.swift */,
 				3DF90CE8217A26950074FE7B /* SettingController.swift */,
+				3DD0BD9E217FAA8E00130150 /* SettingCell.swift */,
+				3DD0BDA4217FAE1600130150 /* SettingDataSource.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -398,6 +413,9 @@
 				3D09A53D21774A8000765329 /* BusManager.swift */,
 				3DA4B56E217DB28F0075DB52 /* UnitOfLength.swift */,
 				3DA4B570217DB2B80075DB52 /* UnitOfTemperature.swift */,
+				3DD0BD9C217FA9C400130150 /* Settingable.swift */,
+				3DD0BDA0217FAB4800130150 /* LengthSetting.swift */,
+				3DD0BDA2217FAC2100130150 /* TemperetureSetting.swift */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -566,6 +584,7 @@
 				05F3ADFB216C97F700BE61C2 /* LaunchScreen.storyboard in Resources */,
 				05F3ADF8216C97F700BE61C2 /* Assets.xcassets in Resources */,
 				3D39792021789527005F7B11 /* DailyForecastCell.xib in Resources */,
+				3DD0BD9B217FA78600130150 /* SettingCell.xib in Resources */,
 				05F3ADF6216C97F600BE61C2 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -695,9 +714,11 @@
 				3DF90CE9217A26950074FE7B /* SettingController.swift in Sources */,
 				05A7C225216CC02800724CBF /* Weather.swift in Sources */,
 				3D754D7A216FC7E900730F1E /* CityRepositoryImp.swift in Sources */,
+				3DD0BDA5217FAE1600130150 /* SettingDataSource.swift in Sources */,
 				3DA775FF2170C3C0008FA53A /* SyncState.swift in Sources */,
 				05A7C22B216CCB7800724CBF /* Sys.swift in Sources */,
 				3D151F712174D6FB00CAA859 /* LoadDailyForecastEvent.swift in Sources */,
+				3DD0BD9D217FA9C500130150 /* Settingable.swift in Sources */,
 				3DF90CE5217A0D7C0074FE7B /* MainController.swift in Sources */,
 				3DA4B575217DF6790075DB52 /* RoundedBackgroundView.swift in Sources */,
 				05296537216F5D5A001286CC /* FileRepository.swift in Sources */,
@@ -710,6 +731,7 @@
 				3DF90CE1217A08590074FE7B /* ConnectivityRepositoryImp.swift in Sources */,
 				3D9C035E217CE3FD00B05EA0 /* TabLabel.swift in Sources */,
 				05A7C22D216CCC0300724CBF /* Main.swift in Sources */,
+				3DD0BDA3217FAC2100130150 /* TemperetureSetting.swift in Sources */,
 				3D45CA04217281A100A67380 /* ViewModel.swift in Sources */,
 				3DA4B571217DB2B80075DB52 /* UnitOfTemperature.swift in Sources */,
 				3D151F732174D79600CAA859 /* DailyForecastViewModel.swift in Sources */,
@@ -750,6 +772,8 @@
 				3D51C447217505540077DC31 /* DailyForecastCell.swift in Sources */,
 				3D151F752174D7EC00CAA859 /* DailyForecastController.swift in Sources */,
 				3DA776152170D00A008FA53A /* DailyForecastRepository.swift in Sources */,
+				3DD0BD9F217FAA8E00130150 /* SettingCell.swift in Sources */,
+				3DD0BDA1217FAB4800130150 /* LengthSetting.swift in Sources */,
 				3DA776042170C512008FA53A /* TodayForecastModel.swift in Sources */,
 				05A7C245216CF96A00724CBF /* WeatherService.swift in Sources */,
 				3D9C035A217CE29800B05EA0 /* TabItemView.swift in Sources */,

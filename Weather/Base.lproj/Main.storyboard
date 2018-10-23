@@ -101,16 +101,40 @@
             </objects>
             <point key="canvasLocation" x="355.07246376811599" y="18.75"/>
         </scene>
-        <!--Setting Controller-->
+        <!--Settings-->
         <scene sceneID="IO3-hD-Quv">
             <objects>
                 <viewController id="Hdv-OM-DZ7" customClass="SettingController" customModule="Weather" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="NqU-dI-lPj">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="672"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="80" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ImS-CL-3tF">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="672"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </tableView>
+                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bds-rn-mxe">
+                                <rect key="frame" x="0.0" y="456" width="414" height="216"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </pickerView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="ImS-CL-3tF" firstAttribute="leading" secondItem="NqU-dI-lPj" secondAttribute="leading" id="BA9-bW-Q26"/>
+                            <constraint firstItem="bds-rn-mxe" firstAttribute="leading" secondItem="odL-1g-tkH" secondAttribute="leading" id="FBd-VQ-aE8"/>
+                            <constraint firstAttribute="trailing" secondItem="ImS-CL-3tF" secondAttribute="trailing" id="H9n-sw-brW"/>
+                            <constraint firstItem="ImS-CL-3tF" firstAttribute="top" secondItem="odL-1g-tkH" secondAttribute="top" id="O6G-yB-tfC"/>
+                            <constraint firstAttribute="bottom" secondItem="ImS-CL-3tF" secondAttribute="bottom" id="QW6-5c-t57"/>
+                            <constraint firstItem="odL-1g-tkH" firstAttribute="bottom" secondItem="bds-rn-mxe" secondAttribute="bottom" id="kI2-oP-6L7"/>
+                            <constraint firstItem="bds-rn-mxe" firstAttribute="trailing" secondItem="odL-1g-tkH" secondAttribute="trailing" id="u3D-NA-GLo"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="odL-1g-tkH"/>
                     </view>
+                    <navigationItem key="navigationItem" title="Settings" id="qPh-RY-LPv"/>
+                    <connections>
+                        <outlet property="viewPicker" destination="bds-rn-mxe" id="JzR-ji-MqU"/>
+                        <outlet property="viewTable" destination="ImS-CL-3tF" id="8iM-R0-X7Z"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xpp-el-Pty" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
