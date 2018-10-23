@@ -38,7 +38,7 @@
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fdt-aT-RqJ">
                                         <rect key="frame" x="12" y="123.66666666666669" width="216" height="30"/>
-                                        <state key="normal" title="Berlin">
+                                        <state key="normal">
                                             <color key="titleColor" red="0.1333333333" green="0.1333333333" blue="0.1333333333" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
                                     </button>

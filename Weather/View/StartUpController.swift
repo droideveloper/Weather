@@ -27,26 +27,23 @@ class StartUpController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     
-    // set up button label scalablity
-    viewButtonSelectedCity.titleLabel?.numberOfLines = 0 // will improve those into next level of change in text
-    viewButtonSelectedCity.titleLabel?.adjustsFontSizeToFitWidth = true
-    
     if let userDefaultsRepository = container?.resolve(UserDefaultsRepository.self) {
       viewButtonContinue.isEnabled = userDefaultsRepository.selectedCityId != 0
     }
     
-    viewImageBackground.image = UIImage(named: "berlin")
 		if let cityRepository = container?.resolve(CityRepository.self) {
       
-      disposeBag += cityRepository.loadCities()
+      let dataSource = cityRepository.loadCities()
         .async()
-        .do( onNext: { [weak weakSelf = self] cities in
-          weakSelf?.viewCityPicker.selectRow(0, inComponent: 0, animated: true)
-          }
-        )
+    
+      disposeBag += dataSource
         .bind(to: viewCityPicker.rx.itemTitles) { _, city -> String in
           return "\(city.name)"
         }
+      
+      disposeBag += dataSource
+        .delay(0.5, scheduler: MainScheduler.instance)
+        .subscribe(onNext: selectDefault(_ :))
       
       disposeBag += viewCityPicker.rx.modelSelected(City.self)
         .subscribe(onNext: { [weak weakSelf = self] cities in
@@ -56,7 +53,7 @@ class StartUpController: UIViewController {
               // will bind image on change
               weakSelf?.viewImageBackground.image = UIImage(named: city.name.lowercased())
               // will bind text on change
-              weakSelf?.viewButtonSelectedCity.titleLabel?.text = city.name
+              weakSelf?.viewButtonSelectedCity.setTitle(city.name, for: .normal)
               // will store id on change
               userDefaultsRepository.selectedCityId = Int(city.id)
             }
@@ -68,5 +65,9 @@ class StartUpController: UIViewController {
   override func viewDidDisappear(_ animated: Bool) {
     self.navigationController?.setNavigationBarHidden(false, animated: false)
     super.viewDidDisappear(animated)
+  }
+  
+  private func selectDefault(_ cities: [City]) {
+    viewCityPicker.selectRow(0, inComponent: 0, animated: true)
   }
 }
