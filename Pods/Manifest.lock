@@ -5,7 +5,6 @@ PODS:
   - RxCocoa (4.3.1):
     - RxSwift (~> 4.0)
   - RxSwift (4.3.1)
-  - SnapKit (4.0.1)
   - Swinject (2.5.0)
 
 DEPENDENCIES:
@@ -13,7 +12,6 @@ DEPENDENCIES:
   - AlamofireImage (~> 3.4)
   - RxCocoa (~> 4.0)
   - RxSwift (~> 4.0)
-  - SnapKit (~> 4.0.0)
   - Swinject
 
 SPEC REPOS:
@@ -22,7 +20,6 @@ SPEC REPOS:
     - AlamofireImage
     - RxCocoa
     - RxSwift
-    - SnapKit
     - Swinject
 
 SPEC CHECKSUMS:
@@ -30,9 +27,8 @@ SPEC CHECKSUMS:
   AlamofireImage: 78d67ccbb763d87ba44b21583d2153500a195630
   RxCocoa: 78763c7b07d02455598d9fc3c1ad091a28b73635
   RxSwift: fe0fd770a43acdb7d0a53da411c9b892e69bb6e4
-  SnapKit: 0de968a9fec17499afa29683b05d0c775b6d1c29
   Swinject: 82cdb851f63f91bba974e3eca1d69780f2f7677e
 
-PODFILE CHECKSUM: 1d02e85e5840843453f1a84b78df8adf1fc15a72
+PODFILE CHECKSUM: e5eb8532f458c06b50997dca35c1274f2eea34b7
 
 COCOAPODS: 1.5.3
