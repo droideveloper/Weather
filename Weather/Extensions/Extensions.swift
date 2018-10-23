@@ -43,15 +43,21 @@ extension DisposeBag {
 
 extension Observable where Element == Event {
 	
-	func toIntent(_ block: @escaping (Element) -> Intent) -> Observable<Intent> {
+	func toIntent(_ block: @escaping (Element) throws -> Intent) -> Observable<Intent> {
 		return self.map(block)
 	}
 }
 
 extension Observable where Element == Intent {
 	
-	func toReducer<T>(_ block: @escaping (Element) -> Observable<Reducer<T>>) -> Observable<Reducer<T>> {
-    return self.concatMap(block)
+	func toReducer<T>() -> Observable<Reducer<T>> {
+    return self.concatMap { intent -> Observable<Reducer<T>> in
+      if let intent = intent as? ObservableIntent<T> {
+        return intent.invoke()
+      }
+      let error = NSError(domain: "type must inherit ObservableIntent<T>", code: 404, userInfo: nil)
+      throw error
+    }
 	}
 }
 

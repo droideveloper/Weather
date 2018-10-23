@@ -18,7 +18,7 @@ class DailyForecastViewModel: ViewModel {
   private let disposeBag = DisposeBag()
   private let intents = PublishRelay<Intent>()
   private lazy var storage = { intents.asObservable()
-    .toReducer(byIntents(_:))
+    .toReducer()
     .observeOn(MainScheduler.instance)
     .scan(DailyForecastModel.initState, accumulator: { o, reducer in
       return reducer(o)
@@ -50,7 +50,7 @@ class DailyForecastViewModel: ViewModel {
     intents.accept(intent)
   }
   
-  private func byEvents(_ event: Event) -> Intent {
+  private func byEvents(_ event: Event) throws -> Intent {
     if event is LoadDailyForecastEvent {
       if let container = view?.container {
         if let dailyForecastRepository = container.resolve(DailyForecastRepository.self) {
@@ -58,13 +58,7 @@ class DailyForecastViewModel: ViewModel {
         }
       }
     }
-    return NothingIntent()
-  }
-  
-  private func byIntents(_ intent: Intent) -> Observable<Reducer<Model>> {
-    if let intent = intent as? LoadDailyForecastIntent {
-      return intent.invoke()
-    }
-    return Observable.just({ model in return model })
+    let error = NSError(domain: "we can not implement this", code: 404, userInfo: nil)
+    throw error
   }
 }

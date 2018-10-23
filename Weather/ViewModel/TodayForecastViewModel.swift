@@ -19,7 +19,7 @@ class TodayForecastViewModel: ViewModel {
 	private let intents = PublishRelay<Intent>()
 	
 	private lazy var storage = { intents.asObservable()
-    .toReducer(byIntents(_:))
+    .toReducer()
 		.observeOn(MainScheduler.instance)
 		.scan(TodayForecastModel.initState, accumulator: { o, reducer in
       return reducer(o)
@@ -52,7 +52,7 @@ class TodayForecastViewModel: ViewModel {
 		intents.accept(intent)
 	}
   
-  private func byEvents(_ event: Event) -> Intent {
+  private func byEvents(_ event: Event) throws -> Intent {
     if event is LoadTodayForecastEvent {
       if let container = view?.container {
         if let todayForecastRepository = container.resolve(TodayForecastRepository.self) {
@@ -60,13 +60,7 @@ class TodayForecastViewModel: ViewModel {
         }
       }
     }
-    return NothingIntent()
-  }
-  
-  private func byIntents(_ intent: Intent) -> Observable<Reducer<Model>> {
-    if let intent = intent as? LoadTodayForecastIntent {
-      return intent.invoke()
-    }
-    return Observable.just({ model in return model })
+    let error = NSError(domain: "you have event but can not resolve it's intent", code: 404, userInfo: nil)
+    throw error
   }
 }

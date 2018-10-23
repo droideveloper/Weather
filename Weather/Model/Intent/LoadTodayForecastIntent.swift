@@ -9,8 +9,7 @@
 import Foundation
 import RxSwift
 
-public struct LoadTodayForecastIntent: ObservableInent {
-	public typealias Model = TodayForecastModel
+public class LoadTodayForecastIntent: ObservableIntent<TodayForecastModel> {
 	
 	private let todayForecastRepository: TodayForecastRepository
 	
@@ -18,7 +17,7 @@ public struct LoadTodayForecastIntent: ObservableInent {
 		self.todayForecastRepository = todayForecastRepository
 	}
   
-	public func invoke() -> Observable<Reducer<Model>> {
+	override func invoke() -> Observable<Reducer<TodayForecastModel>> {
 		return todayForecastRepository.loadTodayForecast()
       .delay(0.5, scheduler: MainScheduler.asyncInstance)
 			.subscribeOn(MainScheduler.asyncInstance)
@@ -27,15 +26,15 @@ public struct LoadTodayForecastIntent: ObservableInent {
 			.startWith(byIntial())
 	}
   
-  private func byIntial() -> Reducer<Model> {
+  private func byIntial() -> Reducer<TodayForecastModel> {
     return { model in model.copy(syncState: refresh) }
   }
   
-  private func bySuccess(_ todayForecast: TodayForecast) -> Reducer<Model> {
+  private func bySuccess(_ todayForecast: TodayForecast) -> Reducer<TodayForecastModel> {
     return { model in model.copy(syncState: idle, data: todayForecast) }
   }
   
-  private func byFailure(_ error: Error) -> Observable<Reducer<Model>> {
+  private func byFailure(_ error: Error) -> Observable<Reducer<TodayForecastModel>> {
     return Observable.of(
       { model in model.copy(syncState: ErrorState(error: error)) },
       { model in model.copy(syncState: idle) })

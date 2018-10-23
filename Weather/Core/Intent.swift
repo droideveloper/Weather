@@ -11,19 +11,11 @@ import RxSwift
 
 public protocol Intent {}
 
-public struct NothingIntent: Intent {}
-
-public protocol ReducerIntent: Intent {
-	associatedtype Model
-	
-	func invoke() -> Reducer<Model>
-}
-
-public protocol ObservableInent: Intent {
-	associatedtype Model
-	
-	func invoke() -> Observable<Reducer<Model>>
+public class ObservableIntent<T>: Intent {
+  func invoke() -> Observable<Reducer<T>> { return Observable.never() }
 }
 
 public typealias Reducer<T> = (T) -> T
+
+
 
