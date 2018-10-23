@@ -167,7 +167,12 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Mbp-8B-HR3"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Weather" id="1qc-Ck-60q"/>
+                    <navigationItem key="navigationItem" title="Weather" id="1qc-Ck-60q">
+                        <barButtonItem key="rightBarButtonItem" title="Item" image="settings" id="8bH-T0-QF2">
+                            <inset key="largeContentSizeImageInsets" minX="0.0" minY="0.0" maxX="0.0" maxY="9"/>
+                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="viewDailyForecastButton" destination="sEy-xG-swq" id="eCO-1K-3HL"/>
                         <outlet property="viewDailyForecastTabItemView" destination="UFv-Hs-Joz" id="Qkk-kf-k2e"/>
@@ -489,6 +494,7 @@
         <image name="humidity" width="13.439999580383301" height="13.439999580383301"/>
         <image name="prague" width="1024" height="683"/>
         <image name="rain" width="13.439999580383301" height="13.439999580383301"/>
+        <image name="settings" width="24" height="24"/>
         <image name="sunrise" width="15.119999885559082" height="13.439999580383301"/>
         <image name="today_forecast" width="48" height="48"/>
         <image name="wind" width="15.119999885559082" height="13.439999580383301"/>
