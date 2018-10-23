@@ -57,9 +57,7 @@ class DailyForecastCell: TableViewCell<DailyForecast> {
       }
     }
 	}
-	
-  override func unbind() { /*no opt*/ }
-  
+	  
   private func bindTemperature(_ temperature: Tempereture) {
 		if let unit = UnitOfTemperature(rawValue: userDefaults.integer(forKey: keySelectedUnitOfTemperature)) {
 			self.viewTextTemperetureDailyForecast.text = temperature.toDegreeString(unit: unit)

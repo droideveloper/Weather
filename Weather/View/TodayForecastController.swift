@@ -40,6 +40,9 @@ class TodayForecastController: UIViewController, View {
   
 	override func viewDidLoad() {
 		super.viewDidLoad()
+		BusManager.send(event: UnitOfLengthChangedEvent())
+		BusManager.send(event: UnitOfTemperatureChangedEvent())
+		
 		setUp()
 		viewModel.attach()
     

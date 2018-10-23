@@ -25,14 +25,14 @@ class DailyForecastController: UIViewController, View {
   private lazy var dataSource = {
     return DailyForecastDataSource(dataSet: dataSet)
   }()
-  
+	
   override func viewDidLoad() {
     super.viewDidLoad()
 		setUp()
 		self.viewModel.attach()
     
     checkIfInitialLoadNeeded()
-  }
+	}
 	
 	func setUp() {
 		self.viewModel.view = self
@@ -49,7 +49,7 @@ class DailyForecastController: UIViewController, View {
 			.subscribe(viewProgress.rx.isAnimating)
 		
     // register our xib file for dequeue
-    self.viewTable.register(UINib(nibName: "DailyForecastCell", bundle: Bundle.main), forCellReuseIdentifier: DailyForecastDataSource.DAILY_FORECASST_CELL)
+    self.viewTable.register(UINib(nibName: "DailyForecastCell", bundle: Bundle.main), forCellReuseIdentifier: DailyForecastDataSource.dailyForecastCell)
     // we will set style of
     self.viewTable.separatorStyle = .none
     self.viewTable.dataSource = dataSource
