@@ -88,6 +88,9 @@
                     </view>
                     <navigationItem key="navigationItem" id="csN-RM-RDf"/>
                     <connections>
+                        <outlet property="viewButtonContinue" destination="NMg-rs-ZG2" id="Nis-lV-ovv"/>
+                        <outlet property="viewButtonSelectedCity" destination="fdt-aT-RqJ" id="Yug-dC-0QM"/>
+                        <outlet property="viewCityPicker" destination="2An-7o-Gww" id="isl-HF-212"/>
                         <outlet property="viewImageBackground" destination="kT4-H6-fve" id="fpd-Pb-jT9"/>
                     </connections>
                 </viewController>

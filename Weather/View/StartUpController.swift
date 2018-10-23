@@ -12,7 +12,10 @@ import RxSwift
 
 class StartUpController: UIViewController {
   
-  @IBOutlet weak var viewImageBackground: UIImageView!
+  @IBOutlet private var viewImageBackground: UIImageView!
+  @IBOutlet private var viewButtonSelectedCity: UIButton!
+  @IBOutlet private var viewButtonContinue: UIButton!
+  @IBOutlet private var viewCityPicker: UIPickerView!
 	
 	private let disposeBag = DisposeBag()
 	
@@ -23,8 +26,21 @@ class StartUpController: UIViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
+    
     viewImageBackground.image = UIImage(named: "berlin")
 		if let cityRepository = container?.resolve(CityRepository.self) {
+      
+      disposeBag += cityRepository.loadCities()
+        .async()
+        .bind(to: viewCityPicker.rx.itemTitles) { _, city -> String in
+          return "\(city.name)"
+        }
+      
+      disposeBag += viewCityPicker.rx.modelSelected(City.self)
+        .subscribe(onNext: { [weak weakSelf = self] city in
+          
+        })
+      
 			disposeBag += cityRepository.loadCities()
 				.subscribeOn(MainScheduler.asyncInstance)
 				.observeOn(MainScheduler.instance)

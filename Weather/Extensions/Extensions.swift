@@ -54,11 +54,45 @@ extension Observable where Element == Intent {
     return self.concatMap { intent -> Observable<Reducer<T>> in
       if let intent = intent as? ObservableIntent<T> {
         return intent.invoke()
+      } else if let intent = intent as? ReducerIntent<T> {
+        return intent.toObservable()
       }
-      let error = NSError(domain: "type must inherit ObservableIntent<T>", code: 404, userInfo: nil)
-      throw error
+      return intent.toObservableNever()
     }
 	}
+}
+
+extension Observable {
+  
+  func async() -> Observable<Element> {
+    return self.subscribeOn(MainScheduler.asyncInstance)
+      .observeOn(MainScheduler.instance)
+  }
+}
+
+extension Intent {
+  
+  func toObservableNever<T>() -> Observable<T> {
+    return Observable.never()
+  }
+ 
+  func toObservableError<T>(domain: String, code: Int) -> Observable<T> {
+    return Observable.error(NSError(domain: domain, code: code, userInfo: nil))
+  }
+}
+
+extension Event {
+  
+  func toNothingIntent() -> NothingIntent {
+    return NothingIntent()
+  }
+}
+
+extension ReducerIntent {
+  
+  func toObservable() -> Observable<Reducer<T>> {
+    return Observable.of(invoke())
+  }
 }
 
 extension UITableView: PropertyChangable {
