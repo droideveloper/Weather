@@ -20,13 +20,68 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="kT4-H6-fve">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="672"/>
                             </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eXh-DZ-CNn" customClass="RoundedBackgroundView" customModule="Weather" customModuleProvider="target">
+                                <rect key="frame" x="87" y="218" width="240" height="236"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="waether" translatesAutoresizingMaskIntoConstraints="NO" id="Apr-FT-oOP">
+                                        <rect key="frame" x="93" y="12" width="54" height="54"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="54" id="76F-zz-blr"/>
+                                            <constraint firstAttribute="height" constant="54" id="S3N-WP-cyl"/>
+                                        </constraints>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select a city to continue for forecasts." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UKZ-cn-9w5">
+                                        <rect key="frame" x="12" y="78" width="216" height="33.666666666666657"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fdt-aT-RqJ">
+                                        <rect key="frame" x="12" y="123.66666666666669" width="216" height="30"/>
+                                        <state key="normal" title="Berlin">
+                                            <color key="titleColor" red="0.1333333333" green="0.1333333333" blue="0.1333333333" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NMg-rs-ZG2">
+                                        <rect key="frame" x="24" y="194" width="192" height="30"/>
+                                        <color key="backgroundColor" red="0.0" green="0.49019607840000001" blue="0.72549019609999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <state key="normal" title="Continue">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="236" id="1vv-Fx-5Vj"/>
+                                    <constraint firstItem="Apr-FT-oOP" firstAttribute="centerX" secondItem="eXh-DZ-CNn" secondAttribute="centerX" id="2dM-uI-FFk"/>
+                                    <constraint firstAttribute="trailing" secondItem="fdt-aT-RqJ" secondAttribute="trailing" constant="12" id="2o5-ZJ-uEz"/>
+                                    <constraint firstItem="fdt-aT-RqJ" firstAttribute="leading" secondItem="eXh-DZ-CNn" secondAttribute="leading" constant="12" id="BoH-MF-89y"/>
+                                    <constraint firstItem="NMg-rs-ZG2" firstAttribute="leading" secondItem="eXh-DZ-CNn" secondAttribute="leading" constant="24" id="FSV-DU-knX"/>
+                                    <constraint firstItem="UKZ-cn-9w5" firstAttribute="top" secondItem="Apr-FT-oOP" secondAttribute="bottom" constant="12" id="G8u-o5-SGO"/>
+                                    <constraint firstItem="Apr-FT-oOP" firstAttribute="top" secondItem="eXh-DZ-CNn" secondAttribute="top" constant="12" id="O7X-us-8n7"/>
+                                    <constraint firstAttribute="trailing" secondItem="UKZ-cn-9w5" secondAttribute="trailing" constant="12" id="TJR-L6-BLu"/>
+                                    <constraint firstItem="UKZ-cn-9w5" firstAttribute="leading" secondItem="eXh-DZ-CNn" secondAttribute="leading" constant="12" id="ayf-Q9-Ex9"/>
+                                    <constraint firstAttribute="trailing" secondItem="NMg-rs-ZG2" secondAttribute="trailing" constant="24" id="kyD-ch-399"/>
+                                    <constraint firstItem="fdt-aT-RqJ" firstAttribute="top" secondItem="UKZ-cn-9w5" secondAttribute="bottom" constant="12" id="nz3-hL-20O"/>
+                                    <constraint firstAttribute="bottom" secondItem="NMg-rs-ZG2" secondAttribute="bottom" constant="12" id="x9v-AS-AwM"/>
+                                </constraints>
+                            </view>
+                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2An-7o-Gww">
+                                <rect key="frame" x="0.0" y="456" width="414" height="216"/>
+                            </pickerView>
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.49019607840000001" blue="0.72549019609999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="El6-jD-SY8" firstAttribute="bottom" secondItem="kT4-H6-fve" secondAttribute="bottom" id="9Mc-Lj-HJ1"/>
+                            <constraint firstItem="2An-7o-Gww" firstAttribute="leading" secondItem="El6-jD-SY8" secondAttribute="leading" id="It3-5q-vM1"/>
                             <constraint firstItem="kT4-H6-fve" firstAttribute="leading" secondItem="El6-jD-SY8" secondAttribute="leading" id="cLj-jT-R9C"/>
+                            <constraint firstItem="2An-7o-Gww" firstAttribute="bottom" secondItem="El6-jD-SY8" secondAttribute="bottom" id="cpX-4a-bxu"/>
+                            <constraint firstItem="eXh-DZ-CNn" firstAttribute="centerY" secondItem="Zgr-bQ-siJ" secondAttribute="centerY" id="foM-EO-iee"/>
+                            <constraint firstItem="eXh-DZ-CNn" firstAttribute="leading" secondItem="El6-jD-SY8" secondAttribute="leading" constant="87" id="ges-pz-JD5"/>
                             <constraint firstItem="kT4-H6-fve" firstAttribute="top" secondItem="El6-jD-SY8" secondAttribute="top" id="isg-pT-S2C"/>
                             <constraint firstItem="El6-jD-SY8" firstAttribute="trailing" secondItem="kT4-H6-fve" secondAttribute="trailing" id="qcC-SZ-xpg"/>
+                            <constraint firstItem="2An-7o-Gww" firstAttribute="trailing" secondItem="El6-jD-SY8" secondAttribute="trailing" id="rGI-Bu-Q1A"/>
+                            <constraint firstItem="El6-jD-SY8" firstAttribute="trailing" secondItem="eXh-DZ-CNn" secondAttribute="trailing" constant="87" id="xHH-UU-rPA"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="El6-jD-SY8"/>
                     </view>
@@ -497,6 +552,7 @@
         <image name="settings" width="24" height="24"/>
         <image name="sunrise" width="15.119999885559082" height="13.439999580383301"/>
         <image name="today_forecast" width="48" height="48"/>
+        <image name="waether" width="96" height="96"/>
         <image name="wind" width="15.119999885559082" height="13.439999580383301"/>
     </resources>
 </document>
