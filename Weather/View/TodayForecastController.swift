@@ -32,16 +32,23 @@ class TodayForecastController: UIViewController, View {
   @IBOutlet private var viewDirections: UILabel! // direction of wind
   @IBOutlet private var viewPressure: UILabel! // pressure of 
 	
+  // will held ref for our change or not
+  private var selectedtUnitLength: UnitOfLength = .metric
+  private var selectedUnitTempereture: UnitOfTemperature = .celsius
+  
   private var cityRepository: CityRepository? = nil
   private var userDefaultsRepository: UserDefaultsRepository? = nil
   // city is nil
   private var city = City.empty
   private var todayForecast = TodayForecast.empty
   
+  override func viewWillAppear(_ animated: Bool) {
+    checkIfMeasumentChanged()
+    super.viewWillAppear(animated)
+  }
+  
 	override func viewDidLoad() {
 		super.viewDidLoad()
-		BusManager.send(event: UnitOfLengthChangedEvent())
-		BusManager.send(event: UnitOfTemperatureChangedEvent())
 		
 		setUp()
 		viewModel.attach()
@@ -145,5 +152,26 @@ class TodayForecastController: UIViewController, View {
   private func render(city: City) {
     self.city = city
     viewImageBackground.image = UIImage(named: city.name.lowercased()) // we will pull new image this way
+  }
+  
+  private func checkIfMeasumentChanged() {
+    if let userDefaultsRepository = container?.resolve(UserDefaultsRepository.self) {
+      let newUnitLength = UnitOfLength(rawValue: userDefaultsRepository.selectedUnitOfLength) ?? .metric
+      let newUnitTempereture = UnitOfTemperature(rawValue: userDefaultsRepository.selectedUnitOfTemperature) ?? .celsius
+      if newUnitLength != selectedtUnitLength {
+        selectedtUnitLength = newUnitLength
+        // render again
+        if todayForecast != TodayForecast.empty {
+          render(todayForecast: todayForecast)
+        }
+      }
+      if newUnitTempereture != selectedUnitTempereture {
+        selectedUnitTempereture = newUnitTempereture
+        // render again
+        if todayForecast != TodayForecast.empty {
+          render(todayForecast: todayForecast)
+        }
+      }
+    }
   }
 }

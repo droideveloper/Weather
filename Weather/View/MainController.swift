@@ -24,16 +24,16 @@ class MainController: UIViewController {
 	private var dailyForecastController: DailyForecastController? = nil
 	
 	private let disposeBag = DisposeBag()
+  
 	
 	override func viewWillAppear(_ animated: Bool) {
-		self.navigationController?.setNavigationBarHidden(false, animated: false)
+    self.navigationController?.setNavigationBarHidden(false, animated: false)
+    self.navigationItem.setHidesBackButton(true, animated: false)
 		super.viewWillAppear(animated)
 	}
 	
   override func viewDidLoad() {
     super.viewDidLoad()
-		self.navigationItem.setLeftBarButton(nil, animated: false)
-
 		
 		disposeBag += viewDailyForecastButton.rx.tap
 			.bind { [weak weakSelf = self] _ in
