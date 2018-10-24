@@ -26,11 +26,11 @@ class LengthSetting: Settingable {
 		get {
 			switch userDefaultsRepository.selectedUnitOfLength {
 				case UnitOfLength.metric.rawValue:
-					return "metric"
+					return "Metric"
 				case UnitOfLength.imperial.rawValue:
-					return "imperial"
+					return "Imperial"
 				default:
-					return "unknown"
+					return "Unknown"
 			}
 		}
 	}

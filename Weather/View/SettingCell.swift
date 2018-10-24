@@ -11,8 +11,8 @@ import UIKit
 
 class SettingCell: TableViewCell<Settingable> {
 	
-	@IBOutlet private var viewTextTitle: UILabel!
-	@IBOutlet private var viewTextSubtitle: UILabel!
+	@IBOutlet private weak var viewTextTitle: UILabel!
+	@IBOutlet private weak var viewTextSubtitle: UILabel!
 	
 	required init?(coder aDecoder: NSCoder) {
 		super.init(coder: aDecoder)

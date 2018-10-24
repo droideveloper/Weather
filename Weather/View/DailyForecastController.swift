@@ -18,14 +18,22 @@ class DailyForecastController: UIViewController, View {
   private let disposeBag = DisposeBag()
   private let events = PublishRelay<Event>()
 
-	@IBOutlet private var viewTable: UITableView!
-	@IBOutlet private var viewProgress: UIActivityIndicatorView!
+	@IBOutlet private weak var viewTable: UITableView!
+	@IBOutlet private weak var viewProgress: UIActivityIndicatorView!
 	
   private let dataSet = ObservableList<DailyForecast>()
   private lazy var dataSource = {
     return DailyForecastDataSource(dataSet: dataSet)
   }()
+  
+  // will held ref for our change or not
+  private var selectedUnitTempereture: UnitOfTemperature = .celsius
 	
+  override func viewWillAppear(_ animated: Bool) {
+    checkIfMeasumentChanged()
+    super.viewWillAppear(animated)
+  }
+  
   override func viewDidLoad() {
     super.viewDidLoad()
 		setUp()
@@ -94,4 +102,14 @@ class DailyForecastController: UIViewController, View {
 	private func invaldiateProgress(_ visible: Bool) {
 		viewProgress.alpha = visible ? 1 : 0
 	}
+  
+  private func checkIfMeasumentChanged() {
+    if let userDefaultsRepository = container?.resolve(UserDefaultsRepository.self) {
+      let newUnitTempereture = UnitOfTemperature(rawValue: userDefaultsRepository.selectedUnitOfTemperature) ?? .celsius
+      if newUnitTempereture != selectedUnitTempereture {
+        selectedUnitTempereture = newUnitTempereture
+        BusManager.send(event: UnitOfTemperatureChangedEvent())
+      }
+    }
+  }
 }

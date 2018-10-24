@@ -12,10 +12,10 @@ import RxSwift
 
 class StartUpController: UIViewController {
   
-  @IBOutlet private var viewImageBackground: UIImageView!
-  @IBOutlet private var viewButtonSelectedCity: UIButton!
-  @IBOutlet private var viewButtonContinue: UIButton!
-  @IBOutlet private var viewCityPicker: UIPickerView!
+  @IBOutlet private weak var viewImageBackground: UIImageView!
+  @IBOutlet private weak var viewButtonSelectedCity: UIButton!
+  @IBOutlet private weak var viewButtonContinue: UIButton!
+  @IBOutlet private weak var viewCityPicker: UIPickerView!
 	
 	private let disposeBag = DisposeBag()
 	

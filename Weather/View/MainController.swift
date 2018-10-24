@@ -13,27 +13,27 @@ import RxCocoa
 
 class MainController: UIViewController {
 	
-  @IBOutlet private var viewTodayForecastButton: UIButton!
-	@IBOutlet private var viewTodayForecastTabItemView: TabItemView!
+  @IBOutlet private weak var viewTodayForecastButton: UIButton!
+	@IBOutlet private weak var viewTodayForecastTabItemView: TabItemView!
 	
-  @IBOutlet private var viewDailyForecastButton: UIButton!
-	@IBOutlet private var viewDailyForecastTabItemView: TabItemView!
+  @IBOutlet private weak var viewDailyForecastButton: UIButton!
+	@IBOutlet private weak var viewDailyForecastTabItemView: TabItemView!
 	
   private let storyBoard = UIStoryboard(name: "Main", bundle: nil)
 	private var todayForecastController: TodayForecastController? = nil
 	private var dailyForecastController: DailyForecastController? = nil
 	
 	private let disposeBag = DisposeBag()
+  
 	
 	override func viewWillAppear(_ animated: Bool) {
-		self.navigationController?.setNavigationBarHidden(false, animated: false)
+    self.navigationController?.setNavigationBarHidden(false, animated: false)
+    self.navigationItem.setHidesBackButton(true, animated: false)
 		super.viewWillAppear(animated)
 	}
 	
   override func viewDidLoad() {
     super.viewDidLoad()
-		self.navigationItem.setLeftBarButton(nil, animated: false)
-
 		
 		disposeBag += viewDailyForecastButton.rx.tap
 			.bind { [weak weakSelf = self] _ in

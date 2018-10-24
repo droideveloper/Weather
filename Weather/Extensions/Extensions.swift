@@ -81,13 +81,6 @@ extension Intent {
   }
 }
 
-extension Event {
-  
-  func toNothingIntent() -> NothingIntent {
-    return NothingIntent()
-  }
-}
-
 extension ReducerIntent {
   
   func toObservable() -> Observable<Reducer<T>> {

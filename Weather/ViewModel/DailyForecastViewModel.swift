@@ -51,13 +51,6 @@ class DailyForecastViewModel: ViewModel {
   }
   
   private func byEvents(_ event: Event) throws -> Intent {
-    if event is LoadDailyForecastEvent {
-      if let container = view?.container {
-        if let dailyForecastRepository = container.resolve(DailyForecastRepository.self) {
-          return LoadDailyForecastIntent(dailyForecastRepository: dailyForecastRepository)
-        }
-      }
-    }
-    return event.toNothingIntent()
+    return event.toIntent(container: view?.container)
   }
 }

@@ -13,8 +13,8 @@ import UIKit
 
 class SettingController: UIViewController, UITableViewDelegate {
 	
-	@IBOutlet private var viewTable: UITableView!
-	@IBOutlet private var viewPicker: UIPickerView!
+	@IBOutlet private weak var viewTable: UITableView!
+	@IBOutlet private weak var viewPicker: UIPickerView!
 	
 	private var disposeBag = DisposeBag()
 	

@@ -53,13 +53,6 @@ class TodayForecastViewModel: ViewModel {
 	}
   
   private func byEvents(_ event: Event) throws -> Intent {
-    if event is LoadTodayForecastEvent {
-      if let container = view?.container {
-        if let todayForecastRepository = container.resolve(TodayForecastRepository.self) {
-          return LoadTodayForecastIntent(todayForecastRepository: todayForecastRepository)
-        }
-      }
-    }
-    return event.toNothingIntent()
+   return event.toIntent(container: view?.container)
   }
 }

@@ -26,11 +26,11 @@ class TemperetureSetting: Settingable {
 		get {
 			switch userDefaultsRepository.selectedUnitOfTemperature {
 				case UnitOfTemperature.celsius.rawValue:
-					return "celsius"
+					return "Celsius"
 				case UnitOfTemperature.fahrenheit.rawValue:
-					return "fahrenheit"
+					return "Fahrenheit"
 				default:
-					return "unknown"
+					return "Unknown"
 			}
 		}
 	}

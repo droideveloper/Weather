@@ -17,31 +17,38 @@ class TodayForecastController: UIViewController, View {
 	private let disposeBag = DisposeBag()
 	private let events = PublishRelay<Event>()
 		
-  @IBOutlet private var viewProgress: UIActivityIndicatorView!
+  @IBOutlet private weak var viewProgress: UIActivityIndicatorView!
   
-  @IBOutlet private var viewImageBackground: UIImageView! // bg image for selected city
-  @IBOutlet private var viewCityName: UILabel! // city name
-  @IBOutlet private var viewTodayForecast: UILabel! // weather description
-  @IBOutlet private var viewTodayWeather: UILabel! // tempereture of today
-  @IBOutlet private var viewImageTodayWeather: UIImageView! // temperature of today icon
+  @IBOutlet private weak var viewImageBackground: UIImageView! // bg image for selected city
+  @IBOutlet private weak var viewCityName: UILabel! // city name
+  @IBOutlet private weak var viewTodayForecast: UILabel! // weather description
+  @IBOutlet private weak var viewTodayWeather: UILabel! // tempereture of today
+  @IBOutlet private weak var viewImageTodayWeather: UIImageView! // temperature of today icon
   
-  @IBOutlet private var viewWind: UILabel! // wind speed
-  @IBOutlet private var viewHumidity: UILabel! // humidity
-  @IBOutlet private var viewSunrise: UILabel! // sunrise
-  @IBOutlet private var viewDrops: UILabel! // rain
-  @IBOutlet private var viewDirections: UILabel! // direction of wind
-  @IBOutlet private var viewPressure: UILabel! // pressure of 
+  @IBOutlet private weak var viewWind: UILabel! // wind speed
+  @IBOutlet private weak var viewHumidity: UILabel! // humidity
+  @IBOutlet private weak var viewSunrise: UILabel! // sunrise
+  @IBOutlet private weak var viewDrops: UILabel! // rain
+  @IBOutlet private weak var viewDirections: UILabel! // direction of wind
+  @IBOutlet private weak var viewPressure: UILabel! // pressure of
 	
+  // will held ref for our change or not
+  private var selectedtUnitLength: UnitOfLength = .metric
+  private var selectedUnitTempereture: UnitOfTemperature = .celsius
+  
   private var cityRepository: CityRepository? = nil
   private var userDefaultsRepository: UserDefaultsRepository? = nil
   // city is nil
   private var city = City.empty
   private var todayForecast = TodayForecast.empty
   
+  override func viewWillAppear(_ animated: Bool) {
+    checkIfMeasumentChanged()
+    super.viewWillAppear(animated)
+  }
+  
 	override func viewDidLoad() {
 		super.viewDidLoad()
-		BusManager.send(event: UnitOfLengthChangedEvent())
-		BusManager.send(event: UnitOfTemperatureChangedEvent())
 		
 		setUp()
 		viewModel.attach()
@@ -145,5 +152,26 @@ class TodayForecastController: UIViewController, View {
   private func render(city: City) {
     self.city = city
     viewImageBackground.image = UIImage(named: city.name.lowercased()) // we will pull new image this way
+  }
+  
+  private func checkIfMeasumentChanged() {
+    if let userDefaultsRepository = container?.resolve(UserDefaultsRepository.self) {
+      let newUnitLength = UnitOfLength(rawValue: userDefaultsRepository.selectedUnitOfLength) ?? .metric
+      let newUnitTempereture = UnitOfTemperature(rawValue: userDefaultsRepository.selectedUnitOfTemperature) ?? .celsius
+      if newUnitLength != selectedtUnitLength {
+        selectedtUnitLength = newUnitLength
+        // render again
+        if todayForecast != TodayForecast.empty {
+          render(todayForecast: todayForecast)
+        }
+      }
+      if newUnitTempereture != selectedUnitTempereture {
+        selectedUnitTempereture = newUnitTempereture
+        // render again
+        if todayForecast != TodayForecast.empty {
+          render(todayForecast: todayForecast)
+        }
+      }
+    }
   }
 }
