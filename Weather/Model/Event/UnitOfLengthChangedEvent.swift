@@ -8,4 +8,4 @@
 
 import Foundation
 
-public struct UnitOfLengthChangedEvent: Event {}
+public class UnitOfLengthChangedEvent: Event {}

@@ -7,5 +7,14 @@
 //
 
 import Foundation
+import Swinject
 
-struct LoadTodayForecastEvent: Event {}
+class LoadTodayForecastEvent: Event {
+  
+  override func toIntent(container: Container?) -> Intent {
+    if let todayForecastRepository = container?.resolve(TodayForecastRepository.self) {
+      return LoadTodayForecastIntent(todayForecastRepository: todayForecastRepository)
+    }
+    return super.toIntent(container: container)
+  }
+}

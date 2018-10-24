@@ -7,5 +7,13 @@
 //
 
 import Foundation
+import Swinject
 
-public protocol Event {}
+public class Event {
+  
+  private static let nothing = NothingIntent()
+  
+  func toIntent(container: Container?) -> Intent {
+    return Event.nothing
+  }
+}
