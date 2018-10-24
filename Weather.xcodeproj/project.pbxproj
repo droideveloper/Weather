@@ -310,22 +310,17 @@
 		05F3ADEF216C97F600BE61C2 /* Weather */ = {
 			isa = PBXGroup;
 			children = (
+				3D00E801218081D20043A706 /* SupportingFiles */,
 				3DA941A321770CB9002F6912 /* Widget */,
 				3DA775F52170BC98008FA53A /* Core */,
 				3DA775F22170BA08008FA53A /* View */,
 				3DA775F12170B9F5008FA53A /* ViewModel */,
-				3D754D7B216FC9B100730F1E /* cities.json */,
 				05296533216F5A99001286CC /* Extensions */,
 				05A7C23F216CF34F00724CBF /* Repo */,
 				05A7C238216CE0F000724CBF /* Net */,
 				050636BC216CBCF700E3195E /* Model */,
 				05F3ADF0216C97F600BE61C2 /* AppDelegate.swift */,
-				05F3ADF4216C97F600BE61C2 /* Main.storyboard */,
-				05F3ADF7216C97F700BE61C2 /* Assets.xcassets */,
-				05F3ADF9216C97F700BE61C2 /* LaunchScreen.storyboard */,
 				05F3ADFC216C97F700BE61C2 /* Info.plist */,
-				3D39791F21789527005F7B11 /* DailyForecastCell.xib */,
-				3DD0BD9A217FA78600130150 /* SettingCell.xib */,
 			);
 			path = Weather;
 			sourceTree = "<group>";
@@ -359,6 +354,19 @@
 				0431B506F4D21F986459833D /* Pods-WeatherUITests.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		3D00E801218081D20043A706 /* SupportingFiles */ = {
+			isa = PBXGroup;
+			children = (
+				3D754D7B216FC9B100730F1E /* cities.json */,
+				05F3ADF4216C97F600BE61C2 /* Main.storyboard */,
+				05F3ADF7216C97F700BE61C2 /* Assets.xcassets */,
+				05F3ADF9216C97F700BE61C2 /* LaunchScreen.storyboard */,
+				3D39791F21789527005F7B11 /* DailyForecastCell.xib */,
+				3DD0BD9A217FA78600130150 /* SettingCell.xib */,
+			);
+			path = SupportingFiles;
 			sourceTree = "<group>";
 		};
 		3D45CA0B21728CA200A67380 /* Intent */ = {
