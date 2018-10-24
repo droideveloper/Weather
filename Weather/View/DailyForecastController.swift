@@ -18,8 +18,8 @@ class DailyForecastController: UIViewController, View {
   private let disposeBag = DisposeBag()
   private let events = PublishRelay<Event>()
 
-	@IBOutlet private var viewTable: UITableView!
-	@IBOutlet private var viewProgress: UIActivityIndicatorView!
+	@IBOutlet private weak var viewTable: UITableView!
+	@IBOutlet private weak var viewProgress: UIActivityIndicatorView!
 	
   private let dataSet = ObservableList<DailyForecast>()
   private lazy var dataSource = {

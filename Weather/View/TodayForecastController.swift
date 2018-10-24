@@ -17,20 +17,20 @@ class TodayForecastController: UIViewController, View {
 	private let disposeBag = DisposeBag()
 	private let events = PublishRelay<Event>()
 		
-  @IBOutlet private var viewProgress: UIActivityIndicatorView!
+  @IBOutlet private weak var viewProgress: UIActivityIndicatorView!
   
-  @IBOutlet private var viewImageBackground: UIImageView! // bg image for selected city
-  @IBOutlet private var viewCityName: UILabel! // city name
-  @IBOutlet private var viewTodayForecast: UILabel! // weather description
-  @IBOutlet private var viewTodayWeather: UILabel! // tempereture of today
-  @IBOutlet private var viewImageTodayWeather: UIImageView! // temperature of today icon
+  @IBOutlet private weak var viewImageBackground: UIImageView! // bg image for selected city
+  @IBOutlet private weak var viewCityName: UILabel! // city name
+  @IBOutlet private weak var viewTodayForecast: UILabel! // weather description
+  @IBOutlet private weak var viewTodayWeather: UILabel! // tempereture of today
+  @IBOutlet private weak var viewImageTodayWeather: UIImageView! // temperature of today icon
   
-  @IBOutlet private var viewWind: UILabel! // wind speed
-  @IBOutlet private var viewHumidity: UILabel! // humidity
-  @IBOutlet private var viewSunrise: UILabel! // sunrise
-  @IBOutlet private var viewDrops: UILabel! // rain
-  @IBOutlet private var viewDirections: UILabel! // direction of wind
-  @IBOutlet private var viewPressure: UILabel! // pressure of 
+  @IBOutlet private weak var viewWind: UILabel! // wind speed
+  @IBOutlet private weak var viewHumidity: UILabel! // humidity
+  @IBOutlet private weak var viewSunrise: UILabel! // sunrise
+  @IBOutlet private weak var viewDrops: UILabel! // rain
+  @IBOutlet private weak var viewDirections: UILabel! // direction of wind
+  @IBOutlet private weak var viewPressure: UILabel! // pressure of
 	
   // will held ref for our change or not
   private var selectedtUnitLength: UnitOfLength = .metric

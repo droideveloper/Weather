@@ -13,11 +13,11 @@ import RxCocoa
 
 class MainController: UIViewController {
 	
-  @IBOutlet private var viewTodayForecastButton: UIButton!
-	@IBOutlet private var viewTodayForecastTabItemView: TabItemView!
+  @IBOutlet private weak var viewTodayForecastButton: UIButton!
+	@IBOutlet private weak var viewTodayForecastTabItemView: TabItemView!
 	
-  @IBOutlet private var viewDailyForecastButton: UIButton!
-	@IBOutlet private var viewDailyForecastTabItemView: TabItemView!
+  @IBOutlet private weak var viewDailyForecastButton: UIButton!
+	@IBOutlet private weak var viewDailyForecastTabItemView: TabItemView!
 	
   private let storyBoard = UIStoryboard(name: "Main", bundle: nil)
 	private var todayForecastController: TodayForecastController? = nil
