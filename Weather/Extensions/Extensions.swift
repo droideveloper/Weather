@@ -14,24 +14,24 @@ import Swinject
 extension Double {
   
   /// kelvin to celsius
-	public func kelvinToCelsius() -> Double {
-		return self - 273.15
-	}
+    var kelvinToCelsius: Double {
+        return self - 273.15
+    }
 	
   /// kelvin to fahrenheit
-	public func kelvinToFahrenheit() -> Double {
-		return kelvinToCelsius() * 1.8 + 32
+    var kelvinToFahrenheit: Double {
+		return kelvinToCelsius * 1.8 + 32
 	}
   
   /// meter per seconds to kilometer per hours
-  public func mpsToKmph() -> Double {
-    return self * 3.6
-  }
+    var mpsToKmph: Double {
+        return self * 3.6
+    }
   
   /// meter per seconds to miles per hours
-  public func mpsToMph() -> Double {
-    return mpsToKmph() * 0.62137
-  }
+    var mpsToMph: Double {
+        return mpsToKmph * 0.62137
+    }
 }
 
 extension DisposeBag {
@@ -264,10 +264,10 @@ extension TodayForecast {
     let temperatureAsInt: Int
     switch unit {
       case .celsius:
-        temperatureAsInt = Int(temperature.kelvinToCelsius())
+        temperatureAsInt = Int(temperature.kelvinToCelsius)
         break
       case .fahrenheit:
-        temperatureAsInt = Int(temperature.kelvinToFahrenheit())
+        temperatureAsInt = Int(temperature.kelvinToFahrenheit)
       break
     }
     return String(format: "%d °", temperatureAsInt)
@@ -352,9 +352,9 @@ extension Tempereture {
   public func toDegreeString(unit: UnitOfTemperature) -> String {
     switch unit {
     case .celsius:
-      return String(format: "%d °C", Int(day.kelvinToCelsius()))
+        return String(format: "%d °C", Int(day.kelvinToCelsius))
     case .fahrenheit:
-      return String(format: "%d °F", Int(day.kelvinToFahrenheit()))
+        return String(format: "%d °F", Int(day.kelvinToFahrenheit))
     }
   }
 }
@@ -365,9 +365,9 @@ extension Wind {
   public func toLength(unit: UnitOfLength) -> Double {
     switch unit {
       case .metric:
-        return speed.mpsToKmph()
+        return speed.mpsToKmph
       case .imperial:
-        return speed.mpsToMph()
+        return speed.mpsToMph
     }
   }
 }
