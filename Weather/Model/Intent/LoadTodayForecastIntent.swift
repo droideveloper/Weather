@@ -8,8 +8,9 @@
 
 import Foundation
 import RxSwift
+import MVICocoa
 
-public class LoadTodayForecastIntent: ObservableIntent<TodayForecastModel> {
+class LoadTodayForecastIntent: ObservableIntent<TodayForecastModel> {
 	
 	private let todayForecastRepository: TodayForecastRepository
 	
@@ -27,16 +28,16 @@ public class LoadTodayForecastIntent: ObservableIntent<TodayForecastModel> {
 	}
   
   private func byIntial() -> Reducer<TodayForecastModel> {
-    return { model in model.copy(syncState: refresh) }
+    return { model in model.copy(state: refresh) }
   }
   
   private func bySuccess(_ todayForecast: TodayForecast) -> Reducer<TodayForecastModel> {
-    return { model in model.copy(syncState: idle, data: todayForecast) }
+    return { model in model.copy(state: idle, data: todayForecast) }
   }
   
   private func byFailure(_ error: Error) -> Observable<Reducer<TodayForecastModel>> {
     return Observable.of(
-      { model in model.copy(syncState: ErrorState(error: error)) },
-      { model in model.copy(syncState: idle) })
+      { model in model.copy(state: Failure(error)) },
+      { model in model.copy(state: idle) })
   }
 }

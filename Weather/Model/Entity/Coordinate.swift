@@ -8,19 +8,19 @@
 
 import Foundation
 
-struct Coordinate: Codable, Equatable {
+public struct Coordinate: Codable, Equatable {
 	
-	static let empty = Coordinate(longittude: Double.nan, lattitude: Double.nan)
+	public static let empty = Coordinate(longittude: Double.nan, lattitude: Double.nan)
 	
-	var longittude: Double
-	var lattitude: Double
+	public var longittude: Double
+	public var lattitude: Double
 	
-	enum CodingKeys: String, CodingKey {
+	public enum CodingKeys: String, CodingKey {
 		case longittude = "lon"
 		case lattitude = "lat"
 	}
   
-  static func == (lhs: Coordinate, rhs: Coordinate) -> Bool {
+  public static func == (lhs: Coordinate, rhs: Coordinate) -> Bool {
     return lhs.lattitude == rhs.lattitude
   }
 }

@@ -9,15 +9,12 @@
 import Foundation
 import RxCocoa
 import RxSwift
+import Swinject
+import MVICocoa
 
-class TodayForecastController: UIViewController, View {
-	typealias Model = TodayForecastModel
+class TodayForecastController: BaseViewController<TodayForecastModel, TodayForecastViewModel> {
 	
-	private let viewModel = TodayForecastViewModel()
-	private let disposeBag = DisposeBag()
-	private let events = PublishRelay<Event>()
-		
-  @IBOutlet private weak var viewProgress: UIActivityIndicatorView!
+  @IBOutlet public weak var progress: UIActivityIndicatorView!
   
   @IBOutlet private weak var viewImageBackground: UIImageView! // bg image for selected city
   @IBOutlet private weak var viewCityName: UILabel! // city name
@@ -36,88 +33,64 @@ class TodayForecastController: UIViewController, View {
   private var selectedtUnitLength: UnitOfLength = .metric
   private var selectedUnitTempereture: UnitOfTemperature = .celsius
   
-  private var cityRepository: CityRepository? = nil
   private var userDefaultsRepository: UserDefaultsRepository? = nil
   // city is nil
   private var city = City.empty
   private var todayForecast = TodayForecast.empty
-  
-  override func viewWillAppear(_ animated: Bool) {
-    checkIfMeasumentChanged()
-    super.viewWillAppear(animated)
-  }
-  
-	override func viewDidLoad() {
-		super.viewDidLoad()
+	
+	override func attach() {
+		super.attach()
+		checkIfMeasumentChanged() // check if measurement changed
 		
-		setUp()
-		viewModel.attach()
-    
-    checkIfInitialLoadNeeded() // we will bind background image this way
+		guard let viewModel = viewModel else { return }
+		
+		// bind animating state from coming model state
+		disposeBag += viewModel.state()
+			.map {
+				if let state = $0 as? Process {
+					return state == refresh
+				}
+				return false
+			}
+			.do(onNext: invaldiateProgress(_ :))
+			.subscribe(progress.rx.isAnimating)
+		
+		// bind background image in here
+		disposeBag += viewModel.store()
+			.map { model in model.city }
+			.filter { self.city != $0 }
+			.do(onNext: { city in self.city = city })
+			.map { city in UIImage(named: city.name.lowercased()) }
+			.subscribe(viewImageBackground.rx.image)
+		
+		// bind model
+		disposeBag += viewModel.store()
+			.subscribe(onNext: render(model:))
+		
+		// check if initial load is needed
+		checkIfInitialLoadNeeded()
 	}
 	
-	func setUp() {
-		viewModel.view = self
-    // resolve
-    cityRepository = container?.resolve(CityRepository.self)
-    userDefaultsRepository = container?.resolve(UserDefaultsRepository.self)
-    
-    // bind animating state from coming model state
-    disposeBag += viewModel.state()
-      .map {
-        if let state = $0 as? ProcessState {
-          return state == refresh
-        }
-        return false
-      }
-      .do(onNext: { [weak weakSelf = self] visible in
-        weakSelf?.viewProgress.alpha = visible ? 1 : 0
-      })
-      .subscribe(viewProgress.rx.isAnimating)
-    
-    disposeBag += viewModel.store()
-      .subscribe(onNext: render(model:))
-  }
-	
-	override func viewDidDisappear(_ animated: Bool) {
-		viewModel.view = nil // remove view referance when this is detached
-		super.viewDidDisappear(animated)
-	}
-	
-	func render(model: TodayForecastModel) {
-		if model.syncState is IdleState {
-      render(todayForecast: model.data)
-		} else if model.syncState is ProcessState {
-		} else if model.syncState is ErrorState {
-      if let errorState = model.syncState as? ErrorState {
-        showError(error: errorState.error)
+	override func render(model: TodayForecastModel) {
+		if model.state is Idle {
+			render(todayForecast: model.data)
+		} else if model.state is Process {
+		} else if model.state is Failure {
+      if let failure = model.state as? Failure {
+        showError(failure.error)
       }
 		}
-	}
-	
-	func viewEvents() -> Observable<Event> {
-		return events.share()
 	}
   
   private func checkIfInitialLoadNeeded() {
     if city == City.empty {
-      if let cityRepository = cityRepository, let userDefaultsRepository = userDefaultsRepository {
-        if userDefaultsRepository.selectedCityId != Int(city.id) {
-          // will be done in background
-          disposeBag += cityRepository.loadCities()
-            .subscribeOn(MainScheduler.asyncInstance)
-            .observeOn(MainScheduler.instance)
-            .flatMap { items in Observable.from(items) }
-            .filter { item in item.id == userDefaultsRepository.selectedCityId }
-            .subscribe(onNext: render , onError: showError)
-        }
-      }
+      accept(LoadCityEvent())
     }
     if todayForecast == TodayForecast.empty {
-      events.accept(LoadTodayForecastEvent())
+      accept(LoadTodayForecastEvent())
     }
   }
-  
+
   private func render(todayForecast: TodayForecast) {
     self.todayForecast = todayForecast
     // bind city name
@@ -148,14 +121,9 @@ class TodayForecastController: UIViewController, View {
     // bind drops
     viewDrops.text = todayForecast.toRain()
   }
-  
-  private func render(city: City) {
-    self.city = city
-    viewImageBackground.image = UIImage(named: city.name.lowercased()) // we will pull new image this way
-  }
-  
+
   private func checkIfMeasumentChanged() {
-    if let userDefaultsRepository = container?.resolve(UserDefaultsRepository.self) {
+    if let userDefaultsRepository = userDefaultsRepository {
       let newUnitLength = UnitOfLength(rawValue: userDefaultsRepository.selectedUnitOfLength) ?? .metric
       let newUnitTempereture = UnitOfTemperature(rawValue: userDefaultsRepository.selectedUnitOfTemperature) ?? .celsius
       if newUnitLength != selectedtUnitLength {
@@ -174,4 +142,8 @@ class TodayForecastController: UIViewController, View {
       }
     }
   }
+
+	private func invaldiateProgress(_ visible: Bool) {
+		progress.alpha = visible ? 1 : 0
+	}
 }

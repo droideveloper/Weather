@@ -10,16 +10,12 @@ import Foundation
 import UIKit
 import RxSwift
 import RxCocoa
+import MVICocoa
 
-class DailyForecastController: UIViewController, View {
-  typealias Model = DailyForecastModel
-  
-  private let viewModel = DailyForecastViewModel()
-  private let disposeBag = DisposeBag()
-  private let events = PublishRelay<Event>()
+class DailyForecastController: BaseViewController<DailyForecastModel, DailyForecastViewModel> {
 
 	@IBOutlet private weak var viewTable: UITableView!
-	@IBOutlet private weak var viewProgress: UIActivityIndicatorView!
+	@IBOutlet private weak var progress: UIActivityIndicatorView!
 	
   private let dataSet = ObservableList<DailyForecast>()
   private lazy var dataSource = {
@@ -29,51 +25,50 @@ class DailyForecastController: UIViewController, View {
   // will held ref for our change or not
   private var selectedUnitTempereture: UnitOfTemperature = .celsius
 	
-  override func viewWillAppear(_ animated: Bool) {
-    checkIfMeasumentChanged()
-    super.viewWillAppear(animated)
-  }
-  
-  override func viewDidLoad() {
-    super.viewDidLoad()
-		setUp()
-		self.viewModel.attach()
-    
-    checkIfInitialLoadNeeded()
-	}
-	
-	func setUp() {
-		self.viewModel.view = self
-    dataSet.register(self.viewTable)
-		
-		disposeBag += viewModel.state()
-			.map {
-				if let state = $0 as? ProcessState {
-					return state == refresh
-				}
-				return false
-			}
-			.do(onNext: invaldiateProgress(_ :))
-			.subscribe(viewProgress.rx.isAnimating)
-		
+	override func setUp() {
     // register our xib file for dequeue
     self.viewTable.register(UINib(nibName: "DailyForecastCell", bundle: Bundle.main), forCellReuseIdentifier: DailyForecastDataSource.dailyForecastCell)
     // we will set style of
     self.viewTable.separatorStyle = .none
     self.viewTable.dataSource = dataSource
-    
-    disposeBag += viewModel.store()
-      .subscribe(onNext: render(model:))
 	}
 	
-  func render(model: DailyForecastModel) {
-    if model.syncState is IdleState {
+	override func attach() {
+		super.attach()
+		// bind data
+		dataSet.register(self.viewTable)
+		
+		guard let viewModel = viewModel else { return }
+		
+		// bind progress
+		disposeBag += viewModel.state()
+			.map {
+				if let state = $0 as? Process {
+					return state == refresh
+				}
+				return false
+			}
+			.do(onNext: invaldiateProgress(_ :))
+			.subscribe(progress.rx.isAnimating)
+		
+		// bind model
+		disposeBag += viewModel.store()
+			.subscribe(onNext: render(model:))
+		
+		// check if measurement changed
+		checkIfMeasumentChanged()
+		// check if initial load is needed
+		checkIfInitialLoadNeeded()
+	}
+	
+  override func render(model: DailyForecastModel) {
+    if model.state is Idle {
       render(data: model.data)
-    } else if model.syncState is ProcessState {
+    } else if model.state is Process {
       // do we need any thing in here when state is process
-    } else if model.syncState is ErrorState {
-      if let errorState = model.syncState as? ErrorState {
-        showError(error: errorState.error)
+    } else if model.state is Process {
+      if let failure = model.state as? Failure {
+        showError(failure.error)
       }
     }
   }
@@ -83,10 +78,6 @@ class DailyForecastController: UIViewController, View {
 		super.viewDidDisappear(animated)
 	}
   
-  func viewEvents() -> Observable<Event> {
-    return events.asObservable()
-  }
-  
   private func render(data: [DailyForecast]) {
     if !data.isEmpty {
       dataSet.append(data)
@@ -95,12 +86,12 @@ class DailyForecastController: UIViewController, View {
   
   private func checkIfInitialLoadNeeded() {
     if dataSet.isEmpty {
-      events.accept(LoadDailyForecastEvent())
+      accept(LoadDailyForecastEvent())
     }
   }
 	
 	private func invaldiateProgress(_ visible: Bool) {
-		viewProgress.alpha = visible ? 1 : 0
+		progress.alpha = visible ? 1 : 0
 	}
   
   private func checkIfMeasumentChanged() {

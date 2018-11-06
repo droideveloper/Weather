@@ -10,13 +10,14 @@ import Foundation
 import RxSwift
 import RxCocoa
 import UIKit
+import MVICocoa
 
 class SettingController: UIViewController, UITableViewDelegate {
 	
 	@IBOutlet private weak var viewTable: UITableView!
 	@IBOutlet private weak var viewPicker: UIPickerView!
 	
-	private var disposeBag = DisposeBag()
+	private var disposeBag = CompositeDisposeBag()
 	
 	private lazy var dataSet = {
 		return ObservableList<Settingable>()
@@ -75,7 +76,6 @@ class SettingController: UIViewController, UITableViewDelegate {
 	}
 	
 	private func bindData(_ dataSource: Observable<[String]>) {
-		disposeBag = DisposeBag()
 		disposeBag += dataSource.bind(to: viewPicker.rx.itemTitles) {_, item in item }
 		disposeBag += viewPicker.rx.modelSelected(String.self).subscribe(onNext: optionSelected(_ :))
 		if let userDefaultsRepository = container?.resolve(UserDefaultsRepository.self) {
