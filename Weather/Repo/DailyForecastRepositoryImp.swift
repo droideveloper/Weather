@@ -8,8 +8,11 @@
 
 import Foundation
 import RxSwift
+import MVICocoa
 
 class DailyForecastRepositoryImp: DailyForecastRepository {
+	
+	private let keyDailyForecastFile = "daily_forecast.json"
 	
 	private let fileRepository: FileRepository
 	private let weatherService: WeatherService
@@ -26,9 +29,10 @@ class DailyForecastRepositoryImp: DailyForecastRepository {
 	}
 	
 	fileprivate func ifNetworkFails(_ error: Error) -> Observable<[DailyForecast]> {
+		let url = fileRepository.file(for: keyDailyForecastFile)
 		return Observable.of(fileRepository)
 			.flatMap { fileRepository -> Observable<[DailyForecast]> in
-				if let url = fileRepository.dailyForecastUrl {
+				if let url = url {
 					return fileRepository.read(url: url, as: [DailyForecast].self)
 				}
 				return Observable.error(error)
@@ -36,9 +40,10 @@ class DailyForecastRepositoryImp: DailyForecastRepository {
 	}
 	
 	fileprivate func persistIfNeeded(_ dailyForecasts: [DailyForecast]) -> Observable<[DailyForecast]> {
+		let url = fileRepository.file(for: keyDailyForecastFile)
 		return Observable.of(fileRepository)
 			.flatMap { fileRepository -> Observable<[DailyForecast]> in
-				if let url = fileRepository.dailyForecastUrl {
+				if let url = url {
 					return fileRepository.write(url: url, object: dailyForecasts)
 						.andThen(Observable.of(dailyForecasts))
 				}

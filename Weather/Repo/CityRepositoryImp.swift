@@ -8,11 +8,14 @@
 
 import Foundation
 import RxSwift
+import MVICocoa
 
 class CityRepositoryImp: CityRepository {
 	
 	private let fileName = "cities"
 	private let fileMime = "json"
+	
+	private let keyCityFile = "cities.json"
 	
 	private let fileRepository: FileRepository
 	private var userDefaultsRepository: UserDefaultsRepository
@@ -28,17 +31,18 @@ class CityRepositoryImp: CityRepository {
 			return readSource()
         .flatMap(persistIfNeeded(_ :))
 		} else {
-			if let cityStoredUrl = fileRepository.cityUrl {
-				return fileRepository.read(url: cityStoredUrl, as: [City].self)
+			if let url = fileRepository.file(for: keyCityFile) {
+				return fileRepository.read(url: url, as: [City].self)
 			}
 			return Observable.never()
 		}
   }
 	
 	fileprivate func persistIfNeeded(_ cities: [City]) -> Observable<[City]> {
+		let url = fileRepository.file(for: keyCityFile)
 		return Observable.of(fileRepository)
 			.flatMap { fileRepository -> Observable<[City]> in
-				if let url = fileRepository.cityUrl {
+				if let url = url {
 					return fileRepository.write(url: url, object: cities)
 						.andThen(Observable.of(cities))
 				}

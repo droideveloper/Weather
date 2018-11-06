@@ -7,8 +7,11 @@
 //
 
 import Foundation
+import MVICocoa
 
 class UserDefaultsRepositoryImp: UserDefaultsRepository {
+	
+	private let keyCityFile = "cities.json"
 	
 	private let keySelectedCity = "key.selected.city"
 	private let keySelectedUnitOfLength = "key.selected.unit.of.length"
@@ -48,7 +51,8 @@ class UserDefaultsRepositoryImp: UserDefaultsRepository {
 	
 	var shouldReadFromLocalRepository: Bool {
 		get {
-      if let url = fileRepository.cityUrl {
+			let url = fileRepository.file(for: keyCityFile)
+      if let url = url {
         return !fileManaeger.fileExists(atPath: url.path) // if not exists we read from bundled file...
       }
       return true
