@@ -8,16 +8,23 @@
 
 import Foundation
 import UIKit
+import MVICocoa
 
-class SettingDataSource: BaseTableDataSource<Settingable> {
+class SettingDataSource: NSObject, UITableViewDataSource {
 	
 	static let settingCell = "kSettingCell"
 	
-	override init(dataSet: ObservableList<Settingable>) {
-		super.init(dataSet: dataSet)
+	private let dataSet: ObservableList<Settingable>
+	
+	init(dataSet: ObservableList<Settingable>) {
+		self.dataSet = dataSet
 	}
 	
-	override func indentifierForIndexPath(_ indexPath: IndexPath) -> String {
-		return SettingDataSource.settingCell
+	func numberOfSections(in tableView: UITableView) -> Int {
+		return 1
+	}
+	
+	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+		
 	}
 }

@@ -7,15 +7,17 @@
 //
 
 import Foundation
+import MVICocoa
 
 public struct DailyForecastModel: Model {
+	public typealias Entity = [DailyForecast]
 	
-	static let initState = DailyForecastModel(syncState: idle, data: [DailyForecast]())
+	public static let empty = DailyForecastModel(syncState: idle, data: [DailyForecast]())
 	
-	var syncState: SyncState
-	var data: [DailyForecast]
+	public var syncState: SyncState
+	public var data: [DailyForecast]
   
-  func copy(syncState: SyncState? = nil, data: [DailyForecast]? = nil) -> DailyForecastModel {
+  public func copy(syncState: SyncState? = nil, data: [DailyForecast]? = nil) -> DailyForecastModel {
     return DailyForecastModel(syncState: syncState ?? self.syncState, data: data ?? self.data)
   }
 }
