@@ -20,11 +20,20 @@ class SettingDataSource: NSObject, UITableViewDataSource {
 		self.dataSet = dataSet
 	}
 	
+	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+		return dataSet.count
+	}
+	
 	func numberOfSections(in tableView: UITableView) -> Int {
 		return 1
 	}
 	
 	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-		
+		let cell = tableView.dequeueReusableCell(withIdentifier: SettingDataSource.settingCell)
+		if let cell = cell as? SettingCell {
+			cell.bind(entity: dataSet.get(indexPath.row))
+			return cell
+		}
+		fatalError("error we can not recognize setting cell")
 	}
 }

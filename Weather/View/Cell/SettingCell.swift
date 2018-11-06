@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class SettingCell: TableViewCell<Settingable> {
+class SettingCell: UITableViewCell {
 	
 	@IBOutlet private weak var viewTextTitle: UILabel!
 	@IBOutlet private weak var viewTextSubtitle: UILabel!
@@ -19,7 +19,7 @@ class SettingCell: TableViewCell<Settingable> {
 		selectionStyle = .none
 	}
 	
-	override func bind(entity: Settingable) {
+	func bind(entity: Settingable) {
 		viewTextTitle.text = entity.title
 		viewTextSubtitle.text = entity.value
 	}

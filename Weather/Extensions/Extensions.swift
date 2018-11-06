@@ -10,6 +10,7 @@ import Foundation
 import RxSwift
 import Alamofire
 import Swinject
+import MVICocoa
 
 extension Double {
   
@@ -34,86 +35,6 @@ extension Double {
     }
 }
 
-extension DisposeBag {
-	
-	static func += (disposeBag: DisposeBag, disposable: Disposable) {
-		disposeBag.insert(disposable)
-	}
-}
-
-extension Observable where Element == Event {
-	
-	func toIntent(_ block: @escaping (Element) throws -> Intent) -> Observable<Intent> {
-		return self.map(block)
-	}
-}
-
-extension Observable where Element == Intent {
-	
-	func toReducer<T>() -> Observable<Reducer<T>> {
-    return self.concatMap { intent -> Observable<Reducer<T>> in
-      if let intent = intent as? ObservableIntent<T> {
-        return intent.invoke()
-      } else if let intent = intent as? ReducerIntent<T> {
-        return intent.toObservable()
-      }
-      return intent.toObservableNever()
-    }
-	}
-}
-
-extension Observable {
-  
-  func async() -> Observable<Element> {
-    return self.subscribeOn(MainScheduler.asyncInstance)
-      .observeOn(MainScheduler.instance)
-  }
-}
-
-extension Intent {
-  
-  func toObservableNever<T>() -> Observable<T> {
-    return Observable.never()
-  }
- 
-  func toObservableError<T>(domain: String, code: Int) -> Observable<T> {
-    return Observable.error(NSError(domain: domain, code: code, userInfo: nil))
-  }
-}
-
-extension ReducerIntent {
-  
-  func toObservable() -> Observable<Reducer<T>> {
-    return Observable.of(invoke())
-  }
-}
-
-extension UITableView: PropertyChangable {
-	
-	/// ui table view default imple
-	public func notifyItemsChanged(_ index: Int, size: Int) {
-		let paths = toIndexPath(index: index, size: size)
-		self.reloadRows(at: paths, with: .automatic)
-	}
-	
-	public func notifyItemsRemoved(_ index: Int, size: Int) {
-		let paths = toIndexPath(index: index, size: size)
-		self.deleteRows(at: paths, with: .automatic)
-	}
-	
-  public func notifyItemsInserted(_ index: Int, size: Int, initial: Bool) {
-    if initial {
-      self.reloadData()
-    } else {
-      let paths = toIndexPath(index: index, size: size)
-      self.insertRows(at: paths, with: .automatic)
-    }
-	}
-	
-	private func toIndexPath(index: Int, size: Int) -> [IndexPath] {
-		return Array(index...size).map { position in IndexPath(row: position, section: 0) }
-	}
-}
 
 extension String {
 	
@@ -128,75 +49,21 @@ extension String {
   }
 }
 
-
-extension UIViewController {
-	
-	/// container that holds dependency injection resolvable items for view controllers
-  var container: Container? {
-    get {
-      if let delegate = UIApplication.shared.delegate as? AppDelegate {
-        return delegate.container
-      }
-      return nil
-    }
-  }
-	
-	/// attach child view controller to parent view controller as provided in parameter
-	func attachParentViewController(viewController: UIViewController) {
-		viewController.addChild(self)
-		if let view = viewController.view.viewWithTag(0xFF) {
-      self.view.frame = view.bounds // lets try to set it this way
-			view.addSubview(self.view)
-			self.didMove(toParent: viewController)
-		} else {
-			fatalError("you can only pass child view controller fo view tag \(0xFF)")
-		}
-	}
-	
-	/// detach child view controller from it's perent view controller
-	func detachParentViewController() {
-		self.willMove(toParent: nil)
-		self.view.removeFromSuperview()
-		self.removeFromParent()
-	}
-  
-  /// showing error on any view controller instance
-  func showError(error: Error) {
-    let alertController = UIAlertController(title: "Error", message: error.localizedDescription, preferredStyle: .alert)
-    self.present(alertController, animated: true, completion: nil)
-  }
-}
-
 extension UIColor {
 	
 	/// bright blue color as #0054ED hex
 	static var brightBlue: UIColor {
 		get {
-			return UIColor.parse(0x0054ED)
+			return UIColor.convert(0x0054ED)
 		}
 	}
 	
 	/// plae grey color as #ECF0F8 hex
 	static var paleGrey: UIColor {
 		get {
-			return UIColor.parse(0xECF0F8)
+			return UIColor.convert(0xECF0F8)
 		}
 	}
-	
-	/// color parse func that parses 0xFFFFFF representation of int into UIColor
-  static func parse(_ color: Int) -> UIColor {
-    return parse((color >> 16) & 0xFF, (color >> 8) & 0xFF, (color & 0xFF))
-  }
-	
-	/// color parse sub function that will convert int (0 - 255) for each channel
-  static func parse(_ red: Int, _ green: Int, _ blue: Int) -> UIColor {
-    return parse(red, green, blue, 1)
-  }
-	
-	/// color parse sub function that will convert int (0 - 255) for each channel with alpha
-  static func parse(_ red: Int, _ green: Int, _ blue: Int, _ alpha: Int) -> UIColor {
-    return UIColor(red: CGFloat(red) / 255.0, green: CGFloat(green) / 255.0, blue: CGFloat(blue) / 255.0, alpha: CGFloat(alpha))
-  }
 }
 
 extension DailyForecast {

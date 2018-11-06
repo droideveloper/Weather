@@ -8,16 +8,19 @@
 
 import UIKit
 import Swinject
+import MVICocoa
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, Injectable {
 	
 	var window: UIWindow?
-  var container: Container?
+	lazy var container = {
+		Container()
+	}()
 	
 	func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-    let module = Module()
-    self.container = module.container
+    // let module = Module()
+    // self.container = module.container
 		// Override point for customization after application launch.
 		return true
 	}

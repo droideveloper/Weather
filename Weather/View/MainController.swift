@@ -10,6 +10,7 @@ import Foundation
 import UIKit
 import RxSwift
 import RxCocoa
+import MVICocoa
 
 class MainController: UIViewController {
 	
@@ -23,7 +24,7 @@ class MainController: UIViewController {
 	private var todayForecastController: TodayForecastController? = nil
 	private var dailyForecastController: DailyForecastController? = nil
 	
-	private let disposeBag = DisposeBag()
+	private let disposeBag = CompositeDisposeBag()
   
 	
 	override func viewWillAppear(_ animated: Bool) {
@@ -81,8 +82,8 @@ class MainController: UIViewController {
   
   private func applyControllerSelection(_ attached: UIViewController?, _ detached: UIViewController?) {
 		if detached?.view?.superview != nil {
-    	detached?.detachParentViewController()
+    	detached?.detachFromParentViewController()
 		}
-    attached?.attachParentViewController(viewController: self)
+    attached?.attachTo(parentViewController: self)
   }
 }

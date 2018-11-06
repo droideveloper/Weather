@@ -12,12 +12,12 @@ import MVICocoa
 public struct DailyForecastModel: Model {
 	public typealias Entity = [DailyForecast]
 	
-	public static let empty = DailyForecastModel(syncState: idle, data: [DailyForecast]())
+	public static let empty = DailyForecastModel(state: idle, data: [])
 	
-	public var syncState: SyncState
+	public var state: SyncState
 	public var data: [DailyForecast]
   
-  public func copy(syncState: SyncState? = nil, data: [DailyForecast]? = nil) -> DailyForecastModel {
-    return DailyForecastModel(syncState: syncState ?? self.syncState, data: data ?? self.data)
+  public func copy(state: SyncState? = nil, data: [DailyForecast]? = nil) -> DailyForecastModel {
+    return DailyForecastModel(state: state ?? self.state, data: data ?? self.data)
   }
 }

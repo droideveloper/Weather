@@ -8,21 +8,21 @@
 
 import Foundation
 
-struct City: Codable, Equatable {
+public struct City: Codable, Equatable {
   
-  static let empty = City(id: Int64.min, name: String.empty, coordinate: Coordinate.empty)
+  public static let empty = City(id: Int64.min, name: String.empty, coordinate: Coordinate.empty)
   
-	var id: Int64
-	var name: String
-	var coordinate: Coordinate
+	public var id: Int64
+	public var name: String
+	public var coordinate: Coordinate
 	
-	enum CodingKeys: String, CodingKey {
+	public enum CodingKeys: String, CodingKey {
 		case id
 		case name
 		case coordinate = "coord"
 	}
   
-  static func == (lhs: City, rhs: City) -> Bool {
+  public static func == (lhs: City, rhs: City) -> Bool {
     return lhs.id == rhs.id
   }
 }

@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 import RxSwift
+import MVICocoa
 
 class StartUpController: UIViewController {
   
@@ -17,7 +18,7 @@ class StartUpController: UIViewController {
   @IBOutlet private weak var viewButtonContinue: UIButton!
   @IBOutlet private weak var viewCityPicker: UIPickerView!
 	
-	private let disposeBag = DisposeBag()
+	private let disposeBag = CompositeDisposeBag()
 	
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
