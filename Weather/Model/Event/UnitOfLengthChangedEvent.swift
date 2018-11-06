@@ -7,5 +7,6 @@
 //
 
 import Foundation
+import MVICocoa
 
 public class UnitOfLengthChangedEvent: Event {}

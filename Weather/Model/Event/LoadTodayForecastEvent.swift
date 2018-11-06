@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import MVICocoa
 import Swinject
 
 class LoadTodayForecastEvent: Event {

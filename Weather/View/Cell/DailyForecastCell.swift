@@ -8,11 +8,10 @@
 
 import Foundation
 import UIKit
-import CoreGraphics
-import RxSwift
+import MVICocoa
 import AlamofireImage
 
-class DailyForecastCell: TableViewCell<DailyForecast> {
+class DailyForecastCell: UITableViewCell {
   
   @IBOutlet weak var viewImageDailyForecast: UIImageView!
   @IBOutlet weak var viewTextTitleDailyForecast: UILabel!
@@ -20,21 +19,26 @@ class DailyForecastCell: TableViewCell<DailyForecast> {
 	
 	private let keySelectedUnitOfTemperature = "key.selected.unit.of.temperature"
 	private let userDefaults = UserDefaults.standard
-  
-  private let disposeBag = DisposeBag()
-  
+	
   private lazy var dateFormatter: DateFormatter = {
     let dateFormat = DateFormatter()
     dateFormat.dateFormat = "EEEE"
     return dateFormat
   }()
-  
+	
+	private let disposeBag = CompositeDisposeBag()
+	
   required init?(coder aDecoder: NSCoder) {
     super.init(coder: aDecoder)
     self.selectionStyle = .none // disable selection here
   }
+	
+	override func prepareForReuse() {
+		super.prepareForReuse()
+		disposeBag.clear()
+	}
 
-	override func bind(entity: DailyForecast) {
+	func bind(entity: DailyForecast) {
     if let weather = entity.weathers.first {
       // capitelize text
       let text = weather.toDescription()
