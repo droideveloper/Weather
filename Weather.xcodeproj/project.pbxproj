@@ -9,8 +9,6 @@
 /* Begin PBXBuildFile section */
 		050636BE216CBD6000E3195E /* Coordinate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 050636BD216CBD6000E3195E /* Coordinate.swift */; };
 		05296535216F5AAE001286CC /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05296534216F5AAE001286CC /* Extensions.swift */; };
-		05296537216F5D5A001286CC /* FileRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05296536216F5D5A001286CC /* FileRepository.swift */; };
-		05296539216F5DDB001286CC /* FileRepositoryImp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05296538216F5DDB001286CC /* FileRepositoryImp.swift */; };
 		05A7C225216CC02800724CBF /* Weather.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05A7C224216CC02800724CBF /* Weather.swift */; };
 		05A7C227216CCAF600724CBF /* Wind.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05A7C226216CCAF600724CBF /* Wind.swift */; };
 		05A7C229216CCB4300724CBF /* Cloud.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05A7C228216CCB4300724CBF /* Cloud.swift */; };
@@ -20,7 +18,6 @@
 		05A7C231216CCE8700724CBF /* DailyForecast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05A7C230216CCE8700724CBF /* DailyForecast.swift */; };
 		05A7C233216CCF3200724CBF /* City.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05A7C232216CCF3200724CBF /* City.swift */; };
 		05A7C235216CD00000724CBF /* DailyWeather.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05A7C234216CD00000724CBF /* DailyWeather.swift */; };
-		05A7C23C216CE11600724CBF /* Requestable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05A7C23B216CE11600724CBF /* Requestable.swift */; };
 		05A7C23E216CE1F200724CBF /* WeatherRequestable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05A7C23D216CE1F200724CBF /* WeatherRequestable.swift */; };
 		05A7C241216CF37100724CBF /* UserDefaultsRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05A7C240216CF37100724CBF /* UserDefaultsRepository.swift */; };
 		05A7C243216CF3D100724CBF /* UserDefaultsRepositoryImp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05A7C242216CF3D100724CBF /* UserDefaultsRepositoryImp.swift */; };
@@ -113,8 +110,6 @@
 		0431B506F4D21F986459833D /* Pods-WeatherUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeatherUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-WeatherUITests/Pods-WeatherUITests.release.xcconfig"; sourceTree = "<group>"; };
 		050636BD216CBD6000E3195E /* Coordinate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinate.swift; sourceTree = "<group>"; };
 		05296534216F5AAE001286CC /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
-		05296536216F5D5A001286CC /* FileRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileRepository.swift; sourceTree = "<group>"; };
-		05296538216F5DDB001286CC /* FileRepositoryImp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileRepositoryImp.swift; sourceTree = "<group>"; };
 		05A7C224216CC02800724CBF /* Weather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Weather.swift; sourceTree = "<group>"; };
 		05A7C226216CCAF600724CBF /* Wind.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Wind.swift; sourceTree = "<group>"; };
 		05A7C228216CCB4300724CBF /* Cloud.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cloud.swift; sourceTree = "<group>"; };
@@ -124,7 +119,6 @@
 		05A7C230216CCE8700724CBF /* DailyForecast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyForecast.swift; sourceTree = "<group>"; };
 		05A7C232216CCF3200724CBF /* City.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = City.swift; sourceTree = "<group>"; };
 		05A7C234216CD00000724CBF /* DailyWeather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyWeather.swift; sourceTree = "<group>"; };
-		05A7C23B216CE11600724CBF /* Requestable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Requestable.swift; sourceTree = "<group>"; };
 		05A7C23D216CE1F200724CBF /* WeatherRequestable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherRequestable.swift; sourceTree = "<group>"; };
 		05A7C240216CF37100724CBF /* UserDefaultsRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsRepository.swift; sourceTree = "<group>"; };
 		05A7C242216CF3D100724CBF /* UserDefaultsRepositoryImp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsRepositoryImp.swift; sourceTree = "<group>"; };
@@ -258,7 +252,6 @@
 		05A7C238216CE0F000724CBF /* Net */ = {
 			isa = PBXGroup;
 			children = (
-				05A7C23B216CE11600724CBF /* Requestable.swift */,
 				05A7C23D216CE1F200724CBF /* WeatherRequestable.swift */,
 				05A7C244216CF96A00724CBF /* WeatherService.swift */,
 				05AC274B216E0232000859F7 /* WeatherServiceImp.swift */,
@@ -271,8 +264,6 @@
 			children = (
 				05A7C240216CF37100724CBF /* UserDefaultsRepository.swift */,
 				05A7C242216CF3D100724CBF /* UserDefaultsRepositoryImp.swift */,
-				05296536216F5D5A001286CC /* FileRepository.swift */,
-				05296538216F5DDB001286CC /* FileRepositoryImp.swift */,
 				3D754D77216FC79100730F1E /* CityRepository.swift */,
 				3D754D79216FC7E900730F1E /* CityRepositoryImp.swift */,
 				3DA776122170CFC3008FA53A /* TodayForecastRepository.swift */,
@@ -625,9 +616,12 @@
 				"${SRCROOT}/Pods/Target Support Files/Pods-Weather/Pods-Weather-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/AlamofireImage/AlamofireImage.framework",
+				"${BUILT_PRODUCTS_DIR}/MVICocoa/MVICocoa.framework",
+				"${BUILT_PRODUCTS_DIR}/RxAtomic/RxAtomic.framework",
 				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
 				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/Swinject/Swinject.framework",
+				"${BUILT_PRODUCTS_DIR}/SwinjectStoryboard/SwinjectStoryboard.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
@@ -635,9 +629,12 @@
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AlamofireImage.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MVICocoa.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxAtomic.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Swinject.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwinjectStoryboard.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -727,13 +724,10 @@
 				3DD0BD9D217FA9C500130150 /* Settingable.swift in Sources */,
 				3DF90CE5217A0D7C0074FE7B /* MainController.swift in Sources */,
 				3DA4B575217DF6790075DB52 /* RoundedBackgroundView.swift in Sources */,
-				05296537216F5D5A001286CC /* FileRepository.swift in Sources */,
 				05A7C22F216CCD3B00724CBF /* TodayForecast.swift in Sources */,
 				3DF90CE7217A22360074FE7B /* UnitOfLengthChangedEvent.swift in Sources */,
-				05296539216F5DDB001286CC /* FileRepositoryImp.swift in Sources */,
 				3DA776062170C8B6008FA53A /* DailyForecastModel.swift in Sources */,
 				3D151F6F2174D47200CAA859 /* LoadDailyForecastIntent.swift in Sources */,
-				05A7C23C216CE11600724CBF /* Requestable.swift in Sources */,
 				3DF90CE1217A08590074FE7B /* ConnectivityRepositoryImp.swift in Sources */,
 				3D9C035E217CE3FD00B05EA0 /* TabLabel.swift in Sources */,
 				05A7C22D216CCC0300724CBF /* Main.swift in Sources */,

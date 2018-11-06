@@ -8,6 +8,7 @@
 
 import Foundation
 import Alamofire
+import MVICocoa
 
 enum WeatherRequestable: Requestable {
 	case dailyForecast(cityId: Int)
