@@ -12,12 +12,10 @@ import RxCocoa
 import UIKit
 import MVICocoa
 
-class SettingController: UIViewController, UITableViewDelegate {
+class SettingController: BaseViewController<SettingModel, SettingViewModel>, UITableViewDelegate {
 	
 	@IBOutlet private weak var viewTable: UITableView!
 	@IBOutlet private weak var viewPicker: UIPickerView!
-	
-	private var disposeBag = CompositeDisposeBag()
 	
 	private lazy var dataSet = {
 		return ObservableList<Settingable>()
@@ -30,24 +28,47 @@ class SettingController: UIViewController, UITableViewDelegate {
 	private let lengthData = ["Metric", "Imperial"]
 	private let temperetureData = ["Celsius", "Fahrenheit"]
 	
+	private var selectionDisposable: Disposable = Disposables.create()
+	
 	private var selectionMode = -1
 	// cosntants
 	private let lengthSelection = 0
 	private let temperetureSelection = 1
 	
-  override func viewDidLoad() {
-    super.viewDidLoad()
-		dataSet.register(viewTable)
-		
+	override func setUp() {
 		viewPicker.alpha = 0 // hide view now
 		
 		viewTable.register(UINib(nibName: "SettingCell", bundle: Bundle.main), forCellReuseIdentifier: SettingDataSource.settingCell)
 		viewTable.separatorStyle = .none
 		viewTable.dataSource = dataSource
 		viewTable.delegate = self
+	}
+	
+	override func attach() {
+		super.attach()
+		dataSet.register(viewTable)
 		
 		checkIfInitialLoadNeeded()
-  }
+	}
+	
+	override func render(model: SettingModel) {
+		if model.state is Idle {
+			if (!model.data.isEmpty) {
+				dataSet.append(model.data)
+			}
+			if (!model.dataSet.isEmpty) {
+				// bind data
+				_ = Observable.of(model.dataSet)
+					.bind(to: viewPicker.rx.itemTitles) { _, item in item }
+				// selection ref
+				selectionDisposable.dispose()
+				selectionDisposable = viewPicker.rx.modelSelected(String.self)
+					.map { $0.first ?? String.empty }
+					.filter { $0 != String.empty }
+					.subscribe(onNext: { index in } ) // 
+			}
+		}
+	}
   
   override func viewDidDisappear(_ animated: Bool) {
 		dataSet.unregister(viewTable)
@@ -69,9 +90,7 @@ class SettingController: UIViewController, UITableViewDelegate {
 	
 	private func checkIfInitialLoadNeeded() {
 		if dataSet.isEmpty {
-			if let userDefaultsRepository = container?.resolve(UserDefaultsRepository.self) {
-				dataSet.append([LengthSetting(userDefaultsRepository: userDefaultsRepository), TemperetureSetting(userDefaultsRepository: userDefaultsRepository)])
-			}
+			accept(LoadSettingEvent())
 		}
 	}
 	
