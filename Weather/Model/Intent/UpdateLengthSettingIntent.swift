@@ -11,7 +11,7 @@ import MVICocoa
 
 class UpdateLengthSettingIntent: ReducerIntent<SettingModel> {
 
-	private let userDefaultsRepository: userDefaultsRepository
+	private let userDefaultsRepository: UserDefaultsRepository
 	
 	init(userDefaultsRepository: UserDefaultsRepository) {
     self.userDefaultsRepository = userDefaultsRepository
