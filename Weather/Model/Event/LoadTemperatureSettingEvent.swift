@@ -13,7 +13,9 @@ import Swinject
 class LoadTemperatureSettingEvent: Event {
 
   override func toIntent(container: Container?) -> Intent {
-    // TODO provide relative dependency here
-    return super.toIntent(container: container) // will provide nothing intent if there is no intent relative to this event 
+		if let userDefaultsRepository = container?.resolve(UserDefaultsRepository.self) {
+    	return LoadTemperatureSettingIntent(userDefaultsRepository: userDefaultsRepository)
+		}
+		return super.toIntent(container: container)
   }
 }

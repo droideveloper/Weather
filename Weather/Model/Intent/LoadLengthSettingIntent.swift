@@ -7,12 +7,22 @@
 //
 
 import Foundation
+import RxSwift
 import MVICocoa
 
-class LoadLengthSettingIntent: ReducerIntent<SettingModel> {
+class LoadLengthSettingIntent: ObservableIntent<SettingModel> {
 	
-  override func invoke() -> Reducer<SettingModel> {
+	private let userDefaultsRepository: UserDefaultsRepository
+	
+	init(userDefaultsRepository: UserDefaultsRepository) {
+		self.userDefaultsRepository = userDefaultsRepository
+	}
+	
+  override func invoke() -> Observable<Reducer<SettingModel>> {
 		let dataSet = ["Metric", "Imperial"]
-		return { model in model.copy(state: idle, dataSet: dataSet) }
+		let position = userDefaultsRepository.selectedUnitOfLength
+		return Observable.of(
+			{ model in model.copy(state: settingSelection, dataSet: dataSet, position: position) },
+			{ model in model.copy(state: idle, data: [], dataSet: [], position: -1) })
   }
 }
