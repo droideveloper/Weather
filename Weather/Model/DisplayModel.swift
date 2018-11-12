@@ -17,7 +17,7 @@ public struct DisplayModel: Model {
 	public var state: SyncState
 	public var data: Display
 	
-	public func copy(state: SyncState?, data: Display?) -> DisplayModel {
+	public func copy(state: SyncState? = nil, data: Display? = nil) -> DisplayModel {
 		return DisplayModel(state: state ?? self.state, data: data ?? self.data)
 	}
 }

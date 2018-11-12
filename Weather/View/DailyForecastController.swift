@@ -43,7 +43,7 @@ class DailyForecastController: BaseViewController<DailyForecastModel, DailyForec
 		// bind progress
 		disposeBag += viewModel.state()
 			.map {
-				if let state = $0 as? Process {
+				if let state = $0 as? Operation {
 					return state == refresh
 				}
 				return false
@@ -64,9 +64,9 @@ class DailyForecastController: BaseViewController<DailyForecastModel, DailyForec
   override func render(model: DailyForecastModel) {
     if model.state is Idle {
       render(data: model.data)
-    } else if model.state is Process {
+    } else if model.state is Operation {
       // do we need any thing in here when state is process
-    } else if model.state is Process {
+    } else if model.state is Failure {
       if let failure = model.state as? Failure {
         showError(failure.error)
       }
