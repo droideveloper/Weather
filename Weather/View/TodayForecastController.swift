@@ -47,7 +47,7 @@ class TodayForecastController: BaseViewController<TodayForecastModel, TodayForec
 		// bind animating state from coming model state
 		disposeBag += viewModel.state()
 			.map {
-				if let state = $0 as? Process {
+				if let state = $0 as? Operation {
 					return state == refresh
 				}
 				return false
@@ -74,7 +74,7 @@ class TodayForecastController: BaseViewController<TodayForecastModel, TodayForec
 	override func render(model: TodayForecastModel) {
 		if model.state is Idle {
 			render(todayForecast: model.data)
-		} else if model.state is Process {
+		} else if model.state is Operation {
 		} else if model.state is Failure {
       if let failure = model.state as? Failure {
         showError(failure.error)

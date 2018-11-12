@@ -35,6 +35,7 @@
 		3D151F712174D6FB00CAA859 /* LoadDailyForecastEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D151F702174D6FB00CAA859 /* LoadDailyForecastEvent.swift */; };
 		3D151F732174D79600CAA859 /* DailyForecastViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D151F722174D79600CAA859 /* DailyForecastViewModel.swift */; };
 		3D151F752174D7EC00CAA859 /* DailyForecastController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D151F742174D7EC00CAA859 /* DailyForecastController.swift */; };
+		3D18DF7C2199F69300961C99 /* Intent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D18DF7B2199F69300961C99 /* Intent.swift */; };
 		3D39792021789527005F7B11 /* DailyForecastCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3D39791F21789527005F7B11 /* DailyForecastCell.xib */; };
 		3D45C9FE21727DC900A67380 /* TodayForecastRepositoryImp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D45C9FD21727DC800A67380 /* TodayForecastRepositoryImp.swift */; };
 		3D45CA0021727F9700A67380 /* DailyForecastRepositoryImp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D45C9FF21727F9700A67380 /* DailyForecastRepositoryImp.swift */; };
@@ -141,6 +142,7 @@
 		3D151F702174D6FB00CAA859 /* LoadDailyForecastEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadDailyForecastEvent.swift; sourceTree = "<group>"; };
 		3D151F722174D79600CAA859 /* DailyForecastViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyForecastViewModel.swift; sourceTree = "<group>"; };
 		3D151F742174D7EC00CAA859 /* DailyForecastController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyForecastController.swift; sourceTree = "<group>"; };
+		3D18DF7B2199F69300961C99 /* Intent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Intent.swift; sourceTree = "<group>"; };
 		3D39791F21789527005F7B11 /* DailyForecastCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DailyForecastCell.xib; sourceTree = "<group>"; };
 		3D45C9FD21727DC800A67380 /* TodayForecastRepositoryImp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayForecastRepositoryImp.swift; sourceTree = "<group>"; };
 		3D45C9FF21727F9700A67380 /* DailyForecastRepositoryImp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyForecastRepositoryImp.swift; sourceTree = "<group>"; };
@@ -369,6 +371,7 @@
 				3D8C9F282196E93B00B8B0F6 /* LoadSettingIntent.swift */,
 				3D8C9F302196EAE900B8B0F6 /* LoadLengthSettingIntent.swift */,
 				3D8C9F322196EB7100B8B0F6 /* LoadTemperatureSettingIntent.swift */,
+				3D18DF7B2199F69300961C99 /* Intent.swift */,
 			);
 			path = Intent;
 			sourceTree = "<group>";
@@ -768,6 +771,7 @@
 				05A7C227216CCAF600724CBF /* Wind.swift in Sources */,
 				3DA4B56F217DB28F0075DB52 /* UnitOfLength.swift in Sources */,
 				3D8C9F2D2196EAAA00B8B0F6 /* LoadLengthSettingEvent.swift in Sources */,
+				3D18DF7C2199F69300961C99 /* Intent.swift in Sources */,
 				05A7C233216CCF3200724CBF /* City.swift in Sources */,
 				3DA4B573217DDC290075DB52 /* Rain.swift in Sources */,
 				05A7C235216CD00000724CBF /* DailyWeather.swift in Sources */,
