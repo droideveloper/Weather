@@ -9,7 +9,7 @@
 import Foundation
 import MVICocoa
 
-class UpdateLengthSettingEvent: ReducerIntent<SettingModel> {
+class UpdateLengthSettingIntent: ReducerIntent<SettingModel> {
 
 	private let userDefaultsRepository: userDefaultsRepository
 	
