@@ -10,7 +10,7 @@ import Foundation
 import MVICocoa
 import RxSwift
 
-class LoadCityIntent: ObservableIntent<TodayForecastModel> {
+class LoadSelectedCityIntent: ObservableIntent<TodayForecastModel> {
 
 	private let cityRepository: CityRepository
 	private let userDefaultsRepository: UserDefaultsRepository

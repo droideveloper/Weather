@@ -7,12 +7,22 @@
 //
 
 import Foundation
+import RxSwift
 import MVICocoa
 
-class LoadTemperatureSettingIntent: ReducerIntent<SettingModel> {
+class LoadTemperatureSettingIntent: ObservableIntent<SettingModel> {
 
-  override func invoke() -> Reducer<SettingModel> {
+	private let userDefaultsRepository: UserDefaultsRepository
+	
+	init(userDefaultsRepository: UserDefaultsRepository) {
+		self.userDefaultsRepository = userDefaultsRepository
+	}
+	
+  override func invoke() -> Observable<Reducer<SettingModel>> {
+		let position = userDefaultsRepository.selectedUnitOfTemperature
 		let dataSet = ["Celsius", "Fahrenheit"]
-		return { model in model.copy(state: idle, dataSet: dataSet) }
+		return Observable.of(
+			{ model in model.copy(state: settingSelection, dataSet: dataSet, position: position) },
+			{ model in model.copy(state: idle, data: [], dataSet: [], position: -1) })
   }
 }

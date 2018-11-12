@@ -84,7 +84,7 @@ class TodayForecastController: BaseViewController<TodayForecastModel, TodayForec
   
   private func checkIfInitialLoadNeeded() {
     if city == City.empty {
-      accept(LoadCityEvent())
+      accept(LoadSelectedCityEvent())
     }
     if todayForecast == TodayForecast.empty {
       accept(LoadTodayForecastEvent())

@@ -10,3 +10,5 @@ import Foundation
 import MVICocoa
 
 public typealias Operation = MVICocoa.Operation
+
+public let settingSelection = Operation(0x02)
