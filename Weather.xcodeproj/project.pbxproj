@@ -75,6 +75,8 @@
 		3DA941A721770EC3002F6912 /* BackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DA941A621770EC3002F6912 /* BackgroundView.swift */; };
 		3DADCE9E2192244400E11830 /* LoadSelectedCityEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DADCE9D2192244400E11830 /* LoadSelectedCityEvent.swift */; };
 		3DADCEA02192248100E11830 /* LoadSelectedCityIntent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DADCE9F2192248100E11830 /* LoadSelectedCityIntent.swift */; };
+		3DC45211219AC07D006B61DA /* UpdateTemperatureSettingIntent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DC45210219AC07D006B61DA /* UpdateTemperatureSettingIntent.swift */; };
+		3DC45213219AC164006B61DA /* Array+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DC45212219AC164006B61DA /* Array+Extension.swift */; };
 		3DD0BD9B217FA78600130150 /* SettingCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3DD0BD9A217FA78600130150 /* SettingCell.xib */; };
 		3DD0BD9D217FA9C500130150 /* Settingable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DD0BD9C217FA9C400130150 /* Settingable.swift */; };
 		3DD0BD9F217FAA8E00130150 /* SettingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DD0BD9E217FAA8E00130150 /* SettingCell.swift */; };
@@ -185,6 +187,8 @@
 		3DA941A621770EC3002F6912 /* BackgroundView.swift */ = {isa = PBXFileReference; indentWidth = 1; lastKnownFileType = sourcecode.swift; path = BackgroundView.swift; sourceTree = "<group>"; tabWidth = 1; };
 		3DADCE9D2192244400E11830 /* LoadSelectedCityEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadSelectedCityEvent.swift; sourceTree = "<group>"; };
 		3DADCE9F2192248100E11830 /* LoadSelectedCityIntent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadSelectedCityIntent.swift; sourceTree = "<group>"; };
+		3DC45210219AC07D006B61DA /* UpdateTemperatureSettingIntent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateTemperatureSettingIntent.swift; sourceTree = "<group>"; };
+		3DC45212219AC164006B61DA /* Array+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Extension.swift"; sourceTree = "<group>"; };
 		3DD0BD9A217FA78600130150 /* SettingCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingCell.xib; sourceTree = "<group>"; };
 		3DD0BD9C217FA9C400130150 /* Settingable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settingable.swift; sourceTree = "<group>"; };
 		3DD0BD9E217FAA8E00130150 /* SettingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingCell.swift; sourceTree = "<group>"; };
@@ -253,6 +257,7 @@
 			isa = PBXGroup;
 			children = (
 				05296534216F5AAE001286CC /* Extensions.swift */,
+				3DC45212219AC164006B61DA /* Array+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -379,6 +384,7 @@
 				3D8C9F322196EB7100B8B0F6 /* LoadTemperatureSettingIntent.swift */,
 				3D18DF7B2199F69300961C99 /* Intent.swift */,
 				3D18DF81219A043C00961C99 /* UpdateLengthSettingIntent.swift */,
+				3DC45210219AC07D006B61DA /* UpdateTemperatureSettingIntent.swift */,
 			);
 			path = Intent;
 			sourceTree = "<group>";
@@ -789,6 +795,7 @@
 				3DA776132170CFC3008FA53A /* TodayForecastRepository.swift in Sources */,
 				3D45C9FE21727DC900A67380 /* TodayForecastRepositoryImp.swift in Sources */,
 				05F3ADF1216C97F600BE61C2 /* AppDelegate.swift in Sources */,
+				3DC45211219AC07D006B61DA /* UpdateTemperatureSettingIntent.swift in Sources */,
 				3D8C9F232196E26200B8B0F6 /* DisplayModel.swift in Sources */,
 				3DF90CDF217A08190074FE7B /* ConnectivityRepository.swift in Sources */,
 				3DF90CE3217A0D4C0074FE7B /* StartUpController.swift in Sources */,
@@ -805,6 +812,7 @@
 				3DA776042170C512008FA53A /* TodayForecastModel.swift in Sources */,
 				05A7C245216CF96A00724CBF /* WeatherService.swift in Sources */,
 				3D9C035A217CE29800B05EA0 /* TabItemView.swift in Sources */,
+				3DC45213219AC164006B61DA /* Array+Extension.swift in Sources */,
 				3DA941A721770EC3002F6912 /* BackgroundView.swift in Sources */,
 				3D51C445217505440077DC31 /* DailyForecastDataSource.swift in Sources */,
 				050636BE216CBD6000E3195E /* Coordinate.swift in Sources */,

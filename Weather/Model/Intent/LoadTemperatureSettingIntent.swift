@@ -22,7 +22,7 @@ class LoadTemperatureSettingIntent: ObservableIntent<SettingModel> {
 		let position = userDefaultsRepository.selectedUnitOfTemperature
 		let dataSet = ["Celsius", "Fahrenheit"]
 		return Observable.of(
-			{ model in model.copy(state: settingSelection, dataSet: dataSet, position: position) },
+			{ model in model.copy(state: loadSetting, dataSet: dataSet, position: position) },
 			{ model in model.copy(state: idle, data: [], dataSet: [], position: -1) })
   }
 }
