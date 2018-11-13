@@ -77,6 +77,7 @@
 		3DADCEA02192248100E11830 /* LoadSelectedCityIntent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DADCE9F2192248100E11830 /* LoadSelectedCityIntent.swift */; };
 		3DC45211219AC07D006B61DA /* UpdateTemperatureSettingIntent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DC45210219AC07D006B61DA /* UpdateTemperatureSettingIntent.swift */; };
 		3DC45213219AC164006B61DA /* Array+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DC45212219AC164006B61DA /* Array+Extension.swift */; };
+		3DC45215219AC522006B61DA /* SettingableModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DC45214219AC522006B61DA /* SettingableModel.swift */; };
 		3DD0BD9B217FA78600130150 /* SettingCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3DD0BD9A217FA78600130150 /* SettingCell.xib */; };
 		3DD0BD9D217FA9C500130150 /* Settingable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DD0BD9C217FA9C400130150 /* Settingable.swift */; };
 		3DD0BD9F217FAA8E00130150 /* SettingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DD0BD9E217FAA8E00130150 /* SettingCell.swift */; };
@@ -189,6 +190,7 @@
 		3DADCE9F2192248100E11830 /* LoadSelectedCityIntent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadSelectedCityIntent.swift; sourceTree = "<group>"; };
 		3DC45210219AC07D006B61DA /* UpdateTemperatureSettingIntent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateTemperatureSettingIntent.swift; sourceTree = "<group>"; };
 		3DC45212219AC164006B61DA /* Array+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Extension.swift"; sourceTree = "<group>"; };
+		3DC45214219AC522006B61DA /* SettingableModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingableModel.swift; sourceTree = "<group>"; };
 		3DD0BD9A217FA78600130150 /* SettingCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingCell.xib; sourceTree = "<group>"; };
 		3DD0BD9C217FA9C400130150 /* Settingable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settingable.swift; sourceTree = "<group>"; };
 		3DD0BD9E217FAA8E00130150 /* SettingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingCell.swift; sourceTree = "<group>"; };
@@ -249,6 +251,7 @@
 				3DA776052170C8B6008FA53A /* DailyForecastModel.swift */,
 				3D8C9F1E2196E12100B8B0F6 /* SettingModel.swift */,
 				3D8C9F222196E26200B8B0F6 /* DisplayModel.swift */,
+				3DC45214219AC522006B61DA /* SettingableModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -759,6 +762,7 @@
 				3DA4B575217DF6790075DB52 /* RoundedBackgroundView.swift in Sources */,
 				05A7C22F216CCD3B00724CBF /* TodayForecast.swift in Sources */,
 				3D8C9F212196E22200B8B0F6 /* Display.swift in Sources */,
+				3DC45215219AC522006B61DA /* SettingableModel.swift in Sources */,
 				3DF90CE7217A22360074FE7B /* UnitOfLengthChangedEvent.swift in Sources */,
 				3DA776062170C8B6008FA53A /* DailyForecastModel.swift in Sources */,
 				3D151F6F2174D47200CAA859 /* LoadDailyForecastIntent.swift in Sources */,

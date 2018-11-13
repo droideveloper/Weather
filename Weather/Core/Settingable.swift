@@ -10,6 +10,8 @@ import Foundation
 
 public class Settingable: Equatable {
 	
+	public static let empty = Settingable()
+	
 	var title: String {
 		get {
 			return String.empty
