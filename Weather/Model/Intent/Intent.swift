@@ -11,4 +11,5 @@ import MVICocoa
 
 public typealias Operation = MVICocoa.Operation
 
-public let settingSelection = Operation(0x02)
+public let loadSetting = Operation(0x02)
+public let selectSetting = Operation(0x03)

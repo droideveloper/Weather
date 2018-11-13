@@ -64,7 +64,8 @@ class SettingController: BaseViewController<SettingModel, SettingViewModel>, UIT
 				selectionDisposable.dispose()
 				selectionDisposable = viewPicker.rx.modelSelected(String.self)
 					.map { $0.first ?? String.empty }
-					.filter { $0 != String.empty }
+					.filter { $0 != String.empty }
+					.map {  }
 					.subscribe(onNext: { index in } ) // 
 			}
 		}
