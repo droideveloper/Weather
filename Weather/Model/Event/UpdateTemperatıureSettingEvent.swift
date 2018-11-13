@@ -13,13 +13,17 @@ import MVICocoa
 class UpdateTemperatureSettingEvent: Event {
 	
 	private let position: Int
+	private let data: Array<Settingable>
 	
-	init(position: Int) {
+	init(position: Int, data: Array<Settingable>) {
 		self.position = position
+		self.data = data
 	}
 	
 	override func toIntent(container: Container?) -> Intent {
-		
+		if let userDefaultsRepository = container?.resolve(UserDefaultsRepository.self) {
+			return UpdateTemperatureSettingIntent(userDefaultsRepository: userDefaultsRepository, position: position, data: data)
+		}
 		return super.toIntent(container: container)
 	}
 }
