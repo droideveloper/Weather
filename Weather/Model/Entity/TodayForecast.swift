@@ -10,12 +10,12 @@ import Foundation
 
 public struct TodayForecast: Codable, Equatable {
 	
-  static let empty = TodayForecast(coordinate: Coordinate.empty, weathers: [Weather](), main: Main.empty, visibility: Int.min, wind: Wind.empty, cloud: Cloud.empty, timestamp: Int64.min, rain: Rain.empty, sys: Sys.empty, id: Int64.min, name: String.empty)
+  static let empty = TodayForecast(coordinate: Coordinate.empty, weathers: [Weather](), main: Main.empty, visibility: Int32.min, wind: Wind.empty, cloud: Cloud.empty, timestamp: Int64.min, rain: Rain.empty, sys: Sys.empty, id: Int64.min, name: String.empty)
 	
 	var coordinate: Coordinate
 	var weathers: [Weather]
 	var main: Main
-	var visibility: Int
+	var visibility: Int32
 	var wind: Wind
 	var cloud: Cloud
 	var timestamp: Int64

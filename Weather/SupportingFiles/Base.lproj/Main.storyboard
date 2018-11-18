@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Gpy-Aq-xbg">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Gpy-Aq-xbg">
     <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -474,6 +474,7 @@
                         <viewLayoutGuide key="safeArea" id="mWa-ES-Tv7"/>
                     </view>
                     <connections>
+                        <outlet property="progress" destination="xNF-K6-myp" id="gLM-lk-i65"/>
                         <outlet property="viewCityName" destination="Wd3-j7-nIQ" id="gVn-bn-pCc"/>
                         <outlet property="viewDirections" destination="nm4-Qi-euq" id="Wlj-72-rzC"/>
                         <outlet property="viewDrops" destination="Snj-sr-9U2" id="5BO-rs-DIE"/>
@@ -481,7 +482,6 @@
                         <outlet property="viewImageBackground" destination="Fgr-eY-Qz1" id="uWZ-al-paX"/>
                         <outlet property="viewImageTodayWeather" destination="4xw-Hs-sZQ" id="jxg-kC-Aya"/>
                         <outlet property="viewPressure" destination="uqA-h7-gtd" id="69D-Sx-iWw"/>
-                        <outlet property="viewProgress" destination="xNF-K6-myp" id="6WE-P2-JJC"/>
                         <outlet property="viewSunrise" destination="e98-H6-PaP" id="DBt-ZF-EXu"/>
                         <outlet property="viewTodayForecast" destination="8Md-6q-SJX" id="cyc-JD-m9e"/>
                         <outlet property="viewTodayWeather" destination="4oE-8e-tCP" id="Onh-aU-Uet"/>
@@ -522,7 +522,7 @@
                         <viewLayoutGuide key="safeArea" id="uK3-1y-XQD"/>
                     </view>
                     <connections>
-                        <outlet property="viewProgress" destination="Jcf-ei-I6U" id="Qrt-XM-4Ak"/>
+                        <outlet property="progress" destination="Jcf-ei-I6U" id="5p4-Tx-Rrg"/>
                         <outlet property="viewTable" destination="Waa-pC-104" id="lo6-s1-2Bd"/>
                     </connections>
                 </viewController>

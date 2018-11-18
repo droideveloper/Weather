@@ -33,7 +33,7 @@ class TodayForecastController: BaseViewController<TodayForecastModel, TodayForec
   private var selectedtUnitLength: UnitOfLength = .metric
   private var selectedUnitTempereture: UnitOfTemperature = .celsius
   
-  private var userDefaultsRepository: UserDefaultsRepository? = nil
+  var userDefaultsRepository: UserDefaultsRepository? = nil
   // city is nil
   private var city = City.empty
   private var todayForecast = TodayForecast.empty
@@ -73,7 +73,9 @@ class TodayForecastController: BaseViewController<TodayForecastModel, TodayForec
 	
 	override func render(model: TodayForecastModel) {
 		if model.state is Idle {
-			render(todayForecast: model.data)
+			if model.data != TodayForecast.empty {
+				render(todayForecast: model.data)
+			}
 		} else if model.state is Operation {
 		} else if model.state is Failure {
       if let failure = model.state as? Failure {

@@ -11,6 +11,8 @@ import UIKit
 import RxSwift
 import RxCocoa
 import MVICocoa
+import Swinject
+import SwinjectStoryboard
 
 class MainController: UIViewController {
 	
@@ -20,7 +22,10 @@ class MainController: UIViewController {
   @IBOutlet private weak var viewDailyForecastButton: UIButton!
 	@IBOutlet private weak var viewDailyForecastTabItemView: TabItemView!
 	
-  private let storyBoard = UIStoryboard(name: "Main", bundle: nil)
+	private lazy var storyBoard = {
+		SwinjectStoryboard.create(name: "Main", bundle: nil, container: self.container ?? Container())
+	}()
+	
 	private var todayForecastController: TodayForecastController? = nil
 	private var dailyForecastController: DailyForecastController? = nil
 	

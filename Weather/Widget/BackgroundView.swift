@@ -15,7 +15,7 @@ class BackgroundView: UIView {
  
  override func draw(_ rect: CGRect) {
   let path = UIBezierPath(ovalIn: rect)
-  UIColor.paleGrey.setFill()
+  UIColor.lightGray.withAlphaComponent(0.5).setFill()
   path.fill()
  }
 }
