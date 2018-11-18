@@ -128,7 +128,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="odL-1g-tkH"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Settings" id="qPh-RY-LPv"/>
+                    <navigationItem key="navigationItem" title="Settings" leftItemsSupplementBackButton="YES" id="qPh-RY-LPv"/>
                     <connections>
                         <outlet property="viewPicker" destination="bds-rn-mxe" id="JzR-ji-MqU"/>
                         <outlet property="viewTable" destination="ImS-CL-3tF" id="8iM-R0-X7Z"/>
@@ -278,8 +278,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="prague" translatesAutoresizingMaskIntoConstraints="NO" id="Fgr-eY-Qz1">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Fgr-eY-Qz1">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                                <color key="backgroundColor" red="0.0" green="0.49019607840000001" blue="0.72549019609999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bSD-1Z-vVI" customClass="RoundedBackgroundView" customModule="Weather" customModuleProvider="target">
                                 <rect key="frame" x="16" y="644" width="382" height="76"/>
@@ -557,7 +558,6 @@
         <image name="direction" width="13.439999580383301" height="13.439999580383301"/>
         <image name="drops" width="13.439999580383301" height="13.439999580383301"/>
         <image name="humidity" width="13.439999580383301" height="13.439999580383301"/>
-        <image name="prague" width="1024" height="683"/>
         <image name="rain" width="13.439999580383301" height="13.439999580383301"/>
         <image name="settings" width="24" height="24"/>
         <image name="sunrise" width="15.119999885559082" height="13.439999580383301"/>
@@ -565,5 +565,4 @@
         <image name="waether" width="96" height="96"/>
         <image name="wind" width="15.119999885559082" height="13.439999580383301"/>
     </resources>
-    <color key="tintColor" red="0.0" green="0.49019607840000001" blue="0.72549019609999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
 </document>
