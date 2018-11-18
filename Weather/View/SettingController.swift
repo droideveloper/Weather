@@ -64,16 +64,11 @@ class SettingController: BaseViewController<SettingModel, SettingViewModel> {
 				// grab data ref
 				let data = model.selection.dataSet
 				if (!data.isEmpty) {
+					viewPicker.alpha = 1
 					// bind data
 					dataSourceDisposalbe.dispose()
 					dataSourceDisposalbe = Observable.of(data)
 						.bind(to: viewPicker.rx.itemTitles) { _, item in item }
-					// make it visible
-					viewPicker.alpha = 1
-					// select value from user
-					if model.selection.position != -1 {
-						viewPicker.selectRow(model.selection.position, inComponent: 0, animated: true)
-					}
 					// selection ref
 					selectionDisposable.dispose()
 					selectionDisposable = viewPicker.rx.modelSelected(String.self)
@@ -90,6 +85,11 @@ class SettingController: BaseViewController<SettingModel, SettingViewModel> {
 								}
 							}
 						})
+					
+					// select value from user
+					if model.selection.position != -1 {
+						viewPicker.selectRow(model.selection.position, inComponent: 0, animated: true)
+					}
 				}
 			} else if state == selectSetting {
 				let position = model.selection.position

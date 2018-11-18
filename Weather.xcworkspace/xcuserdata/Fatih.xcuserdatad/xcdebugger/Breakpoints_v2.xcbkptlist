@@ -25,14 +25,46 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Weather/Model/Event/UpdateTemperat&#x131;ureSettingEvent.swift"
-            timestampString = "564241511.608597"
+            filePath = "Weather/Model/Intent/UpdateLengthSettingIntent.swift"
+            timestampString = "564242868.0626121"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "24"
-            endingLineNumber = "24"
-            landmarkName = "toIntent(container:)"
+            startingLineNumber = "29"
+            endingLineNumber = "29"
+            landmarkName = "invoke()"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Weather.UpdateLengthSettingIntent.invoke() -&gt; (Weather.SettingModel) -&gt; Weather.SettingModel"
+                  moduleName = "Weather"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Fatih/IOS_Workspaces/Weather/Weather/Model/Intent/UpdateLengthSettingIntent.swift"
+                  timestampString = "564242868.273856"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "29"
+                  endingLineNumber = "29"
+                  offsetFromSymbolStart = "759">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #3 (Weather.SettingModel) -&gt; Weather.SettingModel in Weather.UpdateLengthSettingIntent.invoke() -&gt; (Weather.SettingModel) -&gt; Weather.SettingModel"
+                  moduleName = "Weather"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Fatih/IOS_Workspaces/Weather/Weather/Model/Intent/UpdateLengthSettingIntent.swift"
+                  timestampString = "564242868.276822"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "29"
+                  endingLineNumber = "29"
+                  offsetFromSymbolStart = "49">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -41,14 +73,46 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Weather/View/SettingController.swift"
-            timestampString = "564241865.581622"
+            filePath = "Weather/Model/Intent/UpdateTemperatureSettingIntent.swift"
+            timestampString = "564242868.062716"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "66"
-            endingLineNumber = "66"
-            landmarkName = "render(model:)"
+            startingLineNumber = "29"
+            endingLineNumber = "29"
+            landmarkName = "invoke()"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Weather.UpdateTemperatureSettingIntent.invoke() -&gt; (Weather.SettingModel) -&gt; Weather.SettingModel"
+                  moduleName = "Weather"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Fatih/IOS_Workspaces/Weather/Weather/Model/Intent/UpdateTemperatureSettingIntent.swift"
+                  timestampString = "564242868.284255"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "29"
+                  endingLineNumber = "29"
+                  offsetFromSymbolStart = "759">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #3 (Weather.SettingModel) -&gt; Weather.SettingModel in Weather.UpdateTemperatureSettingIntent.invoke() -&gt; (Weather.SettingModel) -&gt; Weather.SettingModel"
+                  moduleName = "Weather"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Fatih/IOS_Workspaces/Weather/Weather/Model/Intent/UpdateTemperatureSettingIntent.swift"
+                  timestampString = "564242868.287129"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "29"
+                  endingLineNumber = "29"
+                  offsetFromSymbolStart = "49">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
