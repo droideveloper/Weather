@@ -22,7 +22,6 @@ class LoadLengthSettingIntent: ObservableIntent<SettingModel> {
 		let dataSet = ["Metric", "Imperial"]
 		let position = userDefaultsRepository.selectedUnitOfLength
 		return Observable.of(
-			{ model in model.copy(state: loadSetting, data: [], selection: model.selection.copy(position: position, dataSet: dataSet)) },
-			{ model in model.copy(state: idle, selection: model.selection.copy(data: LengthSetting(userDefaultsRepository: self.userDefaultsRepository), position: position, dataSet: [])) })
+			{ model in model.copy(state: loadSetting, data: [], selection: model.selection.copy(position: position, dataSet: dataSet)) })
   }
 }

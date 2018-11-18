@@ -24,6 +24,8 @@ class UpdateTemperatureSettingIntent: ReducerIntent<SettingModel> {
   override func invoke() -> Reducer<SettingModel> {
 		var userDefaultsRepository = self.userDefaultsRepository
 		userDefaultsRepository.selectedUnitOfTemperature = position
-		return { model in model.copy(state: selectSetting, selection: model.selection.copy(data: self.data.first { s in s is TemperetureSetting }, position: self.position)) }
+		let index = data.firstIndex { s in s is TemperetureSetting } ?? -1
+		let type = data.first { s in s is TemperetureSetting }
+		return { model in model.copy(state: selectSetting, selection: model.selection.copy(data: type, position: index)) }
   }
 }
