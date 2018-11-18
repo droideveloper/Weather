@@ -88,7 +88,11 @@ class SettingController: BaseViewController<SettingModel, SettingViewModel> {
 					
 					// select value from user
 					if model.selection.position != -1 {
-						viewPicker.selectRow(model.selection.position, inComponent: 0, animated: true)
+						disposeBag += Observable.of(model.selection.position)
+							.delay(TimeInterval(0.5), scheduler: MainScheduler.asyncInstance)
+							.subscribe(onNext: { [weak weakSelf = self] index in
+								weakSelf?.viewPicker.selectRow(index, inComponent: 0, animated: true)
+							})
 					}
 				}
 			} else if state == selectSetting {

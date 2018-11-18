@@ -21,7 +21,8 @@ class LoadLengthSettingIntent: ObservableIntent<SettingModel> {
   override func invoke() -> Observable<Reducer<SettingModel>> {
 		let dataSet = ["Metric", "Imperial"]
 		let position = userDefaultsRepository.selectedUnitOfLength
+		let type = LengthSetting(userDefaultsRepository: userDefaultsRepository)
 		return Observable.of(
-			{ model in model.copy(state: loadSetting, data: [], selection: model.selection.copy(position: position, dataSet: dataSet)) })
+			{ model in model.copy(state: loadSetting, data: [], selection: model.selection.copy(data: type, position: position, dataSet: dataSet)) })
   }
 }
