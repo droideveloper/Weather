@@ -411,7 +411,7 @@
                                         </subviews>
                                     </stackView>
                                 </subviews>
-                                <color key="backgroundColor" red="0.96078431369999995" green="0.96078431369999995" blue="0.96078431369999995" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="bottom" secondItem="NMA-Fg-Dkq" secondAttribute="bottom" constant="12" id="BEe-jC-H88"/>
                                     <constraint firstItem="NMA-Fg-Dkq" firstAttribute="top" secondItem="bSD-1Z-vVI" secondAttribute="top" constant="12" id="K7N-G4-BFE"/>
@@ -423,6 +423,14 @@
                                 <rect key="frame" x="188.66666666666666" y="349.66666666666669" width="37" height="37"/>
                                 <color key="color" red="0.0" green="0.49019607840000001" blue="0.72549019609999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </activityIndicatorView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Hh7-jE-kHP" customClass="BackgroundView" customModule="Weather" customModuleProvider="target">
+                                <rect key="frame" x="12" y="596" width="36" height="36"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="36" id="mmq-pn-0pl"/>
+                                    <constraint firstAttribute="width" constant="36" id="vFf-ej-aLX"/>
+                                </constraints>
+                            </view>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="4xw-Hs-sZQ">
                                 <rect key="frame" x="12" y="596" width="36" height="36"/>
                                 <constraints>
@@ -452,7 +460,9 @@
                         <color key="backgroundColor" red="0.12376638500000001" green="0.4177818298" blue="0.5612348318" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="4xw-Hs-sZQ" firstAttribute="leading" secondItem="ooq-TE-omG" secondAttribute="leading" constant="12" id="0qH-XA-HKH"/>
+                            <constraint firstItem="Hh7-jE-kHP" firstAttribute="leading" secondItem="xaM-tX-bw8" secondAttribute="leading" constant="12" id="3QX-Ay-Hls"/>
                             <constraint firstItem="bSD-1Z-vVI" firstAttribute="top" secondItem="4xw-Hs-sZQ" secondAttribute="bottom" constant="12" id="7g6-sN-1io"/>
+                            <constraint firstItem="bSD-1Z-vVI" firstAttribute="top" secondItem="Hh7-jE-kHP" secondAttribute="bottom" constant="12" id="8qr-mb-pPv"/>
                             <constraint firstItem="xNF-K6-myp" firstAttribute="centerX" secondItem="ooq-TE-omG" secondAttribute="centerX" id="8w5-U1-CsW"/>
                             <constraint firstItem="4oE-8e-tCP" firstAttribute="leading" secondItem="Wd3-j7-nIQ" secondAttribute="trailing" constant="12" id="Ary-lS-uvW"/>
                             <constraint firstItem="bSD-1Z-vVI" firstAttribute="leading" secondItem="Fgr-eY-Qz1" secondAttribute="leading" constant="16" id="BFG-5G-BOH"/>
