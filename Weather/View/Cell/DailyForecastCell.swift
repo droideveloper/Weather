@@ -39,11 +39,11 @@ class DailyForecastCell: UITableViewCell {
 	}
 
 	func bind(entity: DailyForecast) {
-    if let weather = entity.weathers.first {
+		if let weather = entity.weathers.first {
       // capitelize text
       let text = weather.toDescription()
       // will parse date
-      let date = Date(timeIntervalSince1970: TimeInterval(entity.timestamp))
+			let date = Date(timeIntervalSince1970: TimeInterval(entity.timestamp))
       // fotmat all together
       let string = "\(text) on \(dateFormatter.string(from: date))"
       // an set the text
@@ -53,11 +53,11 @@ class DailyForecastCell: UITableViewCell {
         self.viewImageDailyForecast.af_setImage(withURL: uri)
       }
     }
-    bindTemperature(entity.tempereture) // bind temperature like this
+		bindTemperature(entity.tempereture) // bind temperature like this
     // bus manager will listen changes in here
     disposeBag += BusManager.register { [weak weakSelf = self] event in
       if event is UnitOfTemperatureChangedEvent {
-        weakSelf?.bindTemperature(entity.tempereture)
+				weakSelf?.bindTemperature(entity.tempereture)
       }
     }
 	}

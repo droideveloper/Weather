@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Gpy-Aq-xbg">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -12,16 +12,17 @@
         <!--Start Up Controller-->
         <scene sceneID="biU-9j-fxq">
             <objects>
-                <viewController id="T5u-gC-4Gr" customClass="StartUpController" customModule="Weather" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="startUpController" id="T5u-gC-4Gr" customClass="StartUpController" customModule="Weather" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Zgr-bQ-siJ">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="672"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="kT4-H6-fve">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="672"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                                <color key="tintColor" red="0.0" green="0.49019607840000001" blue="0.72549019609999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eXh-DZ-CNn" customClass="RoundedBackgroundView" customModule="Weather" customModuleProvider="target">
-                                <rect key="frame" x="87" y="218" width="240" height="236"/>
+                                <rect key="frame" x="87" y="250" width="240" height="236"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="waether" translatesAutoresizingMaskIntoConstraints="NO" id="Apr-FT-oOP">
                                         <rect key="frame" x="93" y="12" width="54" height="54"/>
@@ -48,9 +49,6 @@
                                         <state key="normal" title="Continue">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
-                                        <connections>
-                                            <segue destination="1ne-mD-qVw" kind="show" identifier="mainController" id="LxC-y3-zlS"/>
-                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -70,7 +68,7 @@
                                 </constraints>
                             </view>
                             <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2An-7o-Gww">
-                                <rect key="frame" x="0.0" y="456" width="414" height="216"/>
+                                <rect key="frame" x="0.0" y="520" width="414" height="216"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </pickerView>
                         </subviews>
@@ -82,7 +80,7 @@
                             <constraint firstItem="2An-7o-Gww" firstAttribute="bottom" secondItem="Zgr-bQ-siJ" secondAttribute="bottom" id="cpX-4a-bxu"/>
                             <constraint firstItem="eXh-DZ-CNn" firstAttribute="centerY" secondItem="Zgr-bQ-siJ" secondAttribute="centerY" id="foM-EO-iee"/>
                             <constraint firstItem="eXh-DZ-CNn" firstAttribute="leading" secondItem="El6-jD-SY8" secondAttribute="leading" constant="87" id="ges-pz-JD5"/>
-                            <constraint firstItem="kT4-H6-fve" firstAttribute="top" secondItem="El6-jD-SY8" secondAttribute="top" id="isg-pT-S2C"/>
+                            <constraint firstItem="kT4-H6-fve" firstAttribute="top" secondItem="Zgr-bQ-siJ" secondAttribute="top" id="isg-pT-S2C"/>
                             <constraint firstItem="El6-jD-SY8" firstAttribute="trailing" secondItem="kT4-H6-fve" secondAttribute="trailing" id="qcC-SZ-xpg"/>
                             <constraint firstItem="2An-7o-Gww" firstAttribute="trailing" secondItem="El6-jD-SY8" secondAttribute="trailing" id="rGI-Bu-Q1A"/>
                             <constraint firstItem="El6-jD-SY8" firstAttribute="trailing" secondItem="eXh-DZ-CNn" secondAttribute="trailing" constant="87" id="xHH-UU-rPA"/>
@@ -104,17 +102,17 @@
         <!--Settings-->
         <scene sceneID="IO3-hD-Quv">
             <objects>
-                <viewController id="Hdv-OM-DZ7" customClass="SettingController" customModule="Weather" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="settingController" id="Hdv-OM-DZ7" customClass="SettingController" customModule="Weather" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="NqU-dI-lPj">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="672"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="80" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ImS-CL-3tF">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="672"/>
+                                <rect key="frame" x="0.0" y="20" width="414" height="716"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </tableView>
                             <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bds-rn-mxe">
-                                <rect key="frame" x="0.0" y="456" width="414" height="216"/>
+                                <rect key="frame" x="0.0" y="520" width="414" height="216"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </pickerView>
                         </subviews>
@@ -138,18 +136,18 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xpp-el-Pty" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2245" y="18"/>
+            <point key="canvasLocation" x="3152.1739130434785" y="17.934782608695652"/>
         </scene>
         <!--Weather-->
         <scene sceneID="ddf-gM-E19">
             <objects>
-                <viewController id="1ne-mD-qVw" customClass="MainController" customModule="Weather" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="mainController" id="1ne-mD-qVw" customClass="MainController" customModule="Weather" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="G9I-Tv-QGL">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="672"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Hb3-AZ-2S3">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
+                                <rect key="frame" x="0.0" y="64" width="414" height="56"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="Qlr-2f-SJo">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
@@ -209,6 +207,7 @@
                                                     </label>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sEy-xG-swq">
                                                         <rect key="frame" x="0.0" y="0.0" width="207" height="56"/>
+                                                        <color key="tintColor" red="0.0" green="0.49019607840000001" blue="0.72549019609999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     </button>
                                                 </subviews>
                                                 <color key="backgroundColor" red="0.0" green="0.49019607840000001" blue="0.72549019609999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -237,7 +236,7 @@
                                 </constraints>
                             </view>
                             <view clipsSubviews="YES" tag="255" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SKu-xO-PDT">
-                                <rect key="frame" x="0.0" y="56" width="414" height="616"/>
+                                <rect key="frame" x="0.0" y="120" width="414" height="616"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                         </subviews>
@@ -257,26 +256,24 @@
                         <barButtonItem key="rightBarButtonItem" title="Item" image="settings" id="8bH-T0-QF2">
                             <inset key="largeContentSizeImageInsets" minX="0.0" minY="0.0" maxX="0.0" maxY="9"/>
                             <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            <connections>
-                                <segue destination="Hdv-OM-DZ7" kind="show" id="c9a-pC-H2v"/>
-                            </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="viewDailyForecastButton" destination="sEy-xG-swq" id="eCO-1K-3HL"/>
                         <outlet property="viewDailyForecastTabItemView" destination="UFv-Hs-Joz" id="Qkk-kf-k2e"/>
+                        <outlet property="viewSettingsBarButton" destination="8bH-T0-QF2" id="M0F-Gr-8hF"/>
                         <outlet property="viewTodayForecastButton" destination="PJq-Rh-7XR" id="2d6-J2-55h"/>
                         <outlet property="viewTodayForecastTabItemView" destination="2n2-nW-RLZ" id="YmH-mx-GPc"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8zV-xD-Pli" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1332" y="18"/>
+            <point key="canvasLocation" x="2239.130434782609" y="17.934782608695652"/>
         </scene>
         <!--Today Forecast Controller-->
         <scene sceneID="NXu-hC-lME">
             <objects>
-                <viewController storyboardIdentifier="todayForecast" id="8KK-ld-gdt" customClass="TodayForecastController" customModule="Weather" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="todayForecastController" id="8KK-ld-gdt" customClass="TodayForecastController" customModule="Weather" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="xaM-tX-bw8">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -474,6 +471,7 @@
                         <viewLayoutGuide key="safeArea" id="mWa-ES-Tv7"/>
                     </view>
                     <connections>
+                        <outlet property="progress" destination="xNF-K6-myp" id="gLM-lk-i65"/>
                         <outlet property="viewCityName" destination="Wd3-j7-nIQ" id="gVn-bn-pCc"/>
                         <outlet property="viewDirections" destination="nm4-Qi-euq" id="Wlj-72-rzC"/>
                         <outlet property="viewDrops" destination="Snj-sr-9U2" id="5BO-rs-DIE"/>
@@ -481,7 +479,6 @@
                         <outlet property="viewImageBackground" destination="Fgr-eY-Qz1" id="uWZ-al-paX"/>
                         <outlet property="viewImageTodayWeather" destination="4xw-Hs-sZQ" id="jxg-kC-Aya"/>
                         <outlet property="viewPressure" destination="uqA-h7-gtd" id="69D-Sx-iWw"/>
-                        <outlet property="viewProgress" destination="xNF-K6-myp" id="6WE-P2-JJC"/>
                         <outlet property="viewSunrise" destination="e98-H6-PaP" id="DBt-ZF-EXu"/>
                         <outlet property="viewTodayForecast" destination="8Md-6q-SJX" id="cyc-JD-m9e"/>
                         <outlet property="viewTodayWeather" destination="4oE-8e-tCP" id="Onh-aU-Uet"/>
@@ -490,12 +487,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="srQ-l3-5dg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3213.04347826087" y="17.934782608695652"/>
+            <point key="canvasLocation" x="4120.289855072464" y="17.934782608695652"/>
         </scene>
         <!--Daily Forecast Controller-->
         <scene sceneID="lBU-d6-qRy">
             <objects>
-                <viewController storyboardIdentifier="dailyForecast" id="XWH-oh-wzB" customClass="DailyForecastController" customModule="Weather" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="dailyForecastController" id="XWH-oh-wzB" customClass="DailyForecastController" customModule="Weather" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Xyq-Xy-OF2">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -522,23 +519,24 @@
                         <viewLayoutGuide key="safeArea" id="uK3-1y-XQD"/>
                     </view>
                     <connections>
-                        <outlet property="viewProgress" destination="Jcf-ei-I6U" id="Qrt-XM-4Ak"/>
+                        <outlet property="progress" destination="Jcf-ei-I6U" id="5p4-Tx-Rrg"/>
                         <outlet property="viewTable" destination="Waa-pC-104" id="lo6-s1-2Bd"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Qyj-Kq-IuM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3905.7971014492755" y="17.934782608695652"/>
+            <point key="canvasLocation" x="4813.04347826087" y="17.934782608695652"/>
         </scene>
         <!--Navigation Controller-->
-        <scene sceneID="qUt-WG-8vV">
+        <scene sceneID="Y9m-73-AGb">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Gpy-Aq-xbg" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="rootViewController" automaticallyAdjustsScrollViewInsets="NO" id="sPo-NV-Zhb" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" id="ShL-e3-u6Y">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="lHk-Tp-abd">
                         <rect key="frame" x="0.0" y="20" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="tintColor" red="0.96078431369999995" green="0.96078431369999995" blue="0.96078431369999995" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.0" green="0.49019607840000001" blue="0.72549019609999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="tintColor" red="0.0" green="0.49019607840000001" blue="0.72549019609999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <color key="barTintColor" red="0.0" green="0.49019607840000001" blue="0.72549019609999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <textAttributes key="titleTextAttributes">
                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -546,12 +544,12 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="T5u-gC-4Gr" kind="relationship" relationship="rootViewController" id="Hs7-QE-x6g"/>
+                        <segue destination="1ne-mD-qVw" kind="relationship" relationship="rootViewController" id="OTQ-8k-GT1"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Tf1-X4-g0L" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="QmJ-Y1-Giw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-552.17391304347825" y="18.75"/>
+            <point key="canvasLocation" x="1331.8840579710145" y="17.934782608695652"/>
         </scene>
     </scenes>
     <resources>
@@ -567,4 +565,5 @@
         <image name="waether" width="96" height="96"/>
         <image name="wind" width="15.119999885559082" height="13.439999580383301"/>
     </resources>
+    <color key="tintColor" red="0.0" green="0.49019607840000001" blue="0.72549019609999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
 </document>

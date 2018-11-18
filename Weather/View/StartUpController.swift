@@ -10,84 +10,83 @@ import Foundation
 import UIKit
 import RxSwift
 import MVICocoa
+import Swinject
+import SwinjectStoryboard
 
-class StartUpController: UIViewController {
+class StartUpController: BaseViewController<StartUpModel, StartUpViewModel> {
   
   @IBOutlet private weak var viewImageBackground: UIImageView!
   @IBOutlet private weak var viewButtonSelectedCity: UIButton!
   @IBOutlet private weak var viewButtonContinue: UIButton!
   @IBOutlet private weak var viewCityPicker: UIPickerView!
 	
-	private let disposeBag = CompositeDisposeBag()
+	private var city = City.empty
+	private var cities: [City] = []
 	
-  override func viewWillAppear(_ animated: Bool) {
-    super.viewWillAppear(animated)
-		if let userDefaultsRepository = container?.resolve(UserDefaultsRepository.self) {
-			if userDefaultsRepository.selectedCityId != 0 {
-				performSegue(withIdentifier: "mainController", sender: nil)
-			}
-		}
-    self.navigationController?.setNavigationBarHidden(true, animated: false)
-  }
-  
-  override func viewDidLoad() {
-    super.viewDidLoad()
+	private lazy var storyBorad = {
+		SwinjectStoryboard.create(name: "Main", bundle: nil, container: self.container ?? Container())
+	}()
+	
+	override func attach() {
+		super.attach()
+		viewButtonContinue.isEnabled = city != City.empty
+		// do the action in here
+		disposeBag += viewButtonContinue.rx.tap
+			.subscribe(onNext: startMainController(_ :))
 		
-		self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
-		self.navigationController?.navigationBar.shadowImage = UIImage()
-    
-    if let userDefaultsRepository = container?.resolve(UserDefaultsRepository.self) {
-      viewButtonContinue.isEnabled = userDefaultsRepository.selectedCityId != 0
-    }
-    
-		if let cityRepository = container?.resolve(CityRepository.self) {
-      
-      let dataSource = cityRepository.loadCities()
-        .async()
-    
-      disposeBag += dataSource
-        .bind(to: viewCityPicker.rx.itemTitles) { _, city -> String in
-          return "\(city.name)"
-        }
-      
-      disposeBag += dataSource
-        .delay(0.5, scheduler: MainScheduler.instance)
-        .subscribe(onNext: selectDefault(_ :))
-      
-      disposeBag += viewCityPicker.rx.modelSelected(City.self)
-        .subscribe(onNext: selectionChanged(_ :))
-		}
-  }
-  
-	private func selectDefault(_ cities: [City]) {
-		if let userDefaultsRepository = container?.resolve(UserDefaultsRepository.self) {
-			if userDefaultsRepository.selectedCityId != 0 {
-				if let city = cities.first(where: { c in Int(c.id) == userDefaultsRepository.selectedCityId }) {
-					if let index = cities.firstIndex(of: city) {
-						viewCityPicker.selectRow(index, inComponent: 0, animated: true)
-					}
-					selectionChanged([city])
+		checkIfInitialLoadNeeded()
+	}
+	
+	override func render(model: StartUpModel) {
+		if model.state is Idle {
+			if !model.data.isEmpty {
+				// grab reference
+				cities = model.data
+				
+				let dataSource = Observable.of(model.data)
+				
+				disposeBag += dataSource.bind(to: viewCityPicker.rx.itemTitles) { _, city -> String in
+					return "\(city.name)"
 				}
-			} else {
-				if let city = cities.first { // default choice
-					viewCityPicker.selectRow(0, inComponent: 0, animated: true)
-					selectionChanged([city])
+				
+				disposeBag += viewCityPicker.rx.modelSelected(City.self)
+					.map { UpdateSelectedCityEvent(city: $0.first ?? City.empty) }
+					.subscribe(onNext: accept(_ :))
+				
+				if city == City.empty {
+					// trigger first city selection
+					accept(UpdateSelectedCityEvent(city: model.data.first ?? City.empty))
+				}
+			}
+		} else if let state = model.state as? Operation {
+			if state == selectCity {
+				let selected = model.data.first ?? City.empty
+				if city != selected {
+					city = selected
+					// update picker
+					let position = cities.firstIndex { c in c.id == city.id } ?? -1
+					if position != -1 {
+						viewCityPicker.selectRow(position, inComponent: 0, animated: true)
+					}
+					// update background image
+					viewImageBackground.image = UIImage(named: city.name.lowercased())
+					// update title
+					viewButtonSelectedCity.setTitle(city.name, for: .normal)
+					// update button state
+					viewButtonContinue.isEnabled = city != City.empty
 				}
 			}
 		}
-  }
-  
-  private func selectionChanged(_ cities: [City]) {
-    if var userDefaultsRepository = container?.resolve(UserDefaultsRepository.self) {
-      if let city = cities.first {
-        viewButtonContinue.isEnabled = city.id != 0
-        // will bind image on change
-        viewImageBackground.image = UIImage(named: city.name.lowercased())
-        // will bind text on change
-        viewButtonSelectedCity.setTitle(city.name, for: .normal)
-        // will store id on change
-        userDefaultsRepository.selectedCityId = Int(city.id)
-      }
-    }
-  }
+	}
+	
+	private func checkIfInitialLoadNeeded() {
+		if cities.isEmpty {
+			accept(LoadStartUpEvent())
+		}
+	}
+	
+	private func startMainController(_ event: Any) {
+		let mainController = storyBorad.instantiateViewController(withIdentifier: "rootViewController")
+		makeKeysAndVisible(controller: mainController)
+	}
 }
