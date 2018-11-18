@@ -21,7 +21,8 @@ class LoadTemperatureSettingIntent: ObservableIntent<SettingModel> {
   override func invoke() -> Observable<Reducer<SettingModel>> {
 		let position = userDefaultsRepository.selectedUnitOfTemperature
 		let dataSet = ["Celsius", "Fahrenheit"]
+		let type = TemperetureSetting(userDefaultsRepository: userDefaultsRepository)
 		return Observable.of(
-			{ model in model.copy(state: loadSetting, data: [], selection: model.selection.copy(position: position, dataSet: dataSet)) })
+			{ model in model.copy(state: loadSetting, data: [], selection: model.selection.copy(data: type, position: position, dataSet: dataSet)) })
   }
 }
