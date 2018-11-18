@@ -84,6 +84,7 @@
 		3DD0BDA1217FAB4800130150 /* LengthSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DD0BDA0217FAB4800130150 /* LengthSetting.swift */; };
 		3DD0BDA3217FAC2100130150 /* TemperetureSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DD0BDA2217FAC2100130150 /* TemperetureSetting.swift */; };
 		3DD0BDA5217FAE1600130150 /* SettingDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DD0BDA4217FAE1600130150 /* SettingDataSource.swift */; };
+		3DF49B9C21A1665F00583A14 /* Module.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF49B9B21A1665F00583A14 /* Module.swift */; };
 		3DF90CDD2179F9F80074FE7B /* UnitOfTemperatureChangedEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF90CDC2179F9F80074FE7B /* UnitOfTemperatureChangedEvent.swift */; };
 		3DF90CDF217A08190074FE7B /* ConnectivityRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF90CDE217A08190074FE7B /* ConnectivityRepository.swift */; };
 		3DF90CE1217A08590074FE7B /* ConnectivityRepositoryImp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF90CE0217A08590074FE7B /* ConnectivityRepositoryImp.swift */; };
@@ -197,6 +198,7 @@
 		3DD0BDA0217FAB4800130150 /* LengthSetting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LengthSetting.swift; sourceTree = "<group>"; };
 		3DD0BDA2217FAC2100130150 /* TemperetureSetting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemperetureSetting.swift; sourceTree = "<group>"; };
 		3DD0BDA4217FAE1600130150 /* SettingDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingDataSource.swift; sourceTree = "<group>"; };
+		3DF49B9B21A1665F00583A14 /* Module.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Module.swift; sourceTree = "<group>"; };
 		3DF90CDC2179F9F80074FE7B /* UnitOfTemperatureChangedEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnitOfTemperatureChangedEvent.swift; sourceTree = "<group>"; };
 		3DF90CDE217A08190074FE7B /* ConnectivityRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectivityRepository.swift; sourceTree = "<group>"; };
 		3DF90CE0217A08590074FE7B /* ConnectivityRepositoryImp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectivityRepositoryImp.swift; sourceTree = "<group>"; };
@@ -424,6 +426,7 @@
 				3DD0BD9C217FA9C400130150 /* Settingable.swift */,
 				3DD0BDA0217FAB4800130150 /* LengthSetting.swift */,
 				3DD0BDA2217FAC2100130150 /* TemperetureSetting.swift */,
+				3DF49B9B21A1665F00583A14 /* Module.swift */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -757,6 +760,7 @@
 				05A7C22B216CCB7800724CBF /* Sys.swift in Sources */,
 				3D151F712174D6FB00CAA859 /* LoadDailyForecastEvent.swift in Sources */,
 				3DD0BD9D217FA9C500130150 /* Settingable.swift in Sources */,
+				3DF49B9C21A1665F00583A14 /* Module.swift in Sources */,
 				3DF90CE5217A0D7C0074FE7B /* MainController.swift in Sources */,
 				3D8C9F312196EAE900B8B0F6 /* LoadLengthSettingIntent.swift in Sources */,
 				3DA4B575217DF6790075DB52 /* RoundedBackgroundView.swift in Sources */,

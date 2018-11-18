@@ -15,7 +15,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, Injectable {
 	
 	var window: UIWindow?
 	lazy var container = {
-		Container()
+		Module().container
 	}()
 	
 	func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
