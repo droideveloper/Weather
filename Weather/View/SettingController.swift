@@ -25,7 +25,8 @@ class SettingController: BaseViewController<SettingModel, SettingViewModel> {
 		return SettingDataSource(dataSet: dataSet)
 	}()
 	
-	private var selectionDisposable: Disposable = Disposables.create()
+	private var selectionDisposable = Disposables.create()
+	private var dataSourceDisposalbe = Disposables.create()
 	
 	override func setUp() {
 		viewPicker.alpha = 0 // hide view now
@@ -64,7 +65,8 @@ class SettingController: BaseViewController<SettingModel, SettingViewModel> {
 				let data = model.selection.dataSet
 				if (!data.isEmpty) {
 					// bind data
-					_ = Observable.of(data)
+					dataSourceDisposalbe.dispose()
+					dataSourceDisposalbe = Observable.of(data)
 						.bind(to: viewPicker.rx.itemTitles) { _, item in item }
 					// make it visible
 					viewPicker.alpha = 1
@@ -100,6 +102,8 @@ class SettingController: BaseViewController<SettingModel, SettingViewModel> {
   
   override func viewDidDisappear(_ animated: Bool) {
 		dataSet.unregister(viewTable)
+		dataSourceDisposalbe.dispose()
+		selectionDisposable.dispose()
 		super.viewDidDisappear(animated)
   }
 	

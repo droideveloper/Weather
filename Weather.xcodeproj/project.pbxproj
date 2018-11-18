@@ -85,6 +85,18 @@
 		3DD0BDA3217FAC2100130150 /* TemperetureSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DD0BDA2217FAC2100130150 /* TemperetureSetting.swift */; };
 		3DD0BDA5217FAE1600130150 /* SettingDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DD0BDA4217FAE1600130150 /* SettingDataSource.swift */; };
 		3DF49B9C21A1665F00583A14 /* Module.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF49B9B21A1665F00583A14 /* Module.swift */; };
+		3DF49B9E21A184AB00583A14 /* StartUpModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF49B9D21A184AB00583A14 /* StartUpModel.swift */; };
+		3DF49BA021A184EB00583A14 /* StartUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF49B9F21A184EB00583A14 /* StartUpViewModel.swift */; };
+		3DF49BA221A1862900583A14 /* LoadStartUpEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF49BA121A1862900583A14 /* LoadStartUpEvent.swift */; };
+		3DF49BA421A1865900583A14 /* LoadStartUpIntent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF49BA321A1865900583A14 /* LoadStartUpIntent.swift */; };
+		3DF49BA621A187DD00583A14 /* UpdateSelectedCityEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF49BA521A187DD00583A14 /* UpdateSelectedCityEvent.swift */; };
+		3DF49BA821A1881B00583A14 /* UpdateSelectedCityIntent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF49BA721A1881B00583A14 /* UpdateSelectedCityIntent.swift */; };
+		3DF49BAA21A18C7800583A14 /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF49BA921A18C7800583A14 /* UIViewController+Extension.swift */; };
+		3DF49BAC21A1966A00583A14 /* MainModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF49BAB21A1966A00583A14 /* MainModel.swift */; };
+		3DF49BAE21A1967C00583A14 /* Tab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF49BAD21A1967C00583A14 /* Tab.swift */; };
+		3DF49BB021A196EA00583A14 /* SelectTabEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF49BAF21A196EA00583A14 /* SelectTabEvent.swift */; };
+		3DF49BB221A1972000583A14 /* SelectTabIntent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF49BB121A1972000583A14 /* SelectTabIntent.swift */; };
+		3DF49BB421A1977F00583A14 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF49BB321A1977F00583A14 /* MainViewModel.swift */; };
 		3DF90CDD2179F9F80074FE7B /* UnitOfTemperatureChangedEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF90CDC2179F9F80074FE7B /* UnitOfTemperatureChangedEvent.swift */; };
 		3DF90CDF217A08190074FE7B /* ConnectivityRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF90CDE217A08190074FE7B /* ConnectivityRepository.swift */; };
 		3DF90CE1217A08590074FE7B /* ConnectivityRepositoryImp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF90CE0217A08590074FE7B /* ConnectivityRepositoryImp.swift */; };
@@ -199,6 +211,18 @@
 		3DD0BDA2217FAC2100130150 /* TemperetureSetting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemperetureSetting.swift; sourceTree = "<group>"; };
 		3DD0BDA4217FAE1600130150 /* SettingDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingDataSource.swift; sourceTree = "<group>"; };
 		3DF49B9B21A1665F00583A14 /* Module.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Module.swift; sourceTree = "<group>"; };
+		3DF49B9D21A184AB00583A14 /* StartUpModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartUpModel.swift; sourceTree = "<group>"; };
+		3DF49B9F21A184EB00583A14 /* StartUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartUpViewModel.swift; sourceTree = "<group>"; };
+		3DF49BA121A1862900583A14 /* LoadStartUpEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadStartUpEvent.swift; sourceTree = "<group>"; };
+		3DF49BA321A1865900583A14 /* LoadStartUpIntent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadStartUpIntent.swift; sourceTree = "<group>"; };
+		3DF49BA521A187DD00583A14 /* UpdateSelectedCityEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateSelectedCityEvent.swift; sourceTree = "<group>"; };
+		3DF49BA721A1881B00583A14 /* UpdateSelectedCityIntent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateSelectedCityIntent.swift; sourceTree = "<group>"; };
+		3DF49BA921A18C7800583A14 /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
+		3DF49BAB21A1966A00583A14 /* MainModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainModel.swift; sourceTree = "<group>"; };
+		3DF49BAD21A1967C00583A14 /* Tab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tab.swift; sourceTree = "<group>"; };
+		3DF49BAF21A196EA00583A14 /* SelectTabEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectTabEvent.swift; sourceTree = "<group>"; };
+		3DF49BB121A1972000583A14 /* SelectTabIntent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectTabIntent.swift; sourceTree = "<group>"; };
+		3DF49BB321A1977F00583A14 /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
 		3DF90CDC2179F9F80074FE7B /* UnitOfTemperatureChangedEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnitOfTemperatureChangedEvent.swift; sourceTree = "<group>"; };
 		3DF90CDE217A08190074FE7B /* ConnectivityRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectivityRepository.swift; sourceTree = "<group>"; };
 		3DF90CE0217A08590074FE7B /* ConnectivityRepositoryImp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectivityRepositoryImp.swift; sourceTree = "<group>"; };
@@ -254,6 +278,8 @@
 				3D8C9F1E2196E12100B8B0F6 /* SettingModel.swift */,
 				3D8C9F222196E26200B8B0F6 /* DisplayModel.swift */,
 				3DC45214219AC522006B61DA /* SettingableModel.swift */,
+				3DF49B9D21A184AB00583A14 /* StartUpModel.swift */,
+				3DF49BAB21A1966A00583A14 /* MainModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -263,6 +289,7 @@
 			children = (
 				05296534216F5AAE001286CC /* Extensions.swift */,
 				3DC45212219AC164006B61DA /* Array+Extension.swift */,
+				3DF49BA921A18C7800583A14 /* UIViewController+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -390,6 +417,9 @@
 				3D18DF7B2199F69300961C99 /* Intent.swift */,
 				3D18DF81219A043C00961C99 /* UpdateLengthSettingIntent.swift */,
 				3DC45210219AC07D006B61DA /* UpdateTemperatureSettingIntent.swift */,
+				3DF49BA321A1865900583A14 /* LoadStartUpIntent.swift */,
+				3DF49BA721A1881B00583A14 /* UpdateSelectedCityIntent.swift */,
+				3DF49BB121A1972000583A14 /* SelectTabIntent.swift */,
 			);
 			path = Intent;
 			sourceTree = "<group>";
@@ -400,6 +430,8 @@
 				3D45CA052172821500A67380 /* TodayForecastViewModel.swift */,
 				3D151F722174D79600CAA859 /* DailyForecastViewModel.swift */,
 				3D8C9F242196E2E600B8B0F6 /* SettingViewModel.swift */,
+				3DF49B9F21A184EB00583A14 /* StartUpViewModel.swift */,
+				3DF49BB321A1977F00583A14 /* MainViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -447,6 +479,7 @@
 				3D09A53F2177697A00765329 /* Tempereture.swift */,
 				3DA4B572217DDC290075DB52 /* Rain.swift */,
 				3D8C9F202196E22200B8B0F6 /* Display.swift */,
+				3DF49BAD21A1967C00583A14 /* Tab.swift */,
 			);
 			path = Entity;
 			sourceTree = "<group>";
@@ -464,6 +497,9 @@
 				3D8C9F2E2196EAC500B8B0F6 /* LoadTemperatureSettingEvent.swift */,
 				3D18DF7D2199FC5200961C99 /* UpdateLengthSettingEvent.swift */,
 				3D18DF7F2199FC6400961C99 /* UpdateTemperatıureSettingEvent.swift */,
+				3DF49BA121A1862900583A14 /* LoadStartUpEvent.swift */,
+				3DF49BA521A187DD00583A14 /* UpdateSelectedCityEvent.swift */,
+				3DF49BAF21A196EA00583A14 /* SelectTabEvent.swift */,
 			);
 			path = Event;
 			sourceTree = "<group>";
@@ -752,10 +788,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				3DF90CE9217A26950074FE7B /* SettingController.swift in Sources */,
+				3DF49B9E21A184AB00583A14 /* StartUpModel.swift in Sources */,
+				3DF49BB021A196EA00583A14 /* SelectTabEvent.swift in Sources */,
 				3D8C9F252196E2E600B8B0F6 /* SettingViewModel.swift in Sources */,
 				3D8C9F292196E93B00B8B0F6 /* LoadSettingIntent.swift in Sources */,
 				05A7C225216CC02800724CBF /* Weather.swift in Sources */,
 				3D754D7A216FC7E900730F1E /* CityRepositoryImp.swift in Sources */,
+				3DF49BA021A184EB00583A14 /* StartUpViewModel.swift in Sources */,
 				3DD0BDA5217FAE1600130150 /* SettingDataSource.swift in Sources */,
 				05A7C22B216CCB7800724CBF /* Sys.swift in Sources */,
 				3D151F712174D6FB00CAA859 /* LoadDailyForecastEvent.swift in Sources */,
@@ -778,6 +817,7 @@
 				3DD0BDA3217FAC2100130150 /* TemperetureSetting.swift in Sources */,
 				3DA4B571217DB2B80075DB52 /* UnitOfTemperature.swift in Sources */,
 				3D151F732174D79600CAA859 /* DailyForecastViewModel.swift in Sources */,
+				3DF49BAA21A18C7800583A14 /* UIViewController+Extension.swift in Sources */,
 				05AC274C216E0232000859F7 /* WeatherServiceImp.swift in Sources */,
 				3D45CA08217287D400A67380 /* TodayForecastController.swift in Sources */,
 				3D45CA0021727F9700A67380 /* DailyForecastRepositoryImp.swift in Sources */,
@@ -788,16 +828,19 @@
 				3DF90CDD2179F9F80074FE7B /* UnitOfTemperatureChangedEvent.swift in Sources */,
 				05A7C231216CCE8700724CBF /* DailyForecast.swift in Sources */,
 				3D8C9F2F2196EAC500B8B0F6 /* LoadTemperatureSettingEvent.swift in Sources */,
+				3DF49BA421A1865900583A14 /* LoadStartUpIntent.swift in Sources */,
 				05A7C229216CCB4300724CBF /* Cloud.swift in Sources */,
 				3D18DF7E2199FC5200961C99 /* UpdateLengthSettingEvent.swift in Sources */,
 				05A7C243216CF3D100724CBF /* UserDefaultsRepositoryImp.swift in Sources */,
 				3DA7760B2170CA27008FA53A /* LoadTodayForecastEvent.swift in Sources */,
+				3DF49BA221A1862900583A14 /* LoadStartUpEvent.swift in Sources */,
 				05A7C227216CCAF600724CBF /* Wind.swift in Sources */,
 				3DA4B56F217DB28F0075DB52 /* UnitOfLength.swift in Sources */,
 				3D8C9F2D2196EAAA00B8B0F6 /* LoadLengthSettingEvent.swift in Sources */,
 				3D18DF7C2199F69300961C99 /* Intent.swift in Sources */,
 				05A7C233216CCF3200724CBF /* City.swift in Sources */,
 				3DA4B573217DDC290075DB52 /* Rain.swift in Sources */,
+				3DF49BAE21A1967C00583A14 /* Tab.swift in Sources */,
 				05A7C235216CD00000724CBF /* DailyWeather.swift in Sources */,
 				3D18DF802199FC6400961C99 /* UpdateTemperatıureSettingEvent.swift in Sources */,
 				3DA776132170CFC3008FA53A /* TodayForecastRepository.swift in Sources */,
@@ -806,12 +849,15 @@
 				3DC45211219AC07D006B61DA /* UpdateTemperatureSettingIntent.swift in Sources */,
 				3D8C9F232196E26200B8B0F6 /* DisplayModel.swift in Sources */,
 				3DF90CDF217A08190074FE7B /* ConnectivityRepository.swift in Sources */,
+				3DF49BB221A1972000583A14 /* SelectTabIntent.swift in Sources */,
 				3DF90CE3217A0D4C0074FE7B /* StartUpController.swift in Sources */,
 				05296535216F5AAE001286CC /* Extensions.swift in Sources */,
+				3DF49BA621A187DD00583A14 /* UpdateSelectedCityEvent.swift in Sources */,
 				3D45CA0A21728BC200A67380 /* LoadTodayForecastIntent.swift in Sources */,
 				05A7C241216CF37100724CBF /* UserDefaultsRepository.swift in Sources */,
 				3D51C447217505540077DC31 /* DailyForecastCell.swift in Sources */,
 				3D8C9F1F2196E12100B8B0F6 /* SettingModel.swift in Sources */,
+				3DF49BA821A1881B00583A14 /* UpdateSelectedCityIntent.swift in Sources */,
 				3D151F752174D7EC00CAA859 /* DailyForecastController.swift in Sources */,
 				3DA776152170D00A008FA53A /* DailyForecastRepository.swift in Sources */,
 				3DD0BD9F217FAA8E00130150 /* SettingCell.swift in Sources */,
@@ -824,9 +870,11 @@
 				3DA941A721770EC3002F6912 /* BackgroundView.swift in Sources */,
 				3D51C445217505440077DC31 /* DailyForecastDataSource.swift in Sources */,
 				050636BE216CBD6000E3195E /* Coordinate.swift in Sources */,
+				3DF49BAC21A1966A00583A14 /* MainModel.swift in Sources */,
 				3D45CA062172821500A67380 /* TodayForecastViewModel.swift in Sources */,
 				05A7C23E216CE1F200724CBF /* WeatherRequestable.swift in Sources */,
 				3D8C9F272196E90100B8B0F6 /* LoadSettingEvent.swift in Sources */,
+				3DF49BB421A1977F00583A14 /* MainViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

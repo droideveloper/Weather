@@ -66,7 +66,7 @@ class Module {
 			fatalError("we can not resolve \(FileRepository.self)")
 		}.inObjectScope(.container)
 		
-		// Daily Forecast Repository Injection
+		// Daily Forecast Repository injection
 		container.register(DailyForecastRepository.self) { resolver in
 			if let fileRepository = resolver.resolve(FileRepository.self) {
 				if let weatherService = resolver.resolve(WeatherService.self) {
@@ -77,6 +77,15 @@ class Module {
 			fatalError("we can not resolve \(FileRepository.self)")
 		}.inObjectScope(.container)
 		
+		// Start Up Controller injection
+		container.storyboardInitCompleted(StartUpController.self) { _, controller in
+			controller.viewModel = StartUpViewModel(view: controller)
+		}
+		
+		// Main Controller injection
+		container.storyboardInitCompleted(MainController.self) { _, controller in
+			controller.viewModel = MainViewModel(view: controller)
+		}
 		// Today Forecast Controller injection
 		container.storyboardInitCompleted(TodayForecastController.self) { resolver, controller in
 			controller.viewModel = TodayForecastViewModel(view: controller)

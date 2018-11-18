@@ -8,20 +8,35 @@
 
 import UIKit
 import Swinject
+import SwinjectStoryboard
 import MVICocoa
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, Injectable {
 	
 	var window: UIWindow?
+	
 	lazy var container = {
 		Module().container
 	}()
 	
 	func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-    // let module = Module()
-    // self.container = module.container
-		// Override point for customization after application launch.
+		let storyBoard = SwinjectStoryboard.create(name: "Main", bundle: nil, container: container)
+		
+		let window = UIWindow(frame: UIScreen.main.bounds)
+		
+		if let userDefaultsRepository = container.resolve(UserDefaultsRepository.self) {
+			if userDefaultsRepository.selectedCityId != 0 {
+				window.rootViewController = storyBoard.instantiateViewController(withIdentifier: "rootViewController")
+			} else {
+				window.rootViewController = storyBoard.instantiateViewController(withIdentifier: "startUpController")
+			}
+		} else {
+			window.rootViewController = storyBoard.instantiateViewController(withIdentifier: "startUpController")
+		}
+		
+		self.window = window
+		window.makeKeyAndVisible()
 		return true
 	}
 	
