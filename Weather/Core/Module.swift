@@ -101,5 +101,8 @@ class Module {
 		container.storyboardInitCompleted(SettingController.self) { _, controller in
 			controller.viewModel = SettingViewModel(view: controller)
 		}
+		
+		// root view controller injection
+		container.storyboardInitCompleted(UINavigationController.self) { _, _ in }
 	}
 }
