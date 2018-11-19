@@ -12,7 +12,7 @@ import RxSwift
 import Swinject
 import MVICocoa
 
-class TodayForecastController: BaseViewController<TodayForecastModel, TodayForecastViewModel> {
+class TodayForecastController: BaseViewController<TodayForecastModel, TodayForecastViewModel>, Loggable {
 	
   @IBOutlet public weak var progress: UIActivityIndicatorView!
   
@@ -58,8 +58,11 @@ class TodayForecastController: BaseViewController<TodayForecastModel, TodayForec
 		// bind background image in here
 		disposeBag += viewModel.store()
 			.map { model in model.city }
-			.filter { self.city != $0 }
-			.do(onNext: { city in self.city = city })
+			.filter { self.city != $0 && $0 != City.empty }
+			.do(onNext: { city in
+				self.city = city
+				self.log("city: \(city)")
+			})
 			.map { city in UIImage(named: city.name.lowercased()) }
 			.subscribe(viewImageBackground.rx.image)
 		
