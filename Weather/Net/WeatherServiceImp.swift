@@ -12,9 +12,7 @@ import Alamofire
 import MVICocoa
 
 class WeatherServiceImp: WeatherService {
-	
-	private let headers: [String: String] = ["Content-Type": "application/json;charset=utf-8"]
-	
+		
 	private let userDefaultsRepository: UserDefaultsRepository
 	
 	init(userDefaultsRepository: UserDefaultsRepository) {
