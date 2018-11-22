@@ -2,8 +2,8 @@
 //  Extensions.swift
 //  Weather
 //
-//  Created by VNGRS on 11.10.2018.
-//  Copyright © 2018 VNGRS. All rights reserved.
+//  Created by Fatih Şen on 11.10.2018.
+//  Copyright © 2018 Open Source. All rights reserved.
 //
 
 import Foundation
