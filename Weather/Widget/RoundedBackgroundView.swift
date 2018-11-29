@@ -10,7 +10,6 @@ import Foundation
 import UIKit
 import CoreGraphics
 
-@IBDesignable
 class RoundedBackgroundView: UIView {
   
   override func draw(_ rect: CGRect) {
