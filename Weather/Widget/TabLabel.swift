@@ -9,7 +9,6 @@
 import Foundation
 import UIKit
 
-@IBDesignable
 class TabLabel: UILabel {
 	
 	var isSelected: Bool = false {

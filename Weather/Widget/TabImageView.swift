@@ -9,7 +9,6 @@
 import Foundation
 import UIKit
 
-@IBDesignable
 class TabImageView: UIImageView {
 	
 	var isSelected: Bool = false {

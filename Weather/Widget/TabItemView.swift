@@ -9,7 +9,6 @@
 import Foundation
 import UIKit
 
-@IBDesignable
 class TabItemView: UIView {
 	
 	var isSelected: Bool = false {
