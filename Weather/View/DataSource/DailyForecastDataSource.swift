@@ -10,30 +10,21 @@ import Foundation
 import UIKit
 import MVICocoa
 
-class DailyForecastDataSource: NSObject, UITableViewDataSource {
+class DailyForecastDataSource: TableDataSource<DailyForecast> {
 
 	static let dailyForecastCell = "kDailyForecastCell"
-	
-	private let dataSet: ObservableList<DailyForecast>
-	
-  init(dataSet: ObservableList<DailyForecast>) {
-    self.dataSet = dataSet
-  }
 	
 	func numberOfSections(in tableView: UITableView) -> Int {
 		return 1
 	}
 	
-	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-		return dataSet.count
+	override func bind(_ cell: UITableViewCell, _ item: DailyForecast) {
+		if let cell = cell as? DailyForecastCell {
+			cell.bind(entity: item)
+		}
 	}
 	
-	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-		let cell = tableView.dequeueReusableCell(withIdentifier: DailyForecastDataSource.dailyForecastCell)
-		if let cell = cell as? DailyForecastCell {
-			cell.bind(entity: dataSet.get(indexPath.row))
-			return cell
-		}
-		fatalError("we can not recognize cell type")
+	override func identifierAt(_ indextPath: IndexPath) -> String {
+		return DailyForecastDataSource.dailyForecastCell
 	}
 }

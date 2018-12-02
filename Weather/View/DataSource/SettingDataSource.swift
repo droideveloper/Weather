@@ -10,30 +10,21 @@ import Foundation
 import UIKit
 import MVICocoa
 
-class SettingDataSource: NSObject, UITableViewDataSource {
+class SettingDataSource: TableDataSource<Settingable> {
 	
 	static let settingCell = "kSettingCell"
-	
-	private let dataSet: ObservableList<Settingable>
-	
-	init(dataSet: ObservableList<Settingable>) {
-		self.dataSet = dataSet
-	}
-	
-	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-		return dataSet.count
-	}
-	
+
 	func numberOfSections(in tableView: UITableView) -> Int {
 		return 1
 	}
 	
-	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-		let cell = tableView.dequeueReusableCell(withIdentifier: SettingDataSource.settingCell)
+	override func bind(_ cell: UITableViewCell, _ item: Settingable) {
 		if let cell = cell as? SettingCell {
-			cell.bind(entity: dataSet.get(indexPath.row))
-			return cell
+			cell.bind(entity: item)
 		}
-		fatalError("error we can not recognize setting cell")
+	}
+	
+	override func identifierAt(_ indextPath: IndexPath) -> String {
+		return SettingDataSource.settingCell
 	}
 }
