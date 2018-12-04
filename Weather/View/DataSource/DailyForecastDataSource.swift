@@ -12,7 +12,7 @@ import MVICocoa
 
 class DailyForecastDataSource: TableDataSource<DailyForecast> {
 
-	static let dailyForecastCell = "kDailyForecastCell"
+	private let dailyForecastCell = String(describing: DailyForecastCell.self)
 	
 	func numberOfSections(in tableView: UITableView) -> Int {
 		return 1
@@ -25,6 +25,6 @@ class DailyForecastDataSource: TableDataSource<DailyForecast> {
 	}
 	
 	override func identifierAt(_ indextPath: IndexPath) -> String {
-		return DailyForecastDataSource.dailyForecastCell
+		return dailyForecastCell
 	}
 }

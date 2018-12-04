@@ -30,7 +30,7 @@ class SettingController: BaseViewController<SettingModel, SettingViewModel> {
 	
 	override func setUp() {
 		viewPicker.alpha = 0 // hide view now
-		viewTable.register(UINib(nibName: "SettingCell", bundle: Bundle.main), forCellReuseIdentifier: SettingDataSource.settingCell)
+		viewTable.register(types: SettingCell.self)
 		viewTable.separatorStyle = .none
 		viewTable.dataSource = dataSource
 	}
