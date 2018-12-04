@@ -12,7 +12,7 @@ import MVICocoa
 
 class SettingDataSource: TableDataSource<Settingable> {
 	
-	static let settingCell = "kSettingCell"
+	private let settingCell = String(describing: SettingCell.self)
 
 	func numberOfSections(in tableView: UITableView) -> Int {
 		return 1
@@ -25,6 +25,6 @@ class SettingDataSource: TableDataSource<Settingable> {
 	}
 	
 	override func identifierAt(_ indextPath: IndexPath) -> String {
-		return SettingDataSource.settingCell
+		return settingCell
 	}
 }
