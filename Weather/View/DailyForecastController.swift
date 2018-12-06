@@ -27,7 +27,7 @@ class DailyForecastController: BaseViewController<DailyForecastModel, DailyForec
 	
 	override func setUp() {
     // register our xib file for dequeue
-		self.viewTable.register(types: DailyForecastCell.self)
+		self.viewTable.register(DailyForecastCell.self)
     // we will set style of
     self.viewTable.separatorStyle = .none
     self.viewTable.dataSource = dataSource

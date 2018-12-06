@@ -29,10 +29,10 @@ class SettingController: BaseViewController<SettingModel, SettingViewModel> {
 	private var dataSourceDisposalbe = Disposables.create()
 	
 	override func setUp() {
-		viewPicker.alpha = 0 // hide view now
-		viewTable.register(types: SettingCell.self)
-		viewTable.separatorStyle = .none
-		viewTable.dataSource = dataSource
+		self.viewPicker.alpha = 0 // hide view now
+		self.viewTable.register(SettingCell.self)
+		self.viewTable.separatorStyle = .none
+		self.viewTable.dataSource = dataSource
 	}
 	
 	override func attach() {
