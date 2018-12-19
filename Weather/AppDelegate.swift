@@ -25,6 +25,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, Injectable {
 		
 		let window = UIWindow(frame: UIScreen.main.bounds)
 		
+		// TODO is this better of make root UINavigationController and then push content depending on conceptual choice
+		// not sure what is the best practice in ios
 		if let userDefaultsRepository = container.resolve(UserDefaultsRepository.self) {
 			if userDefaultsRepository.selectedCityId != 0 {
 				window.rootViewController = storyBoard.instantiateViewController(withIdentifier: "rootViewController")
