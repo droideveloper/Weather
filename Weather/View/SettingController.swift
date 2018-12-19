@@ -13,7 +13,8 @@ import UIKit
 import MVICocoa
 
 class SettingController: BaseViewController<SettingModel, SettingViewModel> {
-	
+	// TODO add here change of city option that will trigger everything
+	// current city belongs to and kill every process in there
 	@IBOutlet private weak var viewTable: UITableView!
 	@IBOutlet private weak var viewPicker: UIPickerView!
 	
