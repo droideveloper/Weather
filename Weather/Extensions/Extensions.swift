@@ -222,3 +222,17 @@ extension Sys {
     return dateFormatter.string(from: date)
   }
 }
+
+extension Observable where Element == [Int] {
+	
+	func emmitClosest(title: String) -> Observable<Float> {
+		return map { array -> Float in
+			let min = array.min(by: { (lhs, rhs) -> Bool in
+				return lhs < rhs
+			})
+			
+			return Float(min ?? 0)
+		}
+	}
+	
+}

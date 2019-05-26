@@ -85,6 +85,7 @@ class TodayForecastController: BaseViewController<TodayForecastModel, TodayForec
         showError(failure.error)
       }
 		}
+		log("state: \(model.state) data: \(model.data)")
 	}
   
   private func checkIfInitialLoadNeeded() {

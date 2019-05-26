@@ -20,17 +20,15 @@ class WeatherServiceImp: WeatherService {
 	}
 	
 	func loadTodayForecast() -> Observable<TodayForecast> {
-		let endpoint = WeatherRequestable.todayForecast(cityId: userDefaultsRepository.selectedCityId)
-		let (httpMethod, url) = endpoint.request
-		return Alamofire.request(url, method: httpMethod)
+		let request = WeatherRequestable.todayForecast(cityId: userDefaultsRepository.selectedCityId).request
+		return Alamofire.request(request)
 			.serialize()
 	}
 	
 	func loadDailyForecast() -> Observable<[DailyForecast]> {
-		let endpoint = WeatherRequestable.dailyForecast(cityId: userDefaultsRepository.selectedCityId)
-		let (httpMethod, url) = endpoint.request
-		let request: Observable<DailyWeather> =  Alamofire.request(url, method: httpMethod)
+		let request = WeatherRequestable.dailyForecast(cityId: userDefaultsRepository.selectedCityId).request
+		let source: Observable<DailyWeather> =  Alamofire.request(request)
 			.serialize()
-		return request.map { response in response.data }
+		return source.map { response in response.data }
 	}
 }
