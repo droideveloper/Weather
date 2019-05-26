@@ -1,21 +1,22 @@
 PODS:
-  - Alamofire (4.8.0)
-  - AlamofireImage (3.5.0):
+  - Alamofire (4.8.2)
+  - AlamofireImage (3.5.2):
     - Alamofire (~> 4.8)
   - MVICocoa (0.0.1):
-    - Alamofire (~> 4.7)
-    - AlamofireImage (~> 3.4)
-    - RxCocoa (~> 4.0)
-    - RxSwift (~> 4.0)
+    - Alamofire
+    - AlamofireImage
+    - RxCocoa
+    - RxSwift
     - Swinject
-  - RxAtomic (4.4.0)
-  - RxCocoa (4.4.0):
-    - RxSwift (~> 4.0)
-  - RxSwift (4.4.0):
-    - RxAtomic (~> 4.4)
-  - Swinject (2.5.0)
-  - SwinjectStoryboard (2.1.0):
-    - Swinject (~> 2.5)
+  - RxCocoa (5.0.0):
+    - RxRelay (~> 5)
+    - RxSwift (~> 5)
+  - RxRelay (5.0.0):
+    - RxSwift (~> 5)
+  - RxSwift (5.0.0)
+  - Swinject (2.6.0)
+  - SwinjectStoryboard (2.2.0):
+    - Swinject (~> 2.6)
 
 DEPENDENCIES:
   - MVICocoa (from `https://github.com/droideveloper/MVICocoa.git`, branch `master`)
@@ -25,8 +26,8 @@ SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - Alamofire
     - AlamofireImage
-    - RxAtomic
     - RxCocoa
+    - RxRelay
     - RxSwift
     - Swinject
     - SwinjectStoryboard
@@ -38,18 +39,18 @@ EXTERNAL SOURCES:
 
 CHECKOUT OPTIONS:
   MVICocoa:
-    :commit: 42b8abef4d4ffd997d2fa23024e1fc99c3d5d3e4
+    :commit: b479241efc02224ad6e6a159e86091f7de80daee
     :git: https://github.com/droideveloper/MVICocoa.git
 
 SPEC CHECKSUMS:
-  Alamofire: 3ec537f71edc9804815215393ae2b1a8ea33a844
-  AlamofireImage: 1aea346f4dda2f6c67622fa5a89fcbb80d79cc16
-  MVICocoa: 4aa9ec0aff2dc4e4a057f209dd9503e6d13ecab1
-  RxAtomic: eacf60db868c96bfd63320e28619fe29c179656f
-  RxCocoa: df63ebf7b9a70d6b4eeea407ed5dd4efc8979749
-  RxSwift: 5976ecd04fc2fefd648827c23de5e11157faa973
-  Swinject: 82cdb851f63f91bba974e3eca1d69780f2f7677e
-  SwinjectStoryboard: 688f096033103e66ffcf6ca678211acd7d7be505
+  Alamofire: ae5c501addb7afdbb13687d7f2f722c78734c2d3
+  AlamofireImage: 63cfe3baf1370be6c498149687cf6db3e3b00999
+  MVICocoa: 461247337da98475a3dc03508452458cf1295cb4
+  RxCocoa: fcf32050ac00d801f34a7f71d5e8e7f23026dcd8
+  RxRelay: 4f7409406a51a55cd88483f21ed898c234d60f18
+  RxSwift: 8b0671caa829a763bbce7271095859121cbd895f
+  Swinject: 48a96cda93633cf2860697b4ce76ab5db9ebaca2
+  SwinjectStoryboard: 32512ef16c2b0ff5b8f823b23539c4a50f6d3383
 
 PODFILE CHECKSUM: f3b5274ce04c788df01052d14d925bf93a4bb8c2
 

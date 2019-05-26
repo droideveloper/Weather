@@ -25,11 +25,10 @@ class LoadSelectedCityIntent: ObservableIntent<TodayForecastModel> {
     return cityRepository.loadCities()
 			.concatMap { cities -> Observable<City> in Observable.from(cities) }
 			.filter { city in Int(city.id) == selectedCityId }
-      .subscribeOn(MainScheduler.asyncInstance)
-      .delay(0.5, scheduler: MainScheduler.asyncInstance)
       .map(bySuccess(_ :))
       .catchError(byFailure(_ :))
       .startWith(byInitial())
+			.subscribeOn(ConcurrentMainScheduler.instance)
   }
 
   private func byInitial() -> Reducer<TodayForecastModel> {

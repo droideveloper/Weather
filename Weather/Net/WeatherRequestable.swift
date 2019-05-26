@@ -21,14 +21,23 @@ enum WeatherRequestable: Requestable {
 		}
 	}
 	
-	var request: (HTTPMethod, URLConvertible) {
+	var request: URLRequest {
 		get {
 			switch self {
 			case .dailyForecast(let cityId):
-				return (.get, "\(baseUrl)/forecast/daily?id=\(cityId)&appid=\(API_ID)")
+				guard let uri = URL(string: "\(baseUrl)/forecast/daily?id=\(cityId)&appid=\(API_ID)") else {
+					fatalError("\(baseUrl)/forecast/daily?id=\(cityId)&appid=\(API_ID), can not validated as url")
+				}
+				var request = URLRequest(url: uri)
+				request.httpMethod = HTTPMethod.get.rawValue
+				return request
 			case .todayForecast(let cityId):
-				return (.get, "\(baseUrl)/weather?id=\(cityId)&appid=\(API_ID)")
-				
+				guard let uri = URL(string: "\(baseUrl)/weather?id=\(cityId)&appid=\(API_ID)") else {
+					fatalError("\(baseUrl)/weather?id=\(cityId)&appid=\(API_ID), can not validated as url")
+				}
+				var request = URLRequest(url: uri)
+				request.httpMethod = HTTPMethod.get.rawValue
+				return request
 			}
 		}
 	}

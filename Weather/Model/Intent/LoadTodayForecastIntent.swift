@@ -20,11 +20,10 @@ class LoadTodayForecastIntent: ObservableIntent<TodayForecastModel> {
   
 	override func invoke() -> Observable<Reducer<TodayForecastModel>> {
 		return todayForecastRepository.loadTodayForecast()
-      .delay(0.5, scheduler: MainScheduler.asyncInstance)
-			.subscribeOn(MainScheduler.asyncInstance)
       .map(bySuccess (_ :))
       .catchError(byFailure(_ :))
 			.startWith(byIntial())
+			.subscribeOn(ConcurrentMainScheduler.instance)
 	}
   
   private func byIntial() -> Reducer<TodayForecastModel> {

@@ -20,11 +20,10 @@ class LoadStartUpIntent: ObservableIntent<StartUpModel> {
 
   override func invoke() -> Observable<Reducer<StartUpModel>> {
     return cityRepository.loadCities()
-      .subscribeOn(MainScheduler.asyncInstance)
-      .delay(0.5, scheduler: MainScheduler.asyncInstance)
       .map(bySuccess(_ :))
       .catchError(byFailure(_ :))
       .startWith(byInitial())
+			.subscribeOn(ConcurrentMainScheduler.instance)
   }
 
   private func byInitial() -> Reducer<StartUpModel> {
